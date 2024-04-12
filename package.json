@@ -1,10 +1,10 @@
 {
-	"name": "eleventy-base-blog",
-	"version": "8.0.0",
-	"description": "A starter repository for a blog web site using the Eleventy site generator.",
+	"name": "zkat.tech",
+	"version": "0.0.0",
+	"description": "Static site generator for zkat.tech, built with Eleventy",
 	"scripts": {
 		"build": "npx @11ty/eleventy",
-		"build-ghpages": "npx @11ty/eleventy --pathprefix=/eleventy-base-blog/",
+		"build-ghpages": "npx @11ty/eleventy --pathprefix=/zkat.tech/",
 		"start": "npx @11ty/eleventy --serve --quiet",
 		"debug": "DEBUG=Eleventy* npx @11ty/eleventy",
 		"debugstart": "DEBUG=Eleventy* npx @11ty/eleventy --serve --quiet",
@@ -12,25 +12,18 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "git://github.com/11ty/eleventy-base-blog.git"
+		"url": "git://github.com/zkat/zkat.github.io.git"
 	},
 	"author": {
-		"name": "Zach Leatherman",
-		"email": "zachleatherman@gmail.com",
-		"url": "https://zachleat.com/"
+		"name": "Kat Marchán",
+		"email": "kzm@zkat.tech",
+		"url": "https://zkat.tech"
 	},
 	"license": "MIT",
 	"engines": {
 		"node": ">=14"
 	},
-	"funding": {
-		"type": "opencollective",
-		"url": "https://opencollective.com/11ty"
-	},
-	"bugs": {
-		"url": "https://github.com/11ty/eleventy-base-blog/issues"
-	},
-	"homepage": "https://github.com/11ty/eleventy-base-blog#readme",
+	"homepage": "https://github.com/zkat/zkat.github.io#readme",
 	"devDependencies": {
 		"@11ty/eleventy": "^2.0.1",
 		"@11ty/eleventy-img": "^3.1.1",
