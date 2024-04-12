@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+	
+	<url>
+		<loc>https://zkat.tech/zkat.tech/blog/firstpost/</loc>
+		<lastmod>2018-05-01</lastmod>
+	</url>
+	
+	<url>
+		<loc>https://zkat.tech/zkat.tech/about/</loc>
+		<lastmod>2024-04-12</lastmod>
+	</url>
+	
+	<url>
+		<loc>https://zkat.tech/zkat.tech/blog/</loc>
+		<lastmod>2024-04-12</lastmod>
+	</url>
+	
+	<url>
+		<loc>https://zkat.tech/zkat.tech/</loc>
+		<lastmod>2024-04-12</lastmod>
+	</url>
+	
+	<url>
+		<loc>https://zkat.tech/zkat.tech/tags/</loc>
+		<lastmod>2024-04-12</lastmod>
+	</url>
+	
+	<url>
+		<loc>https://zkat.tech/zkat.tech/tags/another-tag/</loc>
+		<lastmod>2024-04-12</lastmod>
+	</url>
+</urlset>
