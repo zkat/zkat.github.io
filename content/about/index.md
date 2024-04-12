@@ -28,6 +28,13 @@ control.
 Aside from my codey work, I'm also a drummer, a wannabe artist, a wife, and a
 mother of one wonderful human child and three orange furball kitties.
 
+You can find me all over the place:
+
+- [@zkat on GitHub](https://github.com/zkat)
+- [@zkat@toot.cat on Fediverse/Mastodon](https://toot.cat/@zkat)
+- [@zkat.tech on Bluesky](https://bsky.app/profile/zkat.tech)
+- [@zkat:matrix.org on Matrix](https://matrix.to/#/@zkat:matrix.org)
+
 ## About This Site
 
 This is my personal site, occasional (?) blog, and a place where I can share
