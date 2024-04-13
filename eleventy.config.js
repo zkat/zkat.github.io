@@ -52,8 +52,8 @@ module.exports = function(eleventyConfig) {
 		// dateObj input: https://html.spec.whatwg.org/multipage/common-microsyntaxes.html#valid-date-string
     const obj = typeof date === "string"
       ? DateTime.fromFormat(date, "yyyy-mm-dd", { zone: "utc"})
-      : DateTime.fromJSDate(date, { zone: zone || "utc" });
-    return obj.toFormat(format || "yyyy-LL-dd");
+      : DateTime.fromJSDate(date, { zone: "utc" });
+    return obj.toFormat("yyyy-LL-dd");
 	});
 
 	// Get the first `n` elements of a collection.
