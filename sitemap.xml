@@ -2,42 +2,42 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
 	
 	<url>
-		<loc>https://zkat.tech/zkat.tech/blog/firstpost/</loc>
+		<loc>https://zkat.tech/blog/firstpost/</loc>
 		<lastmod>2018-05-01</lastmod>
 	</url>
 	
 	<url>
-		<loc>https://zkat.tech/zkat.tech/about/</loc>
+		<loc>https://zkat.tech/about/</loc>
 		<lastmod>2024-04-13</lastmod>
 	</url>
 	
 	<url>
-		<loc>https://zkat.tech/zkat.tech/blog/</loc>
+		<loc>https://zkat.tech/blog/</loc>
 		<lastmod>2024-04-13</lastmod>
 	</url>
 	
 	<url>
-		<loc>https://zkat.tech/zkat.tech/campaigns/lantern-in-the-void</loc>
+		<loc>https://zkat.tech/campaigns/lantern-in-the-void</loc>
 		<lastmod>2024-04-13</lastmod>
 	</url>
 	
 	<url>
-		<loc>https://zkat.tech/zkat.tech/campaigns/</loc>
+		<loc>https://zkat.tech/campaigns/</loc>
 		<lastmod>2024-04-13</lastmod>
 	</url>
 	
 	<url>
-		<loc>https://zkat.tech/zkat.tech/</loc>
+		<loc>https://zkat.tech/</loc>
 		<lastmod>2024-04-13</lastmod>
 	</url>
 	
 	<url>
-		<loc>https://zkat.tech/zkat.tech/tags/</loc>
+		<loc>https://zkat.tech/tags/</loc>
 		<lastmod>2024-04-13</lastmod>
 	</url>
 	
 	<url>
-		<loc>https://zkat.tech/zkat.tech/tags/another-tag/</loc>
+		<loc>https://zkat.tech/tags/another-tag/</loc>
 		<lastmod>2024-04-13</lastmod>
 	</url>
 </urlset>
