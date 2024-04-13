@@ -3,15 +3,14 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>Tagged “another tag”</title>
+		<title>Kat Marchán&#39;s Personal Site</title>
 		<meta name="description" content="Personal site, blog, and portfolio of Kat Marchán">
-		<link rel="alternate" href="/zkat.tech/feed/feed.xml" type="application/atom+xml" title="Kat Marchán&#39;s Personal Site">
-		<link rel="alternate" href="/zkat.tech/feed/feed.json" type="application/json" title="Kat Marchán&#39;s Personal Site">
+		<link rel="alternate" href="/feed/feed.xml" type="application/atom+xml" title="Kat Marchán&#39;s Personal Site">
+		<link rel="alternate" href="/feed/feed.json" type="application/json" title="Kat Marchán&#39;s Personal Site">
 		<link rel="me" href="https://toot.cat/@zkat">
 		<meta name="generator" content="Eleventy v2.0.1">
 		
-		<style>.postlist { counter-reset: start-from 2 }
-* { box-sizing: border-box; }
+		<style>* { box-sizing: border-box; }
 /* Defaults */
 :root {
 	--font-family: -apple-system, system-ui, sans-serif;
@@ -287,40 +286,26 @@ h2 + .header-anchor {
 		<a href="#skip" class="visually-hidden">Skip to main content</a>
 
 		<header>
-			<a href="/zkat.tech/" class="home-link">Kat Marchán&#39;s Personal Site</a>
+			<a href="/" class="home-link">Kat Marchán&#39;s Personal Site</a>
 			<nav>
 				<h2 class="visually-hidden">Top level navigation menu</h2>
 				<ul class="nav">
-					<li class="nav-item"><a href="/zkat.tech/">Home</a></li>
-					<li class="nav-item"><a href="/zkat.tech/blog/">Blog</a></li>
-					<li class="nav-item"><a href="/zkat.tech/campaigns/">Campaigns</a></li>
-					<li class="nav-item"><a href="/zkat.tech/about/">About Me</a></li>
+					<li class="nav-item"><a href="/">Home</a></li>
+					<li class="nav-item"><a href="/blog/">Blog</a></li>
+					<li class="nav-item"><a href="/campaigns/">Campaigns</a></li>
+					<li class="nav-item"><a href="/about/">About Me</a></li>
 				</ul>
 			</nav>
 		</header>
 
 		<main id="skip">
-			<h1>Tagged “another tag”</h1>
-
-
-
-<ol reversed="" class="postlist">
-
-	<li class="postlist-item">
-		<a href="/zkat.tech/blog/firstpost/" class="postlist-link">This is my first post.</a>
-		<time class="postlist-date" datetime="2018-05-01">May 2018</time>
-	</li>
-
-</ol>
-
-
-<p>See <a href="/zkat.tech/tags/">all tags</a>.</p>
-
+			
+<h1>A Lantern in the Void</h1>
 
 		</main>
 
 		<footer></footer>
 
-		<!-- This page `/zkat.tech/tags/another-tag/` was built on 2024-04-13T03:06:19.838Z -->
+		<!-- This page `/zkat.tech/campaigns/lantern-in-the-void` was built on 2024-04-13T03:06:19.834Z -->
 	</body>
 </html>
