@@ -1,8 +1,8 @@
 module.exports = {
-  title: "Kat Marchán's Personal Site",
+  title: "FOSS and Adventures",
   url: "https://zkat.tech/",
   language: "en",
-  description: "Personal site, blog, and portfolio of Kat Marchán",
+  description: "Personal site, blog, and portfolio of Kat Marchán. Also a place to post TTRPG campaign journals!",
   author: {
     name: "Kat Marchán",
     email: "kzm@zkat.tech",
