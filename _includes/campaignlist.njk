@@ -2,7 +2,7 @@
 <ol reversed class="campaignlist">
 {% for campaign in campaigns | reverse %}
 	<li class="campaignlist-item{% if post.url == url %} campaignlist-item-active{% endif %}">
-		<a href="/campaigns/{{ campaign.id | slugify }}/" class="campaignlist-link">{% if campaign.title %}{{ campaign.title }}{% else %}<code>TODO</code>{% endif %}</a>
+		<a href="/campaigns/{{ campaign.id | slugify }}/" class="campaignlist-link">{{ campaign.title }}</a>
 		Started <time class="campaignlist-date" datetime="{{ campaign.dateStarted | htmlDateString }}">{{ campaign.dateStarted | readableDate("LLLL yyyy") }}</time>
 	</li>
 {% endfor %}
