@@ -1,0 +1,13 @@
+---
+layout: layouts/base.njk
+pagination:
+  data: journal_entries
+  size: 1
+  alias: journal
+permalink: campaigns/{{ journal.campaign | slugify }}/{{ journal.title | slugify }}/
+---
+
+<h1>{{ journal.title }}</h1>
+<h3>Part of <a href="/campaigns/{{ journal.campaign | slugify }}/">{{ journal.campaign }}</a></h3>
+
+{{ journal.content | safe }}
