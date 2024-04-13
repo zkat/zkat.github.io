@@ -11,17 +11,14 @@ My name is Kat Marchán, and I'm a software engineer and open source
 maintainer. I write a lot of Rust these days, and I'm the maintainer of a few
 popular crates, like [`miette`](https://crates.io/crates/miette) and
 [`big-brain`](https://crates.io/crates/big-brain). I'm also the original
-author and part of the group continuing to maintain the [KDL Document
-Language](https://kdl.dev), and as part of that I also maintain the main Rust
+author and part of the group continuing to maintain the [KDL Document Language](https://kdl.dev), and as part of that I also maintain the main Rust
 implementation, [`kdl-rs`](https://crates.io/crates/kdl).
 
-In a previous life, I was the lead maintainer for the [NPM
-CLI](https://github.com/npm/cli), as well as the creator of the included
+In a previous life, I was the lead maintainer for the [NPM CLI](https://github.com/npm/cli), as well as the creator of the included
 [`npx`](https://docs.npmjs.com/cli/v10/commands/npx) tool everyone knows and
 loves.
 
-I also founded and maintain [Banchan Art](https://banchan.art), a [Platform
-Co-operative](https://en.wikipedia.org/wiki/Platform_cooperative) meant to
+I also founded and maintain [Banchan Art](https://banchan.art), a [Platform Co-operative](https://en.wikipedia.org/wiki/Platform_cooperative) meant to
 empower artists to sell art commissions safely and fairly on a platform they
 control.
 

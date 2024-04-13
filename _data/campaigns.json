@@ -1,11 +1,11 @@
 [
-	{
-		"id": "lantern-in-the-void",
-		"title": "A Lantern in the Void",
-		"pcs": [
-			"Zoya Santos"
-		],
-		"summary": "A traveling healer and her adventures through the Outlands.",
-		"dateStarted": "2024-04-09"
-	}
+  {
+    "id": "lantern-in-the-void",
+    "title": "A Lantern in the Void",
+    "pcs": [
+      "Zoya Santos"
+    ],
+    "summary": "A traveling healer and her adventures through the Outlands.",
+    "dateStarted": "2024-04-09"
+  }
 ]
