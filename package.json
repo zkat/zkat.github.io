@@ -5,7 +5,7 @@
   "scripts": {
     "fmt": "dprint fmt",
     "build": "npx @11ty/eleventy",
-    "build-ghpages": "npx @11ty/eleventy --pathprefix=/zkat.tech/",
+    "build-ghpages": "npx @11ty/eleventy",
     "start": "npx @11ty/eleventy --serve --quiet",
     "debug": "DEBUG=Eleventy* npx @11ty/eleventy",
     "debugstart": "DEBUG=Eleventy* npx @11ty/eleventy --serve --quiet",
