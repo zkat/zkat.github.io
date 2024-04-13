@@ -12,7 +12,7 @@ eleventyComputed:
 
 <h1>{{campaign.name}}</h1>
 
-<h3>Character: <strong>{{ campaign.character.name }}</h3>
+<h3>Character: <strong>{{ campaign.character.name }}</strong></h3>
 
 <ul>
   <li>Pronouns: {{ campaign.character.pronouns }}
@@ -30,8 +30,8 @@ eleventyComputed:
 <h3>Journal Entries</h3>
 <ol>
 {% for journal in journal_entries %}
-  {% if journal.campaign == campaign.name %}
-    <li><a href="/campaigns/{{ journal.campaign | slugify }}/{{ journal.title | slugify }}">{{journal.title}}</a></li>
+  {% if journal.campaignId == campaign.id %}
+    <li><a href="/campaigns/{{ journal.campaignName | slugify }}/{{ journal.title | slugify }}">{{journal.title}}</a></li>
   {% endif %}
 {% endfor %}
 </ol>
