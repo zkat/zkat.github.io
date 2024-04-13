@@ -3,7 +3,7 @@
 	
 	<url>
 		<loc>https://zkat.tech/blog/firstpost/</loc>
-		<lastmod>2018-05-01</lastmod>
+		<lastmod>2024-04-11</lastmod>
 	</url>
 	
 	<url>
@@ -17,7 +17,7 @@
 	</url>
 	
 	<url>
-		<loc>https://zkat.tech/campaigns/lantern-in-the-void</loc>
+		<loc>https://zkat.tech/campaigns/a-lantern-in-the-void/</loc>
 		<lastmod>2024-04-13</lastmod>
 	</url>
 	
@@ -32,12 +32,17 @@
 	</url>
 	
 	<url>
+		<loc>https://zkat.tech/campaigns/a-lantern-in-the-void/chapter-01-florinian-plague/</loc>
+		<lastmod>2024-04-13</lastmod>
+	</url>
+	
+	<url>
 		<loc>https://zkat.tech/tags/</loc>
 		<lastmod>2024-04-13</lastmod>
 	</url>
 	
 	<url>
-		<loc>https://zkat.tech/tags/another-tag/</loc>
+		<loc>https://zkat.tech/tags/some-tag/</loc>
 		<lastmod>2024-04-13</lastmod>
 	</url>
 </urlset>
