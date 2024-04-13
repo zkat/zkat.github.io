@@ -5,6 +5,9 @@ pagination:
   size: 1
   alias: journal
 permalink: campaigns/{{ journal.campaign | slugify }}/{{ journal.title | slugify }}/
+eleventyComputed:
+  title: "{{ journal.campaign }}: {{ journal.title }}"
+  description: "{{ journal.content | striptags | safe | truncate(100) }}"
 ---
 
 <h1>{{ journal.title }}</h1>

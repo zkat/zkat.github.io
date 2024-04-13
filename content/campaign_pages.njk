@@ -5,6 +5,9 @@ pagination:
   size: 1
   alias: campaign
 permalink: campaigns/{{ campaign.name | slugify }}/
+eleventyComputed:
+  title: "{{ campaign.name }}"
+  description: Campaign page for {{ campaign.character.name }}
 ---
 
 <h1>{{campaign.name}}</h1>
