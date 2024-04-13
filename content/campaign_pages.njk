@@ -1,0 +1,10 @@
+---
+layout: layouts/base.njk
+pagination:
+  data: campaigns
+  size: 1
+  alias: campaign
+permalink: campaigns/{{ campaign.id | slugify }}
+---
+
+<h1>{{campaign.title}}</h1>

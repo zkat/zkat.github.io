@@ -10,6 +10,8 @@ const { EleventyHtmlBasePlugin } = require("@11ty/eleventy");
 const pluginDrafts = require("./eleventy.config.drafts.js");
 const pluginImages = require("./eleventy.config.images.js");
 
+const getLocaleCollectionItem = require("@11ty/eleventy/src/Filters/GetLocaleCollectionItem.js");
+
 module.exports = function(eleventyConfig) {
 	// Copy the contents of the `public` folder to the output folder
 	// For example, `./public/css/` ends up in `_site/css/`
@@ -38,14 +40,20 @@ module.exports = function(eleventyConfig) {
 	eleventyConfig.addPlugin(pluginBundle);
 
 	// Filters
-	eleventyConfig.addFilter("readableDate", (dateObj, format, zone) => {
+	eleventyConfig.addFilter("readableDate", (date, format, zone) => {
 		// Formatting tokens for Luxon: https://moment.github.io/luxon/#/formatting?id=table-of-tokens
-		return DateTime.fromJSDate(dateObj, { zone: zone || "utc" }).toFormat(format || "dd LLLL yyyy");
+    const obj = typeof date === "string"
+      ? DateTime.fromFormat(date, "yyyy-mm-dd", { zone: zone || "utc"})
+      : DateTime.fromJSDate(date, { zone: zone || "utc" });
+    return obj.toFormat(format || "dd LLLL yyyy");
 	});
 
-	eleventyConfig.addFilter('htmlDateString', (dateObj) => {
+	eleventyConfig.addFilter('htmlDateString', (date) => {
 		// dateObj input: https://html.spec.whatwg.org/multipage/common-microsyntaxes.html#valid-date-string
-		return DateTime.fromJSDate(dateObj, {zone: 'utc'}).toFormat('yyyy-LL-dd');
+    const obj = typeof date === "string"
+      ? DateTime.fromFormat(date, "yyyy-mm-dd", { zone: "utc"})
+      : DateTime.fromJSDate(date, { zone: zone || "utc" });
+    return obj.toFormat(format || "yyyy-LL-dd");
 	});
 
 	// Get the first `n` elements of a collection.
@@ -72,6 +80,30 @@ module.exports = function(eleventyConfig) {
 			(item.data.tags || []).forEach(tag => tagSet.add(tag));
 		}
 		return Array.from(tagSet);
+	});
+
+	eleventyConfig.addFilter("getNextJournalEntry", function (collection) {
+		const currIndex = collection.findIndex(item =>
+			item.inputPath === this.page.inputPath &&
+			(item.outputPath === this.page.outputPath || item.url === this.page.url)
+		);
+		for (let i = currIndex; i < collection.length; i++) {
+			if (item.data.campaign === this.page.data.campaign) {
+				return item;
+			}
+		}
+	});
+
+	eleventyConfig.addFilter("getPrevJournalEntry", function (collection) {
+		const currIndex = collection.findIndex(item =>
+			item.inputPath === this.page.inputPath &&
+			(item.outputPath === this.page.outputPath || item.url === this.page.url)
+		);
+		for (let i = currIndex - 1; i <= 0; i--) {
+			if (item.data.campaign === this.page.data.campaign) {
+				return item;
+			}
+		}
 	});
 
 	eleventyConfig.addFilter("filterTagList", function filterTagList(tags) {
