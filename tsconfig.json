@@ -1,0 +1,14 @@
+{
+    "compilerOptions": {
+        "target": "es2017",
+        "module": "esnext",
+        "moduleResolution": "node",
+        "lib": [ "es5", "es2015.promise", "dom" ]
+    },
+    "include": [
+        "./**/*.ts"
+    ],
+    "ts-node": {
+      "esm": true
+    }
+}
