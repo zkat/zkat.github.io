@@ -12,13 +12,22 @@ eleventyComputed:
 
 <h1>{{campaign.name}}</h1>
 
-<h3>Character: <strong>{{ campaign.character.name }}</strong></h3>
+<h3>Protagonist: <strong>{{ campaign.character.name }}</strong></h3>
 
-<ul>
-  <li>Pronouns: {{ campaign.character.pronouns }}
-  <li>Callsign: {{ campaign.character.callsign }}
-  <li>{{ campaign.character.characteristics }}
-</ul>
+<table class="about-character">
+  <tr>
+    <td>Pronouns</td>
+    <td>{{ campaign.character.pronouns }}</td>
+  </tr>
+  <tr>
+    <td>Callsign</td>
+    <td>{{ campaign.character.callsign }}</td>
+  </tr>
+  <tr>
+    <td>About</td>
+    <td>{{ campaign.character.characteristics }}</td>
+  </tr>
+</table>
 
 <h3>Current Vows</h3>
 <ol>
@@ -27,7 +36,7 @@ eleventyComputed:
   {% endfor %}
 </ol>
 
-<h3>Journal Entries</h3>
+<h3>Journal</h3>
 <ul>
 {% for journal in journal_entries | reverse %}
   {% if journal.campaignId == campaign.id %}
