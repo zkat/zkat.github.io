@@ -10,9 +10,12 @@ eleventyComputed:
   description: "{{ journal.content | striptags | safe | truncate(100) }}"
 ---
 
-<div class="journal-entry">
-<h1>{{ journal.title }}</h1>
-<h3>Part of <a href="/campaigns/{{ journal.campaignName | slugify }}/">{{ journal.campaignName }}</a></h3>
+<article class="journal-entry">
+  <h1>{{ journal.title }}</h1>
+  <h3>Part of <a href="/campaigns/{{ journal.campaignName | slugify }}/">{{ journal.campaignName }}</a></h3>
 
-{{ journal.content | safe }}
-</div>
+  {{ journal.content | safe }}
+
+  <footer>
+  </footer>
+</article>

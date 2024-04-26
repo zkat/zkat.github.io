@@ -60,6 +60,7 @@ async function cleanupJournalEntry(entry: IJournalEntry): Promise<void> {
   const document = newDom.window.document;
   const newBody = newDom.window.document.body;
   let currentAction = null;
+  let currentActionName = null;
   let figure = null;
   for (const el of dom.window.document.body.childNodes) {
     if (el instanceof dom.window.HTMLImageElement) {
@@ -89,15 +90,28 @@ async function cleanupJournalEntry(entry: IJournalEntry): Promise<void> {
         newBody.appendChild(hr);
       } else if (text.startsWith("[")) {
         const actionText = text.replace(/^\[([^\]]+)\]/, "$1").trim();
-        const newItem = makeActionItem(document, actionText);
-        if (!currentAction || isMove(actionText) || isAsset(actionText)) {
-          currentAction = document.createElement("div");
+        const detectedActionName = isMove(actionText) || isAsset(actionText);
+        if (
+          !currentAction ||
+          (detectedActionName &&
+            !currentActionName.match(new RegExp(`^${detectedActionName}`, 'i')))
+        ) {
+          currentAction = document.createElement("aside");
+          currentActionName = detectedActionName;
           currentAction.classList.add("action");
           newBody.appendChild(currentAction);
+          const newItem = makeActionHeader(document, actionText);
+          currentAction.appendChild(newItem);
+          continue;
         }
+        const newItem = makeActionItem(
+          document,
+          actionText.replace(new RegExp(`^${currentActionName}:?\s*`, 'i'), "")
+        );
         currentAction.appendChild(newItem);
       } else {
         if (currentAction) {
+          currentActionName = null;
           currentAction = null;
         }
         const note = document.createElement("p");
@@ -108,6 +122,12 @@ async function cleanupJournalEntry(entry: IJournalEntry): Promise<void> {
     }
   }
   entry.content = newBody.innerHTML;
+}
+
+function makeActionHeader(document: Document, actionText: string): HTMLElement {
+  const actionHeader = document.createElement("header");
+  actionHeader.textContent = actionText;
+  return actionHeader;
 }
 
 function makeActionItem(
@@ -129,26 +149,26 @@ function makeActionItem(
   return actionItem;
 }
 
-function isMove(text: string): boolean {
+function isMove(text: string): string | undefined {
   text = text.toLowerCase();
   for (const category of Object.values(STARFORGED.moves)) {
     for (const move of Object.values(category.contents ?? {})) {
-      if (text.startsWith((move.canonical_name ?? move.name).toLowerCase())) {
-        return true;
+      const name = (move.canonical_name ?? move.name).toLowerCase();
+      if (text.startsWith(name)) {
+        return name;
       }
     }
   }
-  return false;
 }
 
-function isAsset(text: string): boolean {
+function isAsset(text: string): string | undefined {
   text = text.toLowerCase();
   for (const collection of Object.values(STARFORGED.assets)) {
     for (const asset of Object.values(collection.contents ?? {})) {
-      if (text.startsWith((asset.canonical_name ?? asset.name).toLowerCase())) {
-        return true;
+      const name = (asset.canonical_name ?? asset.name).toLowerCase();
+      if (text.startsWith(name)) {
+        return name;
       }
     }
   }
-  return false;
 }
