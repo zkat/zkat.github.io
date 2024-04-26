@@ -285,6 +285,18 @@ h2 + .header-anchor {
 
 /* Campaigns */
 .journal-entry {
+  & hr {
+    max-width: 85%;
+    margin: 1.5em;
+  }
+  & figcaption {
+    font-size: 0.8125em;
+    opacity: 0.75;
+    color: var(--color-gray-90);
+    &:before {
+      content: "Source: ";
+    }
+  }
   & img {
     max-width: 100%;
     object-fit: contain;
@@ -292,10 +304,30 @@ h2 + .header-anchor {
   & .action {
     padding-left: 2em;
     margin-left: 1em;
-    border-left: 6px solid #ccc;
+    border-left: 4px solid var(--color-gray-50);
     font-weight: bold;
     & div {
       margin-bottom: 1em;
+      &.miss {
+        color: red;
+        opacity: 0.75;
+      }
+      &.weak-hit {
+        color: orange;
+        opacity: 0.75;
+      }
+      &.strong-hit {
+        color: green;
+        opacity: 0.75;
+      }
+      &.roll:before {
+        content: "🎲";
+        margin-right: .5em;
+      }
+      &.roll.match:after {
+        content: "✅";
+        margin-left: .5em;
+      }
       &:before {
         content: "➡️";
         margin-right: .5em;
@@ -349,6 +381,6 @@ h2 + .header-anchor {
 
 		<footer></footer>
 
-		<!-- This page `/` was built on 2024-04-26T05:13:26.416Z -->
+		<!-- This page `/` was built on 2024-04-26T16:18:27.420Z -->
 	</body>
 </html>
