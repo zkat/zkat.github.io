@@ -162,7 +162,7 @@ export interface ILoreEntry {
   tags: string[];
   image?: IImage;
   content: string;
-  notes: string;
+  notes?: string;
 }
 
 export interface IImage {

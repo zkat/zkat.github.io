@@ -1,0 +1,24 @@
+---
+layout: layouts/base.njk
+pagination:
+  data: lore_entries
+  size: 1
+  alias: lore
+permalink: campaigns/{{ lore.campaignName | slugify }}/lore/{{ lore.title | slugify }}/
+eleventyComputed:
+  title: "{{ lore.campaignName }}: {{ lore.title }}"
+  description: "{{ lore.content | striptags | safe | truncate(100) }}"
+---
+
+<article class="campaign-entry">
+  <h1>{{ lore.title }}</h1>
+  <h3>Part of <a href="/campaigns/{{ lore.campaignName | slugify }}/">{{ lore.campaignName }}</a></h3>
+
+  {{ lore.content | safe }}
+
+  <hr>
+
+  <footer>
+    <a href="/campaigns/{{ lore.campaignName | slugify }}">Back to {{ lore.campaignName }}</a>
+  </footer>
+</article>

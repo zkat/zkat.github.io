@@ -272,7 +272,7 @@ h2 + .header-anchor {
 }
 
 /* Campaigns */
-.journal-entry {
+article.campaign-entry {
   & hr {
     max-width: 85%;
     margin: 1.5em;

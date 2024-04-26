@@ -10,12 +10,15 @@ eleventyComputed:
   description: "{{ journal.content | striptags | safe | truncate(100) }}"
 ---
 
-<article class="journal-entry">
+<article class="campaign-entry">
   <h1>{{ journal.title }}</h1>
   <h3>Part of <a href="/campaigns/{{ journal.campaignName | slugify }}/">{{ journal.campaignName }}</a></h3>
 
   {{ journal.content | safe }}
 
+  <hr>
+
   <footer>
+    <a href="/campaigns/{{ journal.campaignName | slugify }}">Back to {{ journal.campaignName }}</a>
   </footer>
 </article>

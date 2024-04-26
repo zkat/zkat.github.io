@@ -20,18 +20,27 @@ eleventyComputed:
   <li>{{ campaign.character.characteristics }}
 </ul>
 
-<h3>Vows</h3>
+<h3>Current Vows</h3>
 <ol>
-  {% for vow in campaign.character.vows %}
+  {% for vow in campaign.character.vows | reverse %}
     <li>{{ vow.name }}
   {% endfor %}
 </ol>
 
 <h3>Journal Entries</h3>
-<ol>
-{% for journal in journal_entries %}
+<ul>
+{% for journal in journal_entries | reverse %}
   {% if journal.campaignId == campaign.id %}
     <li><a href="/campaigns/{{ journal.campaignName | slugify }}/{{ journal.title | slugify }}">{{journal.title}}</a></li>
   {% endif %}
 {% endfor %}
-</ol>
+</ul>
+
+<h3>Lore</h3>
+<ul>
+{% for lore in lore_entries | reverse %}
+  {% if lore.campaignId == campaign.id %}
+    <li><a href="/campaigns/{{ lore.campaignName | slugify }}/lore/{{ lore.title | slugify }}">{{lore.title}}</a></li>
+  {% endif %}
+{% endfor %}
+</ul>

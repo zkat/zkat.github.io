@@ -6,7 +6,7 @@ import type * as Datasworn from "@datasworn/core/dist/Datasworn";
 
 import { JSDOM } from "jsdom";
 
-import { ICampaign, IJournalEntry } from "../_data/campaigns";
+import { ICampaign, IJournalEntry, ILoreEntry } from "../_data/campaigns";
 
 const FILE_NAME = "stargazerCampaigns.json";
 
@@ -39,9 +39,22 @@ if (process.argv.length < 2) {
 async function main(dumpPath: string, filter?: RegExp): Promise<void> {
   const campaigns: ICampaign[] = JSON.parse(await readFile(dumpPath, "utf-8"));
   for (const campaign of campaigns) {
+    const finalJournal: IJournalEntry[] = [];
+    const finalLore: ILoreEntry[] = [];
     for (const entry of campaign.journal) {
       await cleanupJournalEntry(entry);
+      if (entry.title.startsWith("00 Lore")) {
+        finalLore.push({
+          title: entry.title.replace(/^00 Lore\s*-\s*/, ""),
+          content: entry.content,
+          tags: [],
+        });
+      } else {
+        finalJournal.push(entry);
+      }
     }
+    campaign.journal = finalJournal;
+    campaign.lore = finalLore;
   }
 
   const destination = join(
@@ -94,7 +107,7 @@ async function cleanupJournalEntry(entry: IJournalEntry): Promise<void> {
         if (
           !currentAction ||
           (detectedActionName &&
-            !currentActionName.match(new RegExp(`^${detectedActionName}`, 'i')))
+            !currentActionName.match(new RegExp(`^${detectedActionName}`, "i")))
         ) {
           currentAction = document.createElement("aside");
           currentActionName = detectedActionName;
@@ -106,7 +119,7 @@ async function cleanupJournalEntry(entry: IJournalEntry): Promise<void> {
         }
         const newItem = makeActionItem(
           document,
-          actionText.replace(new RegExp(`^${currentActionName}:?\s*`, 'i'), "")
+          actionText.replace(new RegExp(`^${currentActionName}:?\s*`, "i"), "")
         );
         currentAction.appendChild(newItem);
       } else {
