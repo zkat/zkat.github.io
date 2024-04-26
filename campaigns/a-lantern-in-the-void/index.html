@@ -285,6 +285,16 @@ h2 + .header-anchor {
 }
 
 /* Campaigns */
+table.about-character {
+  width: 100%;
+  border: 1px solid var(--color-gray-50);
+  border-collapse: collapse;
+  & td {
+    border: 1px solid var(--color-gray-50);
+    padding: 0.5em;
+  }
+}
+
 article.campaign-entry {
   & hr {
     max-width: 85%;
@@ -371,13 +381,22 @@ article.campaign-entry {
 			
 <h1>A Lantern in the Void</h1>
 
-<h3>Character: <strong>Zoya Santos</strong></h3>
+<h3>Protagonist: <strong>Zoya Santos</strong></h3>
 
-<ul>
-  <li>Pronouns: They/them
-  <li>Callsign: Raven
-  <li>Kind, empathetic, sticks their neck out for others
-</ul>
+<table class="about-character">
+  <tr>
+    <td>Pronouns</td>
+    <td>They/them</td>
+  </tr>
+  <tr>
+    <td>Callsign</td>
+    <td>Raven</td>
+  </tr>
+  <tr>
+    <td>About</td>
+    <td>Kind, empathetic, sticks their neck out for others</td>
+  </tr>
+</table>
 
 <h3>Current Vows</h3>
 <ol>
@@ -390,7 +409,7 @@ article.campaign-entry {
   
 </ol>
 
-<h3>Journal Entries</h3>
+<h3>Journal</h3>
 <ul>
 
   
@@ -428,6 +447,6 @@ article.campaign-entry {
 
 		<footer></footer>
 
-		<!-- This page `/campaigns/a-lantern-in-the-void/` was built on 2024-04-26T23:40:17.135Z -->
+		<!-- This page `/campaigns/a-lantern-in-the-void/` was built on 2024-04-26T23:47:45.120Z -->
 	</body>
 </html>
