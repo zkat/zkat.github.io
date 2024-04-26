@@ -287,7 +287,7 @@ article.campaign-entry {
     text-indent: 1em;
   }
   & hr {
-    max-width: 85%;
+    max-width: 100%;
     margin: 1.5em;
   }
   & figcaption {
