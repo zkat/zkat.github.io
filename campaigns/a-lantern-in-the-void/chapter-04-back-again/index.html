@@ -285,7 +285,7 @@ h2 + .header-anchor {
 }
 
 /* Campaigns */
-.journal-entry {
+article.campaign-entry {
   & hr {
     max-width: 85%;
     margin: 1.5em;
@@ -295,57 +295,57 @@ h2 + .header-anchor {
     opacity: 0.75;
     color: var(--color-gray-90);
     &:before {
-      content: "Source: ";
+      content: "Credit: ";
     }
   }
   & img {
     max-width: 100%;
     object-fit: contain;
   }
-  & .action {
+  & aside.action {
     margin: 1em;
-    padding: 0.75em;
     border: 2px solid var(--color-gray-50);
     border-radius: 10px;
-    & div {
-      &:first-child {
-        width: 100%;
-        text-align: center;
-        font-weight: bolder;
-        &:has(+ div) {
-          border-bottom: 2px solid var(--color-gray-50);
-          padding-bottom: 1em;
-          margin-bottom: 1em;
-        }
-      }
-
-      &:nth-child(n + 2) {
+    & header {
+      display: block;
+      border: none;
+      width: 100%;
+      padding: 1em;
+      text-align: center;
+      font-weight: bolder;
+      &:has(+ div) {
+        border-bottom: 2px solid var(--color-gray-50);
+        padding-bottom: 1em;
         margin-bottom: 1em;
-        font-weight: bold;
-        &.miss {
-          color: red;
-          opacity: 0.75;
-        }
-        &.weak-hit {
-          color: orange;
-          opacity: 0.75;
-        }
-        &.strong-hit {
-          color: green;
-          opacity: 0.75;
-        }
-        &.roll:before {
-          content: "🎲";
-          margin-right: 0.5em;
-        }
-        &.roll.match:after {
-          content: "✅";
-          margin-left: 0.5em;
-        }
-        &:before {
-          content: "➡️";
-          margin-right: 0.5em;
-        }
+      }
+    }
+
+    & div {
+      margin: 1em;
+      font-weight: bold;
+      &.miss {
+        color: red;
+        opacity: 0.75;
+      }
+      &.weak-hit {
+        color: orange;
+        opacity: 0.75;
+      }
+      &.strong-hit {
+        color: green;
+        opacity: 0.75;
+      }
+      &.roll:before {
+        content: "🎲";
+        margin-right: 0.5em;
+      }
+      &.roll.match:after {
+        content: "✅";
+        margin-left: 0.5em;
+      }
+      &:before {
+        content: "➡️";
+        margin-right: 0.5em;
       }
     }
   }
@@ -369,17 +369,23 @@ h2 + .header-anchor {
 
 		<main id="skip">
 			
-<div class="journal-entry">
-<h1>Chapter 04: Back Again</h1>
-<h3>Part of <a href="/campaigns/a-lantern-in-the-void/">A Lantern in the Void</a></h3>
+<article class="campaign-entry">
+  <h1>Chapter 04: Back Again</h1>
+  <h3>Part of <a href="/campaigns/a-lantern-in-the-void/">A Lantern in the Void</a></h3>
 
-<div class="action"><div>Begin a Session</div><div>+1 momentum</div><div>Flashback reveals an aspect of your background or nature</div></div>
-</div>
+  <aside class="action"><header>Begin a Session</header><div>+1 momentum</div><div>Flashback reveals an aspect of your background or nature</div></aside>
+
+  <hr>
+
+  <footer>
+    <a href="/campaigns/a-lantern-in-the-void">Back to A Lantern in the Void</a>
+  </footer>
+</article>
 
 		</main>
 
 		<footer></footer>
 
-		<!-- This page `/campaigns/a-lantern-in-the-void/chapter-04-back-again/` was built on 2024-04-26T20:44:37.036Z -->
+		<!-- This page `/campaigns/a-lantern-in-the-void/chapter-04-back-again/` was built on 2024-04-26T23:40:17.135Z -->
 	</body>
 </html>

@@ -285,7 +285,7 @@ h2 + .header-anchor {
 }
 
 /* Campaigns */
-.journal-entry {
+article.campaign-entry {
   & hr {
     max-width: 85%;
     margin: 1.5em;
@@ -295,57 +295,57 @@ h2 + .header-anchor {
     opacity: 0.75;
     color: var(--color-gray-90);
     &:before {
-      content: "Source: ";
+      content: "Credit: ";
     }
   }
   & img {
     max-width: 100%;
     object-fit: contain;
   }
-  & .action {
+  & aside.action {
     margin: 1em;
-    padding: 0.75em;
     border: 2px solid var(--color-gray-50);
     border-radius: 10px;
-    & div {
-      &:first-child {
-        width: 100%;
-        text-align: center;
-        font-weight: bolder;
-        &:has(+ div) {
-          border-bottom: 2px solid var(--color-gray-50);
-          padding-bottom: 1em;
-          margin-bottom: 1em;
-        }
-      }
-
-      &:nth-child(n + 2) {
+    & header {
+      display: block;
+      border: none;
+      width: 100%;
+      padding: 1em;
+      text-align: center;
+      font-weight: bolder;
+      &:has(+ div) {
+        border-bottom: 2px solid var(--color-gray-50);
+        padding-bottom: 1em;
         margin-bottom: 1em;
-        font-weight: bold;
-        &.miss {
-          color: red;
-          opacity: 0.75;
-        }
-        &.weak-hit {
-          color: orange;
-          opacity: 0.75;
-        }
-        &.strong-hit {
-          color: green;
-          opacity: 0.75;
-        }
-        &.roll:before {
-          content: "🎲";
-          margin-right: 0.5em;
-        }
-        &.roll.match:after {
-          content: "✅";
-          margin-left: 0.5em;
-        }
-        &:before {
-          content: "➡️";
-          margin-right: 0.5em;
-        }
+      }
+    }
+
+    & div {
+      margin: 1em;
+      font-weight: bold;
+      &.miss {
+        color: red;
+        opacity: 0.75;
+      }
+      &.weak-hit {
+        color: orange;
+        opacity: 0.75;
+      }
+      &.strong-hit {
+        color: green;
+        opacity: 0.75;
+      }
+      &.roll:before {
+        content: "🎲";
+        margin-right: 0.5em;
+      }
+      &.roll.match:after {
+        content: "✅";
+        margin-left: 0.5em;
+      }
+      &:before {
+        content: "➡️";
+        margin-right: 0.5em;
       }
     }
   }
@@ -379,26 +379,22 @@ h2 + .header-anchor {
   <li>Kind, empathetic, sticks their neck out for others
 </ul>
 
-<h3>Vows</h3>
+<h3>Current Vows</h3>
 <ol>
   
-    <li>I vow to find the truth of the Vault near Florin and bring back anything of value.
+    <li>I will bring Kylar back—or finally lay him to rest
   
     <li>I vow to cure Ria and save the others in Florin from the effects of the Remnant. 
   
-    <li>I will bring Kylar back—or finally lay him to rest
+    <li>I vow to find the truth of the Vault near Florin and bring back anything of value.
   
 </ol>
 
 <h3>Journal Entries</h3>
-<ol>
+<ul>
 
   
-    <li><a href="/campaigns/a-lantern-in-the-void/chapter-04-back-again">Chapter 04: Back Again</a></li>
-  
-
-  
-    <li><a href="/campaigns/a-lantern-in-the-void/chapter-03-the-black-vault">Chapter 03: The Black Vault</a></li>
+    <li><a href="/campaigns/a-lantern-in-the-void/chapter-01-florinian-plague">Chapter 01: Florinian Plague</a></li>
   
 
   
@@ -406,23 +402,32 @@ h2 + .header-anchor {
   
 
   
-    <li><a href="/campaigns/a-lantern-in-the-void/chapter-01-florinian-plague">Chapter 01: Florinian Plague</a></li>
+    <li><a href="/campaigns/a-lantern-in-the-void/chapter-03-the-black-vault">Chapter 03: The Black Vault</a></li>
   
 
   
-    <li><a href="/campaigns/a-lantern-in-the-void/00-lore-zoya-s-backstory">00 Lore - Zoya’s backstory</a></li>
+    <li><a href="/campaigns/a-lantern-in-the-void/chapter-04-back-again">Chapter 04: Back Again</a></li>
+  
+
+</ul>
+
+<h3>Lore</h3>
+<ul>
+
+  
+    <li><a href="/campaigns/a-lantern-in-the-void/lore/forced-laughter-in-trying-times">Forced Laughter in Trying Times</a></li>
   
 
   
-    <li><a href="/campaigns/a-lantern-in-the-void/00-lore-forced-laughter-in-trying-times">00 Lore - Forced Laughter in Trying Times</a></li>
+    <li><a href="/campaigns/a-lantern-in-the-void/lore/zoya-s-backstory">Zoya’s backstory</a></li>
   
 
-</ol>
+</ul>
 
 		</main>
 
 		<footer></footer>
 
-		<!-- This page `/campaigns/a-lantern-in-the-void/` was built on 2024-04-26T20:44:37.035Z -->
+		<!-- This page `/campaigns/a-lantern-in-the-void/` was built on 2024-04-26T23:40:17.135Z -->
 	</body>
 </html>
