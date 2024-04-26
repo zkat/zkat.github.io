@@ -7,8 +7,8 @@ const pluginBundle = require("@11ty/eleventy-plugin-bundle");
 const pluginNavigation = require("@11ty/eleventy-navigation");
 const { EleventyHtmlBasePlugin } = require("@11ty/eleventy");
 
-const pluginDrafts = require("./eleventy.config.drafts.js");
-const pluginImages = require("./eleventy.config.images.js");
+const pluginDrafts = require("./eleventy.config.drafts.cjs");
+const pluginImages = require("./eleventy.config.images.cjs");
 
 const getLocaleCollectionItem = require("@11ty/eleventy/src/Filters/GetLocaleCollectionItem.js");
 

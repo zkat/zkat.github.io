@@ -1,9 +1,9 @@
 {
     "compilerOptions": {
-        "target": "es2017",
+        "target": "es2021",
         "module": "esnext",
         "moduleResolution": "node",
-        "lib": [ "es5", "es2015.promise", "dom" ]
+        "lib": [ "es2021", "es2015.promise", "dom" ]
     },
     "include": [
         "./**/*.ts"

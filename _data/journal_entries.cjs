@@ -1,4 +1,4 @@
-const campaigns = require("./campaigns.js");
+const campaigns = require("./campaigns.cjs");
 
 module.exports = function () {
   return campaigns.reduce((acc, campaign) => {

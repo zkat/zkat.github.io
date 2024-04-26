@@ -5,13 +5,13 @@ import { fileURLToPath } from "node:url";
 import * as playwright from "playwright";
 import inquirer from "inquirer";
 
-import { ICampaign, ICharacter } from "./campaigns";
+import { ICampaign, ICharacter } from "../_data/campaigns";
 
 const FILE_NAME = "crewLinkCampaigns.json";
 const CREW_LINK_URL = "https://starforged-crew-link.scottbenton.dev";
 
 if (process.argv.length < 2) {
-  console.error("Usage: node crew_link.js email [filter]");
+  console.error("Usage: tsx crew_link.ts email [filter]");
   console.error("  email: crew link email for your account");
   console.error(
     "  filter: Optional regular expression to filter campaigns by name."
