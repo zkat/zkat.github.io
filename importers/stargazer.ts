@@ -2,11 +2,25 @@ import { readFile, writeFile } from "node:fs/promises";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 
+import type * as Datasworn from "@datasworn/core/dist/Datasworn";
+
 import { JSDOM } from "jsdom";
 
 import { ICampaign, IJournalEntry } from "../_data/campaigns";
 
 const FILE_NAME = "stargazerCampaigns.json";
+
+const STARFORGED: Datasworn.RulesPackage = JSON.parse(
+  await readFile(
+    join(
+      dirname(fileURLToPath(import.meta.url)),
+      "..",
+      "node_modules",
+      "@datasworn/starforged/json/starforged.json"
+    ),
+    "utf-8"
+  )
+);
 
 if (process.argv.length < 2) {
   console.error("Usage: tsx stargazer.ts dump [filter]");
@@ -74,14 +88,14 @@ async function cleanupJournalEntry(entry: IJournalEntry): Promise<void> {
         const hr = document.createElement("hr");
         newBody.appendChild(hr);
       } else if (text.startsWith("[")) {
-        if (!currentAction) {
+        const actionText = text.replace(/^\[([^\]]+)\]/, "$1").trim();
+        const newItem = makeActionItem(document, actionText);
+        if (!currentAction || isMove(actionText) || isAsset(actionText)) {
           currentAction = document.createElement("div");
           currentAction.classList.add("action");
           newBody.appendChild(currentAction);
         }
-        currentAction.appendChild(
-          makeActionItem(document, text.replace(/^\[([^\]]+)\]/, "$1").trim())
-        );
+        currentAction.appendChild(newItem);
       } else {
         if (currentAction) {
           currentAction = null;
@@ -113,4 +127,28 @@ function makeActionItem(
   }
   actionItem.textContent = actionText;
   return actionItem;
+}
+
+function isMove(text: string): boolean {
+  text = text.toLowerCase();
+  for (const category of Object.values(STARFORGED.moves)) {
+    for (const move of Object.values(category.contents ?? {})) {
+      if (text.startsWith((move.canonical_name ?? move.name).toLowerCase())) {
+        return true;
+      }
+    }
+  }
+  return false;
+}
+
+function isAsset(text: string): boolean {
+  text = text.toLowerCase();
+  for (const collection of Object.values(STARFORGED.assets)) {
+    for (const asset of Object.values(collection.contents ?? {})) {
+      if (text.startsWith((asset.canonical_name ?? asset.name).toLowerCase())) {
+        return true;
+      }
+    }
+  }
+  return false;
 }
