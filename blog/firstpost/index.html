@@ -448,6 +448,27 @@ a[href].header-anchor:focus,
 
 h2 + .header-anchor {
 	font-size: 1.5em;
+}
+
+/* Campaigns */
+.journal-entry {
+  & img {
+    max-width: 100%;
+    object-fit: contain;
+  }
+  & .action {
+    padding-left: 2em;
+    margin-left: 1em;
+    border-left: 6px solid #ccc;
+    font-weight: bold;
+    & div {
+      margin-bottom: 1em;
+      &:before {
+        content: "➡️";
+        margin-right: .5em;
+      }
+    }
+  }
 }</style>
 	</head>
 	<body>
@@ -482,6 +503,6 @@ h2 + .header-anchor {
 
 		<footer></footer>
 
-		<!-- This page `/blog/firstpost/` was built on 2024-04-22T07:38:22.856Z -->
+		<!-- This page `/blog/firstpost/` was built on 2024-04-26T05:13:26.416Z -->
 	</body>
 </html>
