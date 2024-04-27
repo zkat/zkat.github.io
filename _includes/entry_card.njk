@@ -1,14 +1,11 @@
 <article class="entry-card">
   <figure>
     <img alt="{{ entry.image.alt | default('') }}" src="{{ entry.image.src }}">
-    {% if entry.image.attribution %}
-      <figcaption><a href="{{ entry.image.attribution }}">{{ entry.image.attribution }}</a></figcaption>
-    {% endif %}
   </figure>
   <header>
     {{ entry.title }}
   </header>
 </article>
 {% if entry.image.attribution and showCredit %}
-  <figcaption><a href="{{ entry.image.attribution }}">{{ entry.image.attribution }}</a></figcaption>
+  <figcaption><a target="_blank" href="{{ entry.image.attribution }}">{{ entry.image.attribution }}</a></figcaption>
 {% endif %}
