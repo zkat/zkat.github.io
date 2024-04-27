@@ -37,19 +37,25 @@ eleventyComputed:
 </ol>
 
 <h3>Journal</h3>
-<ul>
+<ul class="entry-cards">
 {% for journal in journal_entries | reverse %}
   {% if journal.campaignId == campaign.id %}
-    <li><a href="/campaigns/{{ journal.campaignName | slugify }}/{{ journal.title | slugify }}">{{journal.title}}</a></li>
+    <li><a href="/campaigns/{{ journal.campaignName | slugify }}/{{ journal.title | slugify }}">
+      {% set entry = journal %}
+      {% include "entry_card.njk" %}
+    </a></li>
   {% endif %}
 {% endfor %}
 </ul>
 
 <h3>Lore</h3>
-<ul>
+<ul class="entry-cards">
 {% for lore in lore_entries | reverse %}
   {% if lore.campaignId == campaign.id %}
-    <li><a href="/campaigns/{{ lore.campaignName | slugify }}/lore/{{ lore.title | slugify }}">{{lore.title}}</a></li>
+    <li><a href="/campaigns/{{ lore.campaignName | slugify }}/lore/{{ lore.title | slugify }}">
+      {% set entry = lore %}
+      {% include "entry_card.njk" %}
+    </a></li>
   {% endif %}
 {% endfor %}
 </ul>
