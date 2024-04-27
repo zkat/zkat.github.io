@@ -11,15 +11,17 @@ eleventyComputed:
 ---
 
 <article class="campaign-entry">
-  {% set entry = lore %}
-  {% include "entry_card.njk" %}
   <h5>Part of <a href="/campaigns/{{ lore.campaignName | slugify }}/">{{ lore.campaignName }}</a></h5>
+
+  {% set entry = lore %}
+  {% set showCredit = true%}
+  {% include "entry_card.njk" %}
 
   {{ lore.content | safe }}
 
   <hr>
 
   <footer>
-    <a href="/campaigns/{{ lore.campaignName | slugify }}">Back to {{ lore.campaignName }}</a>
+    <a href="#top">Back to top</a>
   </footer>
 </article>

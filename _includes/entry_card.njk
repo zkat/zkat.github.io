@@ -9,3 +9,6 @@
     {{ entry.title }}
   </header>
 </article>
+{% if entry.image.attribution and showCredit %}
+  <figcaption><a href="{{ entry.image.attribution }}">{{ entry.image.attribution }}</a></figcaption>
+{% endif %}
