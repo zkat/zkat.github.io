@@ -148,17 +148,17 @@ function makeActionItem(
   actionText: string
 ): HTMLDivElement {
   const actionItem = document.createElement("div");
-  if (actionText.startsWith("Miss")) {
+  actionItem.textContent = actionText;
+  if (actionText.match(/Miss/i)) {
     actionItem.classList.add("roll", "miss");
-  } else if (actionText.startsWith("Weak Hit")) {
+  } else if (actionText.match(/Weak Hit/i)) {
     actionItem.classList.add("roll", "weak-hit");
-  } else if (actionText.startsWith("Strong Hit")) {
+  } else if (actionText.match(/Strong Hit/i)) {
     actionItem.classList.add("roll", "strong-hit");
   }
-  if (actionText.toLowerCase().match("with a match")) {
+  if (actionText.match(/with a match/i)) {
     actionItem.classList.add("match");
   }
-  actionItem.textContent = actionText;
   return actionItem;
 }
 
