@@ -75,55 +75,70 @@ async function cleanupJournalEntry(entry: IJournalEntry): Promise<void> {
   const newBody = newDom.window.document.body;
   let currentAction = null;
   let currentActionName = null;
-  for (const el of dom.window.document.body.childNodes) {
-    if (el instanceof dom.window.HTMLImageElement) {
-      entry.image = {
-        src: el.src
-      };
-      continue;
-    }
-    const text = el.textContent
-      .replaceAll(/(&nbsp;|\n|\r|<br>|<\/br>)/gm, "")
-      .trim();
-    if (text && entry.image && text.startsWith("((")) {
-      const attribution = text
-        .replace(/^\(\((?:Credit:\s*)?([^)]+?)\s*\)\).*/i, "$1")
+  for (const child of dom.window.document.body.childNodes) {
+    const nodes =
+      child instanceof dom.window.HTMLDivElement &&
+      !child.textContent.startsWith("((")
+      && ([...child.textContent.matchAll(/\[/g)].length > 1)
+        ? child.childNodes
+        : [child];
+    for (const el of nodes) {
+      if (el instanceof dom.window.HTMLImageElement) {
+        entry.image = {
+          src: el.src,
+        };
+        continue;
+      }
+      const text = el.textContent
+        .replaceAll(/(&nbsp;|\n|\r|<br>|<\/br>)/gm, "")
         .trim();
-      entry.image.attribution = attribution;
-    } else if (text) {
-      if (text.startsWith("———")) {
-        const hr = document.createElement("hr");
-        newBody.appendChild(hr);
-      } else if (text.startsWith("[")) {
-        const actionText = text.replace(/^\[([^\]]+)\]/, "$1").trim();
-        const detectedActionName = isMove(actionText) || isAsset(actionText);
-        if (
-          !currentAction ||
-          (detectedActionName &&
-            !currentActionName.match(new RegExp(`^${detectedActionName}`, "i")))
-        ) {
-          currentAction = document.createElement("aside");
-          currentActionName = detectedActionName;
-          currentAction.classList.add("action");
-          newBody.appendChild(currentAction);
-          const newItem = makeActionHeader(document, actionText);
+      if (text && entry.image && text.startsWith("((")) {
+        const attribution = text
+          .replace(/^\(\((?:Credit:\s*)?([^)]+?)\s*\)\).*/i, "$1")
+          .trim();
+        entry.image.attribution = attribution;
+      } else if (text) {
+        if (text.startsWith("———")) {
+          const hr = document.createElement("hr");
+          newBody.appendChild(hr);
+        } else if (text.startsWith("[")) {
+          const actionText = text.replace(/^\[([^\]]+)\]/, "$1").trim();
+          const detectedActionName = isMove(actionText) || isAsset(actionText);
+          if (
+            !currentAction ||
+            (detectedActionName &&
+              !currentActionName.match(
+                new RegExp(`^${detectedActionName}`, "i")
+              ))
+          ) {
+            currentAction = document.createElement("aside");
+            currentActionName = detectedActionName;
+            currentAction.classList.add("action");
+            newBody.appendChild(currentAction);
+            const newItem = makeActionHeader(document, actionText);
+            currentAction.appendChild(newItem);
+            continue;
+          }
+          const newItem = makeActionItem(
+            document,
+            actionText.replace(
+              new RegExp(`^${currentActionName}:?\s*`, "i"),
+              ""
+            )
+          );
           currentAction.appendChild(newItem);
-          continue;
+        } else {
+          if (currentAction) {
+            currentActionName = null;
+            currentAction = null;
+          }
+          const note = document.createElement("p");
+          note.innerHTML =
+            el instanceof dom.window.HTMLElement
+              ? el.innerHTML
+              : el.textContent;
+          newBody.appendChild(note);
         }
-        const newItem = makeActionItem(
-          document,
-          actionText.replace(new RegExp(`^${currentActionName}:?\s*`, "i"), "")
-        );
-        currentAction.appendChild(newItem);
-      } else {
-        if (currentAction) {
-          currentActionName = null;
-          currentAction = null;
-        }
-        const note = document.createElement("p");
-        note.innerHTML =
-          el instanceof dom.window.HTMLElement ? el.innerHTML : el.textContent;
-        newBody.appendChild(note);
       }
     }
   }
