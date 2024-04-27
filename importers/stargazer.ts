@@ -83,11 +83,11 @@ async function cleanupJournalEntry(entry: IJournalEntry): Promise<void> {
       continue;
     }
     const text = el.textContent
-      .replaceAll(/(&nbsb;|\n|\r|<br>|<\/br>)/gm, "")
+      .replaceAll(/(&nbsp;|\n|\r|<br>|<\/br>)/gm, "")
       .trim();
     if (text && entry.image && text.startsWith("((")) {
       const attribution = text
-        .replace(/^\(\((?:Credit:\s*)?([^)]+?)\s*\)\)/i, "$1")
+        .replace(/^\(\((?:Credit:\s*)?([^)]+?)\s*\)\).*/i, "$1")
         .trim();
       entry.image.attribution = attribution;
     } else if (text) {
