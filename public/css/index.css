@@ -377,6 +377,9 @@ article.campaign-entry {
   & .entry-card header {
     padding-bottom: 2em;
   }
+  & footer {
+    text-align: center;
+  }
   & p {
     text-indent: 1em;
   }
@@ -397,6 +400,7 @@ article.campaign-entry {
     margin: 0;
   }
   & aside.action {
+    cursor: default;
     background-color: var(--color-gray-20);
     color: var(--color-gray-90);
     margin: 1em;
@@ -405,44 +409,42 @@ article.campaign-entry {
     box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
     & header {
       display: block;
+      font-size: 1.2em;
       border: none;
       width: 100%;
       padding: 1em;
       text-align: center;
       font-weight: bolder;
       &:has(+ div) {
-        border-bottom: 1px solid var(--color-gray-50);
-        padding-bottom: 1em;
-        margin-bottom: 1em;
+        border-bottom: 1px dashed var(--color-gray-90);
       }
     }
 
     & div {
       margin: 1em;
       font-weight: bold;
-      &.miss {
-        color: red;
-        opacity: 0.75;
-      }
-      &.weak-hit {
-        color: darkorange;
-        opacity: 0.75;
-      }
-      &.strong-hit {
-        color: green;
-        opacity: 0.75;
-      }
-      &.roll:before {
-        content: "🎲";
-        margin-right: 0.5em;
-      }
-      &.roll.match:after {
-        content: "✅";
-        margin-left: 0.5em;
-      }
       &:before {
         content: "➡️";
         margin-right: 0.5em;
+      }
+      &.roll {
+        opacity: 0.75;
+        &:before {
+          content: "🎲";
+        }
+        &.miss {
+          color: darkred;
+        }
+        &.weak-hit {
+          color: darkgoldenrod;
+        }
+        &.strong-hit {
+          color: darkgreen;
+        }
+        &.roll.match:after {
+          content: "✅";
+          margin-left: 0.5em;
+        }
       }
     }
   }
