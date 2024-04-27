@@ -25,6 +25,7 @@
   --color-gray-20: #e0e0e0;
   --color-gray-50: #c0c0c0;
   --color-gray-90: #333;
+  --color-gray-30: #dad8d8;
 
   --background-color: #fff;
 
@@ -38,11 +39,7 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --color-gray-20: #e0e0e0;
-    --color-gray-50: #c0c0c0;
-    --color-gray-90: #dad8d8;
-
-    /* --text-color is assigned to --color-gray-_ above */
+    --text-color: var(--color-gray-30);
     --text-color-link: #1493fb;
     --text-color-link-active: #6969f7;
     --text-color-link-visited: #a6a6f8;
@@ -216,7 +213,7 @@ header {
 .postlist-date,
 .postlist-item:before {
   font-size: 0.8125em; /* 13px /16 */
-  color: var(--color-gray-90);
+  color: var(--text-color);
 }
 .postlist-date {
   word-spacing: -0.5px;
@@ -336,7 +333,7 @@ article.entry-card {
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
   transition: all 300ms;
   & header {
-    /* font-size: 0.75em; */
+    cursor: default;
     border: none;
     box-sizing: border-box;
     width: 100%;
@@ -356,6 +353,9 @@ article.entry-card {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    & figcaption {
+      display: none;
+    }
   }
   & img {
     overflow: hidden;
@@ -367,11 +367,15 @@ article.entry-card {
 
 .entry-cards {
   display: grid;
+  padding: 0;
   gap: 0.5em;
   list-style-type: none;
   & .entry-card:hover {
     transform: translateY(-2px);
     box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+  }
+  & .entry-card header {
+    cursor: pointer;
   }
   & a {
     text-decoration: none;
@@ -383,6 +387,12 @@ article.entry-card {
 }
 
 article.campaign-entry {
+  & .entry-card header {
+    padding-bottom: 2em;
+  }
+  & footer {
+    text-align: center;
+  }
   & p {
     text-indent: 1em;
   }
@@ -391,9 +401,10 @@ article.campaign-entry {
     margin: 1.5em;
   }
   & figcaption {
-    font-size: 0.8125em;
+    font-size: 0.75em;
     opacity: 0.75;
-    color: var(--color-gray-90);
+    color: var(--text-color);
+    padding: 1em;
     &:before {
       content: "Credit: ";
     }
@@ -402,55 +413,58 @@ article.campaign-entry {
     margin: 0;
   }
   & aside.action {
+    cursor: default;
+    background-color: var(--color-gray-20);
+    color: var(--color-gray-90);
     margin: 1em;
-    border: 1px solid var(--color-gray-50);
+    border: 1px solid var(--color-gray-90);
     border-radius: 10px;
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
     & header {
       display: block;
+      font-size: 1.2em;
       border: none;
       width: 100%;
       padding: 1em;
       text-align: center;
       font-weight: bolder;
       &:has(+ div) {
-        border-bottom: 1px solid var(--color-gray-50);
-        padding-bottom: 1em;
-        margin-bottom: 1em;
+        border-bottom: 1px dashed var(--color-gray-90);
       }
     }
 
     & div {
       margin: 1em;
       font-weight: bold;
-      &.miss {
-        color: red;
-        opacity: 0.75;
-      }
-      &.weak-hit {
-        color: orange;
-        opacity: 0.75;
-      }
-      &.strong-hit {
-        color: green;
-        opacity: 0.75;
-      }
-      &.roll:before {
-        content: "🎲";
-        margin-right: 0.5em;
-      }
-      &.roll.match:after {
-        content: "✅";
-        margin-left: 0.5em;
-      }
       &:before {
         content: "➡️";
         margin-right: 0.5em;
+      }
+      &.roll {
+        opacity: 0.75;
+        &:before {
+          content: "🎲";
+        }
+        &.miss {
+          color: darkred;
+        }
+        &.weak-hit {
+          color: darkgoldenrod;
+        }
+        &.strong-hit {
+          color: darkgreen;
+        }
+        &.roll.match:after {
+          content: "✅";
+          margin-left: 0.5em;
+        }
       }
     }
   }
 }</style>
 	</head>
 	<body>
+    <a id="top"></a>
 		<a href="#skip" class="visually-hidden">Skip to main content</a>
 
 		<header>
@@ -469,6 +483,9 @@ article.campaign-entry {
 		<main id="skip">
 			
 <article class="campaign-entry">
+  <h5>Part of <a href="/campaigns/a-lantern-in-the-void/">A Lantern in the Void</a></h5>
+
+  
   
   <article class="entry-card">
   <figure>
@@ -482,14 +499,16 @@ article.campaign-entry {
   </header>
 </article>
 
-  <h5>Part of <a href="/campaigns/a-lantern-in-the-void/">A Lantern in the Void</a></h5>
+  <figcaption><a href="https://yuiwei.art/projects/wJoJeV">https://yuiwei.art/projects/wJoJeV</a></figcaption>
+
+
 
   <p>“You’re nervous,” the soft green glow of the floating, translucent lantern shone on Zoya’s face as they lay in bed. Anyone else would’ve seen the scene as a pitch black room.</p><p>“Yeah. I am.” They pulled their sheets over their shoulders. They smelled humid and musty and some parts were threadbare.</p><p>“I’m not really cut out for this whole thing with going into dangerous places thing.”</p><p>“But you won’t be alone. You’ll have some whole-ass armed troopers with you, remember?” the voice hummed in space, echoing through the room. The glow flickered gently like a candle’s flame, but there was no wick.</p><p>Zoya planted their hands on their face and groaned, “I can’t believe I got stuck making a vow to that sleazebag. I don’t even know what we might run into. And he wants me to stick my neck out to find something that might not even be there, or that might even make everything worse.”</p><p>The lantern hummed, “It’s alright. I’ll be there with you.” There was a warmth to that glow. It made Zoya feel calmer.&nbsp;</p><p>“I know.”</p><p>And he really had. Kylar might seem a bit different now, but he never left their side ever since that day, when the Ebon Order attacked their hometown and left them trapped under rubble—and Zoya all alone with their brother’s body for days. But during those lonely days, a soft glow kept the collapsed room where they were trapped ever so slightly lit. Ever so slightly less lonely.</p><p>Spirits never stayed behind on a whim, though. Kylar knew his sib needed him. That they would need him for a long time. And yet, Zoya’s first Iron Vow would be that they would bring Kylar back—something that had never been done—or let him go and lay him to rest.&nbsp;</p><p>But that was years and years ago.</p><p>“We’ll get through it together, just like we always have. Goodnight, Zoya.” He dimmed.&nbsp;</p><p>“Goodnight, Ky”.</p><hr><p>A loud pounding at the door woke them up the next morning. Way more “morning” than they were expecting, really. It kept going until they finally dragged themself to the door and cracked it open.</p><p>A friendly smile greeted them on the other side. Xe certainly looked chipper for someone trying to practically smash open the door with xer knocking.&nbsp;</p><p>“Good morning, Teacher. I was sent to pick you up. We’re ready to leave and we’ve been waiting for you.”</p><p>“It’s… barely even dawn. Seriously?” Zoya rubbed their eye with the ball of their palm.</p><p>“Yes the Captain insists we need to make good on time. The Vault is a days’ travel away in the best of times so she didn’t want to waste any time,” xe looked apologetic. Xe looked pretty young, well-groomed, and was definitely chipper. Xe was definitely looking forward to this, when others might be scared.</p><p>“Tell her I’ll be right down,” they started to close the door, but the recruit didn’t take a step back. Xe just smiled.</p><p>“Thank you, I’ll wait right here.”</p><p>Seriously?</p><p>“Can I at least have some privacy?” Zoya’s voice tried to hide the annoyance, really. Don’t shoot the messenger, they told themself.</p><p>The recruit immediately flushed, noticing Zoya in their loose-fitting sleeping shirt.</p><p>“Oh erm… right.”</p><p>“Thank you.” They closed the door.&nbsp;</p><hr><p>“I just want to say, it’s an honor to get to work with you, Teacher. I’ve never met a Caduceus Teacher before but we’ve all grown up with stories.”</p><p>They were walking back to the town plaza. The recruit was definitely very excited.&nbsp;</p><p>“You can just call me Zoya, really. What’s your name?”</p><p>The recruit straightened xyr back, “Private Doran Ruiz, Teacher, at your service.”</p><p>“Zoya,” they responded gently with a smile, still keeping pace with the much taller recruit.&nbsp;</p><p>“Zoya, right.” Xe chuckled a bit, fidgeting.&nbsp;</p><aside class="action"><header>Make a Connection</header><div class="roll strong-hit">Strong Hit: 6 + 3 + 0 = 9 vs 5 | 2</div><div>Connection created with Doran</div></aside><p>Private Ruiz huh? Cute.</p><hr><p>The plaza was completely empty this early in the morning except for a few troops gathered near the town hall, standing shoulder to shoulder at ease, and a short, very athletic-looking woman standing near them, rattling off something or another. Even this early, the air was muggy and Zoya could feel beads of sweat forming on their lower back, beneath their travel pack.</p><p>“Is it gonna be like this the whole time?” they asked, checking their forehead for moisture.</p><p>“Like what, Teacher?”</p><p>“Zoya. And I mean like this, the heat. The sun’s barely even out.</p><p>“Oh yes, Tea—Zoya. But most of us grew up here so we’re used to it.” xe scratched xyr head, not really thinking of the weather as anything unusual.&nbsp;</p><p>“Right.”</p><p>As they stepped up to the group, the woman looked at Private Ruiz with a serious look on her face, “get in line, Private.”</p><p>“Yes, sir!”</p><p>“Captain Sage Malek,” she turned to Zoya and stated matter-of-factly, “we’ll do our best to keep you safe but I want you to be aware that your work is secondary here. I assume I don’t have to worry about you getting in the way, Teacher?”</p><p>“Zoya Santos,” they responded, adjusting their travel pack on their shoulders, almost metaphorically. “I understand. I’ll stay out of the way, Captain.”</p><p>“Good. I hope you’re prepared, we’re leaving right away.”</p><p>“I have everything I need. Private Ruiz told me it would take a day or so to get there?”</p><p>“Yes—we’ll be setting up camp about three quarters of the way there and spend the night. The jungle is pretty thick and we’ll want to be fresh for the Vault.”</p><p>“Sounds like we’ll be going pretty fast.”</p><p>“We will,” the Captain started turning towards her troops, “I expect you to keep up.”</p><p>“Yes, Captain.”</p><hr><aside class="action"><header>Set a Course</header><div class="roll miss">Miss: 2 + 5 + 0 = 7 vs 10 | 8</div></aside><aside class="action"><header>Pay the Price: You are delayed or put at a disadvantage</header><div>+1 Ria Clock</div><div>-1 health</div></aside><p>Dear reader, they did not.</p><p>It should’ve been obvious that a healer who spends most of their time on a ship or in hospitals wouldn’t have the same amount of strength and stamina that trained soldiers did.</p><p>They weren’t even halfway to the first resting point when Zoya collapsed on the jungle ground. They’d done their best to hold out and put up a strong front, but after several hours of trudging through difficult terrain in sweltering heat and humidity, they felt their body simply give out and everything went black.&nbsp;</p><p>They woke up several hours later, when it was dark and somewhat cooler. They were on their back, lying inside as simple tent. Tree roots and pebbles and other bits dug into their back through the sleeping bag.</p><p>They heard the crackle of a campfire outside, and the murmur of conversation. And it was so loud, as if the entire jungle had suddenly come to life with insects and frogs and some sounds they couldn’t even place in this alien place. As if nighttime was when the jungle really came to life. What was an occasional sound during the day became a deafening cacophony.</p><p>After a moment to collect themself, they opened the flap to their tent and looked outside.</p><p>“Oh you’re finally awake, Teacher!” Private Ruiz sounded chipper.</p><p>Zoya still felt gross, “Yeah. How angry is the Captain?” They straightened their back and stretched out all those bumps and lumps.&nbsp;</p><p>“Oh only like a 6 or a 7 out of 10. I think you’re alright”, xe joked, the two chuckling together.</p><p>A voice interrupted them, flat-toned, “Good to see you two are having a good time.”</p><p>The Captain turned to Zoya who, along with the Private, had hushed up right quick.</p><p>“It’ll take us an extra day to reach the Vault thanks to your little stunt, Teacher. Next time that happens I’ll likely have my people drag you along, or maybe I’ll just leave you behind.”</p><p>They shoved a canteen at Zoya brusquely, “Stay hydrated. It’ll sneak up on you. I shouldn’t have to lecture a healer about this.”</p><p>“Err.. yes, Captain”</p><p>“We’re leaving before sunrise tomorrow, so get whatever rest you need while you still can. We’ll have to go faster, too.” She sighed.</p><p>Zoya nodded, looking like a wounded creature.</p><p>“Private Ruiz here volunteered to help keep an eye on you so xyr’re now your babysitter. Congratulations. Bother xyr if you need anything else during the trip.”</p><p>Private Ruiz straightened and saluted them both as if it was the most serious thing in the world, “I’ll do my best, sir!”</p><p>“Don’t get too excited. I just need someone to keep the squishy one hydrated so the rest of us can do our jobs, and that may as well be you.” The Captain grinned. She clearly had a sense of humor, Zoya thought, but you can’t afford to come off as too soft in a position like hers.</p><p>“Get some rest, Teacher. We’ll take care of guard duty.”</p><aside class="action"><header>Make a connection</header><div>Burn momentum - 8</div><div class="roll strong-hit">Strong hit - Connection made with Captain Malek</div></aside><p>“Yes, Captain.” Zoya responded right away, perfectly serious.</p><p>The Captain looked between the two, then nodded and went on their way. Private Ruiz let an actually audible sigh of relief out.</p><p>Zoya wiped her brow. Cooler or not, it was still humid as hell. They took a long drink from the canteen and wiped their mouth with their sleeve, “you heard her. I guess I’ll go try to sleep now. Goodnight, Private.”</p><p>“I’ll be in the tent next to yours, in case you need me, unless it’s my turn at watch rotation. I won’t be far. Goodnight, Teacher.” Xe bowed xyr head a bit.&nbsp;</p><p>Tsk. “Zoya.”</p><p>“Right, of course. Goodnight, Zoya.”</p><p>The formality of being a Teacher never sat quite right with Zoya, but it ultimately came with the territory and genuinely helped establish them as a serious authority when in contentious situations.&nbsp;</p><p>At this point, they were correcting xyr as a bit, really. They may as well have some fun.</p><p>Private Ruiz had a subtle grin on xyr face. Xe was probably having a bit of fun, too.</p><p>It took them a while to get to sleep. Cities were comparatively quiet at night, and spaceships had little more than a low background drone of the engines and other ancillary systems. They’d never had to sleep through the equivalent of a roaring engine ringing in their ears the whole night. But somehow, even with the noise and the roots and the pebbles and the humidity, they managed to get some rest for the night.&nbsp;</p><p>__________</p><aside class="action"><header>Set a Course</header><div class="roll weak-hit">Weak Hit: 3 + 5 + 0 = 8 vs 2 | 8</div><div>-2 supply</div></aside><p>The rest of the journey was mostly uneventful, though they did need to stop a couple of times to patch up some minor scrapes cuts the group had from branches and jagged rock walls and someone who sprained their ankle. Between that, and having to stay more hydrated than they expected, their pack was feeling a little lighter than they would like at this point in the trip.</p><p>They arrived relatively early in the day after the second night of camp, feeling refreshed enough to tackle what was ahead of them.</p><p>The Vault itself was a large, circular, metallic building nestled by the jungle, which seemed… oddly-colored. A circular perimeter extending about 50 meters from the site showed signs of the same corruption. On closer inspection, some of the affected vegetation itself looked… cybernetic? Metallic? It certainly looked artificial, but it otherwise blended in with its surroundings as if it were the most natural thing in the world.</p><p>A quick drone survey by the troops showed that the Vault was a sort of torus surrounding something that looked like an energy core of some sort, itself encapsulated by a translucent, solid membrane.</p><p>Zoya stood there, staring, studying it from afar, as the troops set up a small base of operations and prepared their gear—including their weapons and armor. It wasn’t the best stuff in the world but definitely more than Zoya had ever used themself. They figured they may as well be prepared too, and checked that their handgun was loaded and ready. Taking life wasn’t really something they ever wanted to do, but Caduceus knew what kinds of situations they were putting their Teachers into. This was simply a reality in the Forge—especially in the Outlands.</p><p>“Hell of a thing, huh?” the Captain stepped up next to Zoya, carbine in hand.</p><p>“Yeah. In surprised you all missed it for so long.” They craned their neck, getting a good look at the thing.</p><p>“That’s the thing: we didn’t. This thing popped up one day, just like that.” She frowned and spit something on the muddy ground.</p><p>“We’ll be ready in a minute. Do you know what you’re looking for, Teacher?”</p><aside class="action"><header>Ask the Oracle: does Zoya have an idea of what to look for?</header><div>No - 95</div></aside><p>“Not really, no. But I think I’ll know it when I see it. I got a sense of something back in the hospital but I have no idea what would be causing it.” They glanced aside at the Captain then back to the structure, “how about you? What are you looking for in there?”</p><p>“That’s classified, and we’ll need you to help keep it that way.” Her tone was serious. Was that a threat? “See you at the entrance, Teacher.”</p><p>They parted ways, as Zoya went through their pack one last time to make sure they weren’t missing anything.&nbsp;</p><hr><aside class="action"><header>Reach a Milestone - Find the truth of the Vault</header><div>Roll Ria’s Clock - no progress</div><div>Vault Oracles: first look -&nbsp;Complex textures or patterns, Toxic atmosphere</div></aside><p><span style="-webkit-text-size-adjust: 100%;">As they approached the looming gates, Zoya raised their hand towards it. The troops stopped and stared as their hand and eyes started glowing again. “Let’s see what we can learn about you, first…” their voice dropped to a whisper, “ and if you notice anything, Kylar…”. They trailed off as they dropped into focus.&nbsp;</span></p><aside class="action"><header>Gather Information, +1 from Haunted</header><div class="roll strong-hit">Strong Hit: 5 + 2 + 1 = 8 vs 3 | 3</div><div>+1 tick bonds legacy, from Haunted!</div><div>+2 momentum</div><div> Involves something rare, expensive, or precious</div></aside><p>The glow stopped, Zoya’s eyes widening. They murmured, “that can’t be right, can it?”</p><p>A whisper in her ear, “I’m afraid it can, and is.”</p><p>“Teacher?” the Captain called out.&nbsp;</p><aside class="action"><header>Develop your relationship (giving them something of worth) - Captain Malek</header></aside><p>Zoya debated sharing their findings. This was dangerous knowledge. Keeping this place a secret from the outside world might benefit them immensely, and making a Teacher disappear would be a small price to pay in comparison, even if Caduceus were to suspect them of fowl play.&nbsp;</p><p>At the same time, trust requires two parties. Zoya could set a precedent here that could keep them safe—and help the patients. They may figure this out on their own, after all.&nbsp;</p><p>Zoya’s voice was calm, but deeply serious, as they stared down the metal structure before them.</p><p>“It’s Black Iron.”</p><p>“What? What part?” The Captain exclaimed in surprise.&nbsp;</p><p>“All of it. The whole thing is Black Iron. At least as far as I can see.”</p><p>This was an incredibly valuable finding. The kind that could shake power balance in an entire sector or more. If, or rather when, the Wrights got their hands properly on this, it would deeply cement their power over this sector and expand their influence far beyond it. Zoya had to tread very carefully from here on out.&nbsp;</p><p>They looked at the Captain, waiting to see what her next move would be. Zoya was sure she was running the same calculus in her own head right now.&nbsp;</p><p>“Got it. Thank you, Teacher. Is there anything else we should know?”</p><p>It was a collaborative response. Seems like the Captain had made her choice. For now.</p><p>Zoya paused for a moment, maybe a bit too long, as they thought this all through. Then they turned and walked closer to the Captain. “We won’t be able to breathe the air in there. Everyone will need to have their respirators on. Anyone who doesn’t have one will need to stay back.&nbsp;</p><p>The Captain nodded, “we’re good on our end. I assume you have your own?”</p><p>“I do.”</p><p>The Captain reached into their pack and pulled out a small face mask, strapping it to her face and checking the seal. Muffled, she continued, “Let’s get a move on.” And they stepped towards—and past—the threshold, carbine raised and flashlight alight.&nbsp;</p><p>Zoya took out their own, and followed suit with the group, followed by the rear guard.&nbsp;</p>
 
   <hr>
 
   <footer>
-    <a href="/campaigns/a-lantern-in-the-void">Back to A Lantern in the Void</a>
+    <a href="#top">Back to top</a>
   </footer>
 </article>
 
@@ -497,6 +516,6 @@ article.campaign-entry {
 
 		<footer></footer>
 
-		<!-- This page `/campaigns/a-lantern-in-the-void/chapter-02-to-the-vault/` was built on 2024-04-27T02:32:22.157Z -->
+		<!-- This page `/campaigns/a-lantern-in-the-void/chapter-02-to-the-vault/` was built on 2024-04-27T05:23:43.422Z -->
 	</body>
 </html>

@@ -193,6 +193,7 @@ pre[class*="language-diff-"] {
   --color-gray-20: #e0e0e0;
   --color-gray-50: #c0c0c0;
   --color-gray-90: #333;
+  --color-gray-30: #dad8d8;
 
   --background-color: #fff;
 
@@ -206,11 +207,7 @@ pre[class*="language-diff-"] {
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --color-gray-20: #e0e0e0;
-    --color-gray-50: #c0c0c0;
-    --color-gray-90: #dad8d8;
-
-    /* --text-color is assigned to --color-gray-_ above */
+    --text-color: var(--color-gray-30);
     --text-color-link: #1493fb;
     --text-color-link-active: #6969f7;
     --text-color-link-visited: #a6a6f8;
@@ -384,7 +381,7 @@ header {
 .postlist-date,
 .postlist-item:before {
   font-size: 0.8125em; /* 13px /16 */
-  color: var(--color-gray-90);
+  color: var(--text-color);
 }
 .postlist-date {
   word-spacing: -0.5px;
@@ -504,7 +501,7 @@ article.entry-card {
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
   transition: all 300ms;
   & header {
-    /* font-size: 0.75em; */
+    cursor: default;
     border: none;
     box-sizing: border-box;
     width: 100%;
@@ -524,6 +521,9 @@ article.entry-card {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    & figcaption {
+      display: none;
+    }
   }
   & img {
     overflow: hidden;
@@ -535,11 +535,15 @@ article.entry-card {
 
 .entry-cards {
   display: grid;
+  padding: 0;
   gap: 0.5em;
   list-style-type: none;
   & .entry-card:hover {
     transform: translateY(-2px);
     box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+  }
+  & .entry-card header {
+    cursor: pointer;
   }
   & a {
     text-decoration: none;
@@ -551,6 +555,12 @@ article.entry-card {
 }
 
 article.campaign-entry {
+  & .entry-card header {
+    padding-bottom: 2em;
+  }
+  & footer {
+    text-align: center;
+  }
   & p {
     text-indent: 1em;
   }
@@ -559,9 +569,10 @@ article.campaign-entry {
     margin: 1.5em;
   }
   & figcaption {
-    font-size: 0.8125em;
+    font-size: 0.75em;
     opacity: 0.75;
-    color: var(--color-gray-90);
+    color: var(--text-color);
+    padding: 1em;
     &:before {
       content: "Credit: ";
     }
@@ -570,55 +581,58 @@ article.campaign-entry {
     margin: 0;
   }
   & aside.action {
+    cursor: default;
+    background-color: var(--color-gray-20);
+    color: var(--color-gray-90);
     margin: 1em;
-    border: 1px solid var(--color-gray-50);
+    border: 1px solid var(--color-gray-90);
     border-radius: 10px;
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
     & header {
       display: block;
+      font-size: 1.2em;
       border: none;
       width: 100%;
       padding: 1em;
       text-align: center;
       font-weight: bolder;
       &:has(+ div) {
-        border-bottom: 1px solid var(--color-gray-50);
-        padding-bottom: 1em;
-        margin-bottom: 1em;
+        border-bottom: 1px dashed var(--color-gray-90);
       }
     }
 
     & div {
       margin: 1em;
       font-weight: bold;
-      &.miss {
-        color: red;
-        opacity: 0.75;
-      }
-      &.weak-hit {
-        color: orange;
-        opacity: 0.75;
-      }
-      &.strong-hit {
-        color: green;
-        opacity: 0.75;
-      }
-      &.roll:before {
-        content: "🎲";
-        margin-right: 0.5em;
-      }
-      &.roll.match:after {
-        content: "✅";
-        margin-left: 0.5em;
-      }
       &:before {
         content: "➡️";
         margin-right: 0.5em;
+      }
+      &.roll {
+        opacity: 0.75;
+        &:before {
+          content: "🎲";
+        }
+        &.miss {
+          color: darkred;
+        }
+        &.weak-hit {
+          color: darkgoldenrod;
+        }
+        &.strong-hit {
+          color: darkgreen;
+        }
+        &.roll.match:after {
+          content: "✅";
+          margin-left: 0.5em;
+        }
       }
     }
   }
 }</style>
 	</head>
 	<body>
+    <a id="top"></a>
 		<a href="#skip" class="visually-hidden">Skip to main content</a>
 
 		<header>
@@ -650,6 +664,6 @@ article.campaign-entry {
 
 		<footer></footer>
 
-		<!-- This page `/blog/firstpost/` was built on 2024-04-27T02:32:22.160Z -->
+		<!-- This page `/blog/firstpost/` was built on 2024-04-27T05:23:43.426Z -->
 	</body>
 </html>

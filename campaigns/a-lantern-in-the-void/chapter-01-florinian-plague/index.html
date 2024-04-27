@@ -25,6 +25,7 @@
   --color-gray-20: #e0e0e0;
   --color-gray-50: #c0c0c0;
   --color-gray-90: #333;
+  --color-gray-30: #dad8d8;
 
   --background-color: #fff;
 
@@ -38,11 +39,7 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --color-gray-20: #e0e0e0;
-    --color-gray-50: #c0c0c0;
-    --color-gray-90: #dad8d8;
-
-    /* --text-color is assigned to --color-gray-_ above */
+    --text-color: var(--color-gray-30);
     --text-color-link: #1493fb;
     --text-color-link-active: #6969f7;
     --text-color-link-visited: #a6a6f8;
@@ -216,7 +213,7 @@ header {
 .postlist-date,
 .postlist-item:before {
   font-size: 0.8125em; /* 13px /16 */
-  color: var(--color-gray-90);
+  color: var(--text-color);
 }
 .postlist-date {
   word-spacing: -0.5px;
@@ -336,7 +333,7 @@ article.entry-card {
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
   transition: all 300ms;
   & header {
-    /* font-size: 0.75em; */
+    cursor: default;
     border: none;
     box-sizing: border-box;
     width: 100%;
@@ -356,6 +353,9 @@ article.entry-card {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    & figcaption {
+      display: none;
+    }
   }
   & img {
     overflow: hidden;
@@ -367,11 +367,15 @@ article.entry-card {
 
 .entry-cards {
   display: grid;
+  padding: 0;
   gap: 0.5em;
   list-style-type: none;
   & .entry-card:hover {
     transform: translateY(-2px);
     box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+  }
+  & .entry-card header {
+    cursor: pointer;
   }
   & a {
     text-decoration: none;
@@ -383,6 +387,12 @@ article.entry-card {
 }
 
 article.campaign-entry {
+  & .entry-card header {
+    padding-bottom: 2em;
+  }
+  & footer {
+    text-align: center;
+  }
   & p {
     text-indent: 1em;
   }
@@ -391,9 +401,10 @@ article.campaign-entry {
     margin: 1.5em;
   }
   & figcaption {
-    font-size: 0.8125em;
+    font-size: 0.75em;
     opacity: 0.75;
-    color: var(--color-gray-90);
+    color: var(--text-color);
+    padding: 1em;
     &:before {
       content: "Credit: ";
     }
@@ -402,55 +413,58 @@ article.campaign-entry {
     margin: 0;
   }
   & aside.action {
+    cursor: default;
+    background-color: var(--color-gray-20);
+    color: var(--color-gray-90);
     margin: 1em;
-    border: 1px solid var(--color-gray-50);
+    border: 1px solid var(--color-gray-90);
     border-radius: 10px;
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
     & header {
       display: block;
+      font-size: 1.2em;
       border: none;
       width: 100%;
       padding: 1em;
       text-align: center;
       font-weight: bolder;
       &:has(+ div) {
-        border-bottom: 1px solid var(--color-gray-50);
-        padding-bottom: 1em;
-        margin-bottom: 1em;
+        border-bottom: 1px dashed var(--color-gray-90);
       }
     }
 
     & div {
       margin: 1em;
       font-weight: bold;
-      &.miss {
-        color: red;
-        opacity: 0.75;
-      }
-      &.weak-hit {
-        color: orange;
-        opacity: 0.75;
-      }
-      &.strong-hit {
-        color: green;
-        opacity: 0.75;
-      }
-      &.roll:before {
-        content: "🎲";
-        margin-right: 0.5em;
-      }
-      &.roll.match:after {
-        content: "✅";
-        margin-left: 0.5em;
-      }
       &:before {
         content: "➡️";
         margin-right: 0.5em;
+      }
+      &.roll {
+        opacity: 0.75;
+        &:before {
+          content: "🎲";
+        }
+        &.miss {
+          color: darkred;
+        }
+        &.weak-hit {
+          color: darkgoldenrod;
+        }
+        &.strong-hit {
+          color: darkgreen;
+        }
+        &.roll.match:after {
+          content: "✅";
+          margin-left: 0.5em;
+        }
       }
     }
   }
 }</style>
 	</head>
 	<body>
+    <a id="top"></a>
 		<a href="#skip" class="visually-hidden">Skip to main content</a>
 
 		<header>
@@ -469,6 +483,9 @@ article.campaign-entry {
 		<main id="skip">
 			
 <article class="campaign-entry">
+  <h5>Part of <a href="/campaigns/a-lantern-in-the-void/">A Lantern in the Void</a></h5>
+
+  
   
   <article class="entry-card">
   <figure>
@@ -480,14 +497,14 @@ article.campaign-entry {
   </header>
 </article>
 
-  <h5>Part of <a href="/campaigns/a-lantern-in-the-void/">A Lantern in the Void</a></h5>
+
 
   <p>“We’re so thankful to have you here, Teacher,” said the middle-aged man walking next to Zoya. He had a weathered look to him, the look of someone who looked much older than he actually was. He had met Zoya at Florin’s landing pad when they arrived and were just leaving the space port. &nbsp;</p><aside class="action"><header>Make a connection</header><div class="roll miss">Miss: 3 + 2 + 0 = 5 vs 8 | 9</div></aside><aside class="action"><header>Pay the Price</header></aside><p>“Unfortunately, this is where we part ways, at least for now. I have work to do.”</p><p>And just like that, Zoya was left all alone to figure out their next steps, including where to go.</p><p>They weren’t briefed very thoroughly as part of their assignment. Mostly some basic information about the destination, and that there were reports of some kind of sickness spreading through the already small populace. There really weren’t that many people all the way in the Outlands.</p><p>Florin was a lush jungle planet in the Boundless Drift, a mostly lawless sector under no real jurisdiction except a weak and isolationist authority that would probably meddle more in settlement matters if they were able to get their own act together.</p><p>Beryl itself was more something akin to a theocratic commune of sorts: religious to a fault, in that it seemed to cause them to be more afraid than really be reassured.</p><p>In any case, Zoya was here for a reason, and their destination was obvious, even if they didn’t have someone to take them there: the local hospital.</p><p>There wasn’t really a map of the settlement. Zoya still had to stop a couple of times to get, then clarify, directions. People were generally welcoming, but they still feared outsiders and seemed to be in a rush to end the conversation so they could get away from Zoya. There was definitely some kind of undertone that the translator module in their ear wasn’t quite getting across, but that was to be expected from automated translation systems.</p><p>When they finally arrived, the reason became a bit more clear. The hospital could barely be called that. It was more of a shack, in what seemed to be one of the more run down parts of town. The people who gave Zoya directions would probably avoid this place unless they absolutely needed to come. That was a challenge. A populace that was too scared to get basic medical treatment would be hard to help.</p><p>Zoya brushed aside one of the flaps into the place and looked around. It took some time for someone to notice them and come over. “Hi, my name is Zoya Santos. I was sent here by Caduceus. I’m told you have a bit of a situation on your hands?”</p><p>“Ah yes. Good to have you here,” a pause. Ke seemed to have something on kir mind. “Lux Valenus. I’m in charge of this clinic.” They shook hands.</p><p>“I put out the request some weeks ago when we started getting more and more cases of some kind of fever.” They glanced over at Zoya. “I guess I have to clarify for you that having more than a couple of patients a month is a rarity for us. Most people go to their priest during times of sickness, but this has been bad enough that it’s left the community a bit shaken. Come.”</p><p>Zoya nodded and followed. Even as Lux spoke, Zoya was getting a strange sense of indifference. They wondered if people would seek proper treatment more if their healer wasn’t coming off as so…indifferent. There was definitely a story here, and they would have to be careful navigating it.</p><p>Before long, they were standing at the side of one of the handful of beds in the clinic, which were all in a single room with only flimsy curtains dividing them. The room was hot and stuffy and reeked of sweat and maybe a hint of death. This wasn’t a place anyone would want to spend much time in if they could help it.&nbsp;</p><p>Before them lay one of the patients, covered in sweat, deep reddish purple welts, and whose breathing seemed pretty shallow.&nbsp;</p><p>“People started coming in like this a couple of months ago. I don’t really know what it is, but on Florin, it’s not unusual to have the occasional strange fever. It’s something I’m generally equipped to handle.” Lux grabbed the chart from the foot of the bed and looked it over, flipping over a page, “and in all honesty, I wasn’t too worried about this one either, not really. It’s a pretty routine sort of thing.” They passed the chat to Zoya who definitely saw what they meant—this looked like a textbook jungle planet fever, likely carried by small, hard-to-control pest. The sort of situation you deal with using more social interventions than medical ones.</p><p>“The thing that pushed me to think I should probably reach out to y’all are the cognitive effects that follow the infection, some days or weeks after recovery.” Ke took the chart back and placed it back at the foot of the bed. “I’ve been getting some of these patients back with complaints of severe headaches followed by cognitive issues—loss is memory, or sometimes corrupted memory. I’ve had relatives bring them saying that they turned violent against them, thinking them strangers. Had to treat some of those relatives for injuries, too.” Lux gestured, and Zoya followed them to another bed.&nbsp;</p><p>Another patient lay in it, staring straight at the ceiling. Their skin was tinted slightly green, and they didn’t react at all when they stepped closer.&nbsp;</p><p>“The worst of them end up like this a few days later. Their vitals are stable, but they’re just… gone, really. They’ll eat and everything if you feed them or help them with basic needs, but they’ll otherwise just sit here, doing nothing, until I come back the fact morning and they’re…gone.”</p><p>“Have you been able to determine the cause of death?”</p><p>“No, sorry, let me clarify… they’re gone. Missing. They just disappear without a trace. Without anyone seeing them leaving, or with any trace of them left behind on the beds that’s been confined to.”</p><p>Zoya frowned.&nbsp;</p><p>“As you can imagine, this has people very scared. We’re a small community so at this point most of us have lost someone we love or knew to this, and we’ve all been wondering if we’ll be next. If we don’t find an effective treatment soon, or at least a way to fix it at its source, we won’t have much of a community for long.” Ke said this very matter of factly. Zoya didn’t get the impression it bothered kir as much as it did others.</p><p>“Mind if I take a look?” Zoya said, gesturing towards the nearest patient.&nbsp;</p><p>“By all means,” he nodded in assent.&nbsp;</p><aside class="action"><header>Gather Information. +1 from Healer</header><div class="roll weak-hit">Weak Hit: 1 + 2 + 0 = 3 vs 9 | 2</div><div>+1 momentum</div><div> Involves an unusual ability or power</div></aside><p>Zoya leaned over the patient and smiled at them, “Hi there. I’m Zoya, what’s your name?”</p><p>The patient looked at Zoya, then Lux, then back. There was fear in her eyes. “Ria, Teacher. Ria Arden.”</p><p>“Nice to meet you. I’m here with Caduceus. Gave you heard of us before?”</p><p>“Yeah, you’re that guild or whatever with the really good Healers, right?”</p><p>“That’s exactly right. I’m here so we can do all we can for you and the others, so don’t worry, alright?” Zoya smiled, hoping to reassure the young girl. “Do you mind if I take a look at you?”</p><p>Ria nodded. Sure couldn’t have been older than 14. This was probably the sickest she’d been in her life, even out in a jungle world like Beryl.</p><p>Zoya extended their hands over Ria and closed their eyes. Moments later, a soft orange glow started emanating from their palms, and then eyes. The occasional cough would cut through the silence.</p><p>It had taken some time for Zoya to get used to Lay on Hands after they first injected her with the proprietary Caduceus nanites. A closely guarded secret for centuries, they were an effective diagnostic tool and could even treat certain conditions.</p><p>In this case, the readings were strange. Zoya wondered if they were still having trouble interpreting their readings. As well as she’d done in their training, they were still not confident with usage out in the field, with potentially novel diseases. In this case, they were detecting traces of Remnant energy. That was not good news. If some Remnant technology had a suddenly activated near the settlement, it might only get worse from here.</p><p>Remnants were hard to predict, and even harder to deal with even when found. This was, fortunately, something Zoya had been trained on, but it would require them to find and get close to whatever was emitting this in order to analyze it, and hopefully find a way to reverse its effects.&nbsp;</p><p>Zoya snapped out of their own thoughts when they saw Ria had started to squirm, their heart rate spiking, sweat beading on her forehead. It wouldn’t be long before Ria—and the others in this clinic, not to mention the rest of the settlement, were consumed by the Remnant.</p><p>Zoya put on their best reassuring smile and looked down at Ria, who started looking better after the analysis was over. “Thank you for getting through that. I think I have what I need to go from here. You did great.” &nbsp;They patted the girl’s hand.</p><p>At that point, Zoya reached for the amulet hanging around their neck: the familiar spiral galaxy of her field, forged in black iron.&nbsp;</p><aside class="action"><header>Make a Connection</header><div class="roll strong-hit">Strong Hit: 6 + 3 + 0 = 9 vs 3 | 8</div><div>Connection created</div></aside><p>Zoya closed their eyes again, clutching the amulet between both their hands. “Ria Arden, upon this iron, and on my word and that of the Order of Caduceus Resplendent, I vow to find a cure for you, and those others affected who might yet be saved. Let this be a covenant between us that I won’t allow to be broken.” They opened their eyes and looked back up to Ria, “Do you accept?”</p><p>Ria looked confused. Not an unusual reaction if this was the first time she’d met an Ironsworn. She looked up at Lux for guidance, who was clearly more familiar with the rituals and traditions surrounding black iron, and ke nodded, kir face serious.&nbsp;</p><p>“I do.”</p><p>“Very well, then I’ll get started right away.” They turned, “Lux, may I speak to you in your office?”</p><aside class="action"><header>Swear an Iron Vow</header><div class="roll miss">Miss: 2 + 3 + 1 = 6 vs 10 | 6</div><div>whooooops</div></aside><p>“Of course, right this way.”</p><hr><p>“What do you mean you can’t let me near it? It’s literally what’s causing this! I have to get to the core of it if I want to find the right treatment for these patients!”</p><p>“I’m sorry, but the Wrights won’t allow it. All Remnants and other Precursor tech and facilities are off limits in this entire sector, unless given explicit access by the Wrights. You need a permit, and probably an escort.”</p><p>Lux raised kir hands defensively. They were just delivering the news here.</p><p>Zoya’s shoulders slumped a little. “Who do I need to talk to about those things?”</p><p>“That would be Lucas Savarin. He’s the local Wrights Clerk. It’s on him to write permits and arrange other things regarding Remnants.”</p><p>“Speaking of which,” Zoya took a sip of the tea Lux had made them earlier. “Tell me more about this Remnant and why it’s becoming a problem now of all times.”</p><aside class="action"><header>Gather Information</header><div class="roll weak-hit">Weak Hit: 1 + 2 + 0 = 3 vs 1 | 5</div><div>+1 momentum</div><div> Involves a person or faction from your background</div></aside><p>Lux leaned back on kir chair, resting kir elbows on the arm wrests and intertwining fingers. “The Remnant in question was actually inside a Vault. It was sealed until very recently, when some foragers ran into it and for some reason decided it would be a good idea to try and get in.” Kir brow furrowed. “It did not end well for them.”</p><p>“There’s a whole Vault here? Near the settlement? And you’ve only just now found it?”</p><p>“I mean the jungle is pretty dense, and some of the fauna can be dangerous, so we don’t tend to stray very far from home base, really. Aside from our foragers, the only time we might deal with the jungle is when we’re clearing farm land or scouting out where we might clear next.”</p><aside class="action"><header>Make a Connection</header><div class="roll weak-hit">Weak Hit: 5 + 3 + 0 = 8 vs 10 | 7</div><div>correction created</div></aside><p>Zoya looked around the office. It was well decorated. Bright, even, and alive with all sorts of plants, likely local flora, which seemed carefully cared for and groomed. This was in contrast to Lux’s more grim mien.</p><p>“What brought you out here anyway? This is my first time in the Outlands and I wonder what might bring folks this far out from the Terminus system.” They were making conversation, really. They themself were a great example of what might bring someone out to the boonies.</p><p><span style="-webkit-text-size-adjust: 100%;">Polite it not, maybe it wasn’t such a great idea to ask, because Lux followed their gaze to one of the plants and simply brushed them off. “We all have our reasons, as you can imagine. Mine’s not terribly interesting, but I’m not really here to have you ghostwrite my biography.” They smiled. Grimly, of course.</span></p><p><span style="-webkit-text-size-adjust: 100%;">“Let’s focus on the task at hand. You’ll probably have a bit of a time convincing Savarin to let you delve that thing—which for the record I think is a terrible idea,” they interjected,”—and you’ll also want to ask him to send some of his goons with you. Usually, you’d think this would be an imposition, but I think he’ll want eyes on you anyway.”</span><br></p><p><span style="-webkit-text-size-adjust: 100%;">Ke picked up a small, nearby watering can and sprinkled one of the plants on kir desk, “But I still say you get out of there as quick as you can. Vaults are literally never good news for anyone, and for all we know this might just make everything worse.”</span></p><p><span style="-webkit-text-size-adjust: 100%;">Ke put the watering can down and pulled out a pen and some paper from kir desk drawer, “I’ll write you a letter of introduction and recommendation. That should help a bit. You’re our best hope of getting things under control here, and it wouldn’t exactly be good for his career if everyone dies off in the colony he’s overseeing.”</span></p><p><span style="-webkit-text-size-adjust: 100%;">Yeah, definitely grim.</span></p><hr><aside class="action"><header>Begin a session</header><div>+1 momentum</div><div> Unforeseen aid is on the way or within reach</div></aside><p>There was a whole platoon of troopers with Wrights insignias on their arms standing at attention outside of town hall as Zoya approached. They gave Zoya the creeps, but they honestly felt like that about any military they were around. The whole concept of people whose entire profession was to take other people’s lives rubbed them the wrong way, and went against everything they worked towards. Still, even Caduceus had a paramilitary arm. Such was reality on the Forge. Even the Terminus systems frequently saw conflict: if not between major factions then between those factions and insurgent forces trying to bring about their own agenda, or impose their own leader or social order. The Vanguards of the Ebon Order, the ones who killed their brother and so many others, were only one such group of many, even in their home sector alone.</p><p>A well-groomed, very handsome man started walking down the line of troops, doing a cursory inspection. Not that he knew what he was doing or anything.</p><p>He bore the same insignia on his uniform, which was less of a military thing than the others’. He matched the description Lux had given Zoya of what Savarin looked like. That was probably him.&nbsp;</p><p>“Well at least he’s hot”, hummed a soft voice in their ear. Zoya pinched the bridge of their nose and sighed. “Not the time, Kylar.”</p><p>A chuckle echoed in Zoya’s head. The spirit continued, “look you just need to ask the guy for permission to save his little town. And he’s even got a whole bunch of goons. I bet they’re actually here to investigate that vault…” a pause, “oh! Actually I bet your angle could be that you would tag along with whatever crew they send out and you pinky promise swear you won’t touch anything valuable blah blah.”</p><p>You know, maybe that wasn’t such a bad idea. Her brother was always a pretty clever one. More so than Zoya in situations like these, anyway.</p><p>As Zoya stood there considering what to do next, their eyes met with Savarin’s, who frowned. “I guess I’m not the only one who got the rundown on who I’d be talking to. Let’s just go do this, then,” and they strode across the plaza, feeling Kylar hovering close behind.</p><p>“Zoya Santos,” the man looked them up and down. His face wasn’t quite an anger but he was definitely wary of the presence of an outsider, especially one from such a powerful foreign organization. He didn’t offer a handshake.</p><p>“Lucas Savarin, I assume? Nice to meet you. I’m sure you know why I’m here.”</p><p>“Oh yes. And no, you can’t.” He started turning away.&nbsp;</p><p>“What do you mean I can’t? That Vault is what’s causing this and if I can’t analyze and study it, I won’t be able to deal with what’s happening to the people here.”</p><p>“I mean you can’t. That Vault is private Wrights property and anything inside it is to be considered proprietary.” He looked at them again, annoyed.</p><aside class="action"><header>Empath</header><div class="roll strong-hit match">Strong Hit with a match: 6 + 3 + 0 = 9 vs 6 | 6</div><div>+2 momentum, +2 to related rolls</div></aside><p>Zoya stopped and took a good close look at him, his body language, and tried to put themself in his shoes. They were good at that sort of thing. And then they noticed it. They realized there was a slight shake in his voice. He wasn’t actually very sure of what he was saying, and was possibly even lying.</p><p>He was almost definitely going off on his own here, to try and use this situation as a way to improve his standing. He had something to prove to his superiors, and was probably not very happy to have been assigned to the boonies like this.</p><p>Zoya had an idea.</p><aside class="action"><header>Compel (+2)</header><div class="roll weak-hit">Weak Hit: 1 + 3 + 2 = 6 vs 10 | 5</div><div>+1 momentum</div></aside><p>“Look, I get the position you’re in and I want to reassure you that I’m not here to undermine it, and Caduceus isn’t interested in taking any of this for ourselves. I’m here to help the people in this town.” they took a breath. “And I’m sure you don’t want to be responsible for everyone here eventually dying under your watch.”</p><p>Their eyes met, as they carefully considered each order. A beat. “Let’s talk about how we can work together here. I’m sure we can both achieve what we want better that way.”</p><p>Savarin frowned. After a moment, he nodded. Then, he turned, gesturing for Zoya to follow along. They did.</p><p>The bureaucrat led them into town hall, and their office, where he offered them a seat before settling himself on a cheap-looking chair behind a simple, metal desk. This was all clearly below him, in his mind.&nbsp;</p><p>“Look, Teacher. I get what you’re trying to achieve here, and you’re right that I don’t want people here to be harmed any further. It was me who put out the request to Caduceus, after all.” He leaned back, “but that was before we realized what had happened with the Vault. We put two and two together before you got here, but it’s good to have our suspicions confirmed about what’s causing this.”</p><p>He picked up a pen off his desk and started spinning it between his fingers. “I do still think it’s important to help these people and you’re right, I don’t want to be held responsible for it, but I need something in return, “ he thought for a moment, then smiled easily at Zoya. A charming smile that would’ve been creepy on any face not as pretty.</p><p>“I want you to get to the bottom of this Vault, not just get the little analysis you need. I want you to tell me what it’s there for, and whether it’s anything useful. And if you find anything of value, I want you to bring it back to me. Do that, and the permit is yours.” He got up and leaned over his desk, extending his hand over, finally.</p><p>Zoya followed, standing up and taking his hand. They had no choice but to agree to these conditions at this point, but they hoped that whatever they found wouldn’t do more harm if it got taken out, or its secrets revealed. Savarin was playing with fire, they both knew that. But clearly the potential reward outweighed the risk to him. Or he didn’t take it seriously enough.</p><p>Either way, this was the only way Zoya was going to get in there.</p><p>“Good. And I’ll even send some of my troops to accompany you, to make sure you’re safe,” he grinned. Yeah, this was definitely more about keeping an eye on Zoya, but that made sense, really.</p><aside class="action"><header>Make a connection</header><div class="roll miss">Miss: 3 + 3 + 2 = 8 vs 8 | 9</div></aside><p>Something gave Zoya the impression this was going to be a very limited relationship.</p><p>Before letting go of Zoya’s hand, Savarin pointed at their chest, at the black iron pendant. “One last thing. I want to hear you come to it a bit more officially. Not that I don’t trust you or anything, of course.” Even his face didn’t save that grin from coming off as creepy.</p><p>How annoying. Zoya looked into his eyes for a moment and considered it.</p><p>“Very well.”</p><p>Their hands parted and they gripped their pendant between their palms, lowering their head. “I vow to find the truth of the Vault and bring you back anything of value.”</p><aside class="action"><header>Swear an Iron Vow</header><div class="roll strong-hit">Strong Hit: 6 + 3 + 2 = 10 vs 9 | 8[+2 momentum]</div></aside><p>“Very good. I accept.” He was definitely very pleased with himself. He sat back down and practically shooed Zoya away. “I’ll send one of my men to pick you up at the inn tomorrow. Pleasure doing business with you.”</p><p>“Tomorrow?! But…”</p><p>“Tomorrow. It’s getting late anyway.”</p>
 
   <hr>
 
   <footer>
-    <a href="/campaigns/a-lantern-in-the-void">Back to A Lantern in the Void</a>
+    <a href="#top">Back to top</a>
   </footer>
 </article>
 
@@ -495,6 +512,6 @@ article.campaign-entry {
 
 		<footer></footer>
 
-		<!-- This page `/campaigns/a-lantern-in-the-void/chapter-01-florinian-plague/` was built on 2024-04-27T02:32:22.157Z -->
+		<!-- This page `/campaigns/a-lantern-in-the-void/chapter-01-florinian-plague/` was built on 2024-04-27T05:23:43.423Z -->
 	</body>
 </html>
