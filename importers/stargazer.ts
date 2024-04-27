@@ -47,6 +47,7 @@ async function main(dumpPath: string, filter?: RegExp): Promise<void> {
         finalLore.push({
           title: entry.title.replace(/^00 Lore\s*-\s*/, ""),
           content: entry.content,
+          image: entry.image,
           tags: [],
         });
       } else {
@@ -74,29 +75,21 @@ async function cleanupJournalEntry(entry: IJournalEntry): Promise<void> {
   const newBody = newDom.window.document.body;
   let currentAction = null;
   let currentActionName = null;
-  let figure = null;
   for (const el of dom.window.document.body.childNodes) {
     if (el instanceof dom.window.HTMLImageElement) {
-      figure = document.createElement("figure");
-      const img = document.createElement("img");
-      img.src = el.src;
-      figure.appendChild(img);
-      newBody.appendChild(figure);
+      entry.image = {
+        src: el.src
+      };
       continue;
     }
     const text = el.textContent
       .replaceAll(/(&nbsb;|\n|\r|<br>|<\/br>)/gm, "")
       .trim();
-    if (text && figure && text.startsWith("((")) {
-      const caption = document.createElement("figcaption");
-      caption.innerHTML = text
-        .replace(
-          /^\(\((?:Credit:\s*)?([^)]+?)\s*\)\)/i,
-          '<a target="_blank" href="$1">$1</a>'
-        )
+    if (text && entry.image && text.startsWith("((")) {
+      const attribution = text
+        .replace(/^\(\((?:Credit:\s*)?([^)]+?)\s*\)\)/i, "$1")
         .trim();
-      figure.appendChild(caption);
-      figure = null;
+      entry.image.attribution = attribution;
     } else if (text) {
       if (text.startsWith("———")) {
         const hr = document.createElement("hr");

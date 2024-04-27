@@ -14,6 +14,15 @@ eleventyComputed:
   <h1>{{ lore.title }}</h1>
   <h3>Part of <a href="/campaigns/{{ lore.campaignName | slugify }}/">{{ lore.campaignName }}</a></h3>
 
+  {% if lore.image %}
+    <figure>
+      <img alt="{{ lore.image.alt | default('') }}" src="{{ lore.image.src }}">
+      {% if lore.image.attribution %}
+        <figcaption><a href="{{ lore.image.attribution }}">{{ lore.image.attribution }}</a></figcaption>
+      {% endif %}
+    </figure>
+  {% endif %}
+
   {{ lore.content | safe }}
 
   <hr>

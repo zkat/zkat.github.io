@@ -14,6 +14,15 @@ eleventyComputed:
   <h1>{{ journal.title }}</h1>
   <h3>Part of <a href="/campaigns/{{ journal.campaignName | slugify }}/">{{ journal.campaignName }}</a></h3>
 
+  {% if journal.image %}
+    <figure>
+      <img alt="{{ journal.image.alt | default('') }}" src="{{ journal.image.src }}">
+      {% if journal.image.attribution %}
+        <figcaption><a href="{{ journal.image.attribution }}">{{ journal.image.attribution }}</a></figcaption>
+      {% endif %}
+    </figure>
+  {% endif %}
+
   {{ journal.content | safe }}
 
   <hr>
