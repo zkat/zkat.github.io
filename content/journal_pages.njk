@@ -13,7 +13,7 @@ eleventyComputed:
 <article class="campaign-entry">
   {% set entry = journal %}
   {% include "entry_card.njk" %}
-  <h3>Part of <a href="/campaigns/{{ journal.campaignName | slugify }}/">{{ journal.campaignName }}</a></h3>
+  <h5>Part of <a href="/campaigns/{{ journal.campaignName | slugify }}/">{{ journal.campaignName }}</a></h5>
 
   {{ journal.content | safe }}
 
