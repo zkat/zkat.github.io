@@ -13,8 +13,7 @@ export interface ICampaign {
   //truths: ITruths;
   // TODO
   // sectors: ISector[];
-  // TODO
-  // factions: IFaction[];
+  factions: IFaction[];
 }
 
 //----- Character -----

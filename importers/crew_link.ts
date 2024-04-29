@@ -111,6 +111,7 @@ async function scrapeCampaign(
     characters: [],
     journal: [],
     lore: [],
+    factions: [],
   };
 
   const campaignUrl = await campaignLink.getAttribute("href");

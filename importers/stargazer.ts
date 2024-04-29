@@ -6,7 +6,12 @@ import type * as Datasworn from "@datasworn/core/dist/Datasworn";
 
 import { JSDOM } from "jsdom";
 
-import { ICampaign, IJournalEntry, ILoreEntry } from "../_data/campaigns";
+import {
+  ICampaign,
+  IFaction,
+  IJournalEntry,
+  ILoreEntry,
+} from "../_data/campaigns";
 
 const FILE_NAME = "stargazerCampaigns.json";
 
@@ -54,6 +59,9 @@ async function main(dumpPath: string, filter?: RegExp): Promise<void> {
         finalJournal.push(entry);
       }
     }
+    for (const faction of campaign.factions) {
+      finalLore.push(loreFromFaction(faction));
+    }
     campaign.journal = finalJournal;
     campaign.lore = finalLore;
   }
@@ -77,9 +85,7 @@ async function cleanupJournalEntry(entry: IJournalEntry): Promise<void> {
   let currentActionName = null;
   for (const child of dom.window.document.body.childNodes) {
     const nodes =
-      child instanceof dom.window.HTMLDivElement &&
-      !child.textContent.startsWith("((")
-      && ([...child.textContent.matchAll(/\[/g)].length > 1)
+      [...child.textContent.matchAll(/\[/g)].length > 1
         ? child.childNodes
         : [child];
     for (const el of nodes) {
@@ -192,4 +198,62 @@ function isAsset(text: string): string | undefined {
       }
     }
   }
+}
+
+function loreFromFaction(faction: IFaction): ILoreEntry {
+  const dom = new JSDOM(`<!DOCTYPE html><html><body></body></html>`);
+  const doc = dom.window.document;
+  const table = doc.createElement("table");
+  table.classList.add("faction-traits");
+  doc.body.appendChild(table);
+  const rows = [
+    ["Type", faction.type],
+    ["Influence", faction.influence],
+    ["Leadership", faction.leadership],
+    ["Sphere", faction.sphere],
+    ["Projects", faction.projects],
+    ["Relationships", faction.relationships],
+    ["Quirks", faction.quirks],
+    ["Rumors", faction.rumors],
+  ];
+  for (const [label, content] of rows) {
+    if (!content) {
+      continue;
+    }
+    const row = doc.createElement("tr");
+    const labelCell = doc.createElement("td");
+    labelCell.textContent = label;
+    const contentCell = doc.createElement("td");
+    contentCell.textContent = content;
+    row.appendChild(labelCell);
+    row.appendChild(contentCell);
+    table.appendChild(row);
+  }
+  const notes = doc.createElement("article");
+  notes.classList.add("faction-notes");
+  doc.body.appendChild(notes);
+  let img: string | undefined;
+  let credit: string | undefined;
+  for (const paragraph of faction.notes
+    .split("\n")
+    .map((p) => p.trim())
+    .filter((p) => !!p)) {
+    if (paragraph.match(/^\(\(image:/i)) {
+      img = paragraph.replace(/^\(\(Image:\s*([^)]+?)\s*\)\).*/i, "$1").trim();
+    } else if (paragraph.match(/\(\(credit:/i)) {
+      credit = paragraph
+        .replace(/^\(\(Credit:\s*([^)]+?)\s*\)\).*/i, "$1")
+        .trim();
+    } else {
+      const notesParagraph = doc.createElement("p");
+      notesParagraph.textContent = paragraph;
+      notes.appendChild(notesParagraph);
+    }
+  }
+  return {
+    title: `Faction: ${faction.name}`,
+    content: dom.window.document.body.innerHTML,
+    tags: ["faction"],
+    image: img && { src: img, attribution: credit },
+  };
 }
