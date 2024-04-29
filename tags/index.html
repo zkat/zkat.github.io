@@ -282,13 +282,16 @@ h2 + .header-anchor {
 }
 
 /* Campaigns */
-table.about-character {
+table {
   width: 100%;
   border: 1px solid var(--color-gray-50);
   border-collapse: collapse;
   & td {
     border: 1px solid var(--color-gray-50);
     padding: 0.5em;
+    &:has(+ td) {
+      font-weight: bold;
+    }
   }
 }
 
@@ -495,6 +498,6 @@ article.campaign-entry {
 
 		<footer></footer>
 
-		<!-- This page `/tags/` was built on 2024-04-27T22:18:11.379Z -->
+		<!-- This page `/tags/` was built on 2024-04-29T00:47:28.937Z -->
 	</body>
 </html>
