@@ -52,6 +52,9 @@ async function main(dumpPath: string, filter?: RegExp): Promise<void> {
   for (const campaign of campaigns) {
     const finalJournal: IJournalEntry[] = [];
     const finalLore: ILoreEntry[] = [];
+    for (const faction of campaign.factions) {
+      finalLore.push(await loreFromFaction(faction));
+    }
     for (const entry of campaign.journal) {
       await cleanupJournalEntry(entry);
       if (entry.title.startsWith("00 Lore")) {
@@ -64,9 +67,6 @@ async function main(dumpPath: string, filter?: RegExp): Promise<void> {
       } else {
         finalJournal.push(entry);
       }
-    }
-    for (const faction of campaign.factions) {
-      finalLore.push(await loreFromFaction(faction));
     }
     campaign.journal = finalJournal;
     campaign.lore = finalLore;
