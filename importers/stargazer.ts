@@ -1,8 +1,14 @@
-import { readFile, writeFile } from "node:fs/promises";
-import { dirname, join } from "node:path";
+import { createWriteStream } from "node:fs";
+import { mkdir, readFile, writeFile } from "node:fs/promises";
+import { basename, dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
+import { Readable } from "node:stream";
+import { finished } from "node:stream/promises";
+import slugify from "slugify";
 
 import type * as Datasworn from "@datasworn/core/dist/Datasworn";
+
+import type { ReadableStream } from "node:stream/web";
 
 import { JSDOM } from "jsdom";
 
@@ -60,7 +66,7 @@ async function main(dumpPath: string, filter?: RegExp): Promise<void> {
       }
     }
     for (const faction of campaign.factions) {
-      finalLore.push(loreFromFaction(faction));
+      finalLore.push(await loreFromFaction(faction));
     }
     campaign.journal = finalJournal;
     campaign.lore = finalLore;
@@ -91,7 +97,7 @@ async function cleanupJournalEntry(entry: IJournalEntry): Promise<void> {
     for (const el of nodes) {
       if (el instanceof dom.window.HTMLImageElement) {
         entry.image = {
-          src: el.src,
+          src: await imageToFile(entry.title, el.src),
         };
         continue;
       }
@@ -200,7 +206,7 @@ function isAsset(text: string): string | undefined {
   }
 }
 
-function loreFromFaction(faction: IFaction): ILoreEntry {
+async function loreFromFaction(faction: IFaction): Promise<ILoreEntry> {
   const dom = new JSDOM(`<!DOCTYPE html><html><body></body></html>`);
   const doc = dom.window.document;
   const table = doc.createElement("table");
@@ -254,6 +260,46 @@ function loreFromFaction(faction: IFaction): ILoreEntry {
     title: `Faction: ${faction.name}`,
     content: dom.window.document.body.innerHTML,
     tags: ["faction"],
-    image: img && { src: img, attribution: credit },
+    image: img && {
+      src: await imageToFile(faction.name, img),
+      attribution: credit,
+    },
   };
+}
+
+async function imageToFile(name: string, imgUri: string): Promise<string> {
+  if (imgUri.startsWith("data:")) {
+    const [base, data] = imgUri.split(",");
+    const ext = base.replace(/.*?image\/([a-zA-Z0-9]+).*/, ".$1");
+    const newUri = join("img", "campaigns", `${slug(name)}${ext}`);
+    const imgPath = join(
+      dirname(fileURLToPath(import.meta.url)),
+      "..",
+      "content",
+      newUri
+    );
+    await mkdir(dirname(imgPath), { recursive: true });
+    await writeFile(imgPath, Buffer.from(data, "base64"));
+    return join("/", newUri);
+  } else {
+    const filename = basename(imgUri);
+    const newUri = join("img", "campaigns", filename);
+    const imgPath = join(
+      dirname(fileURLToPath(import.meta.url)),
+      "..",
+      "content",
+      newUri
+    );
+    await mkdir(dirname(imgPath), { recursive: true });
+    const req = await fetch(imgUri);
+    const fileStream = createWriteStream(imgPath);
+    await finished(
+      Readable.fromWeb(req.body as ReadableStream<any>).pipe(fileStream)
+    );
+    return join("/", newUri);
+  }
+}
+
+function slug(text: string): string {
+  return slugify(text, { lower: true, strict: true, remove: /[*+~.()'"!:@]/g });
 }

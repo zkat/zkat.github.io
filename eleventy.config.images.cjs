@@ -17,13 +17,33 @@ function isFullUrl(url) {
   }
 }
 
-module.exports = function(eleventyConfig) {
+module.exports = function (eleventyConfig) {
+  eleventyConfig.addPlugin(eleventyImage.eleventyImageTransformPlugin, {
+    // which file extensions to process
+    extensions: "html",
+
+    // Add any other Image utility options here:
+
+    // optional, output image formats
+    formats: ["webp", "jpeg"],
+    // formats: ["auto"],
+
+    // optional, output image widths
+    widths: ["auto"],
+
+    // optional, attributes assigned on <img> override these values.
+    defaultAttributes: {
+      loading: "lazy",
+      decoding: "async",
+    },
+  });
+
   // Eleventy Image shortcode
   // https://www.11ty.dev/docs/plugins/image/
   eleventyConfig.addAsyncShortcode("image", async function imageShortcode(src, alt, widths, sizes) {
     // Full list of formats here: https://www.11ty.dev/docs/plugins/image/#output-formats
     // Warning: Avif can be resource-intensive so take care!
-    let formats = ["avif", "webp", "auto"];
+    let formats = ["webp", "auto"];
     let input;
     if (isFullUrl(src)) {
       input = src;
