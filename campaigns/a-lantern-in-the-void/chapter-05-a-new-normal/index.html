@@ -465,6 +465,11 @@ article.campaign-entry {
         display: grid;
         grid-template-columns: repeat(7, 1fr);
       }
+      &.progress {
+        @media (min-width: 640px) {
+          grid-template-columns: repeat(8, 1fr);
+        }
+      }
       & * {
         filter: invert(1) hue-rotate(180deg);
       }
@@ -524,7 +529,7 @@ article.campaign-entry {
         margin: auto;
         width: 30px;
         flex-basis: 1em;
-        &:has(+ .action-die) {
+        &:has(+ .action-die), &:has(+ .progress-score) {
           width: 0;
           height: 0;
           display: none;
@@ -697,6 +702,41 @@ article.campaign-entry {
             background-image: url("/img/Shortcut_Images/D10/d10-10-t.svg");
           }
         }
+        &.progress-score {
+          &[data-value="0"] {
+            background-image: url("/img/Shortcut_Images/Progress/progress-0-t.svg");
+          }
+          &[data-value="1"] {
+            background-image: url("/img/Shortcut_Images/Progress/progress-1-t.svg");
+          }
+          &[data-value="2"] {
+            background-image: url("/img/Shortcut_Images/Progress/progress-2-t.svg");
+          }
+          &[data-value="3"] {
+            background-image: url("/img/Shortcut_Images/Progress/progress-3-t.svg");
+          }
+          &[data-value="4"] {
+            background-image: url("/img/Shortcut_Images/Progress/progress-4-t.svg");
+          }
+          &[data-value="5"] {
+            background-image: url("/img/Shortcut_Images/Progress/progress-5-t.svg");
+          }
+          &[data-value="6"] {
+            background-image: url("/img/Shortcut_Images/Progress/progress-6-t.svg");
+          }
+          &[data-value="7"] {
+            background-image: url("/img/Shortcut_Images/Progress/progress-7-t.svg");
+          }
+          &[data-value="8"] {
+            background-image: url("/img/Shortcut_Images/Progress/progress-8-t.svg");
+          }
+          &[data-value="9"] {
+            background-image: url("/img/Shortcut_Images/Progress/progress-9-t.svg");
+          }
+          &[data-value="10"] {
+            background-image: url("/img/Shortcut_Images/Progress/progress-10-t.svg");
+          }
+        }
       }
     }
   }
@@ -739,67 +779,76 @@ article.campaign-entry {
 
 
 
-  <aside class="action"><header>Begin a Session</header><p class="action-item">+1 momentum</p></aside><p>A year and change passed. Ria, it turned out, was perfectly healthy even after all that. Zoya had sent out a message on a courier as soon as they could to notify Caduceus, but they hadn’t gotten a response back even after this long—meaning this was going to be their assignment for the time being. They’d settled into the rhythm of like in Florin.</p><p>A sunbeam peeked past the curtains, landing right in their eyes, and Zoya rolled over, feeling the bed next to them, realizing there was no one there. Propping themself on their elbow, they rubbed their eyes and looked around, “Sage?”</p><p>Someone stepped out from the bathroom door across the room, buttoning up a military uniform, toothbrush in mouth. “Good morning, Zoya. Did I wake you?”</p><p>Zoya made a sleepy whimper, “No, but it’s so early. Is something happening today?”</p><p>The Captain sighed, “Yeah. The new Clerk is getting here soon and I have to be there. You know how it is.” She went back to brushing her teeth and stepped into the bathroom.</p><p>Zoya leaned over, bringing their knees up under the sheets and looping their arms around them as they sat up. “I wish you could stay longer.”</p><p>Sage leaned her head out of the bathroom, wiping her mouth with a towel. “I can come back tonight. It’ll just be a long, busy day so I might not be very fun.”</p><aside class="action"><header>Develop Your Relationship</header><p class="action-item">+ progress Sage Malek bond track</p></aside><aside class="action"><header>Forge a Bond</header><p class="action-item">Progress Roll:  :Strong Hit = 8 vs 3 | 5</p><p class="action-item">+ bond with Sage</p><p class="action-item">+2 ticks bonds legacy track</p></aside><p>She walked over after hanging up the hand towel and sat on the bedside, leaning in as Zoya tilted their head back. She tasted minty. Zoya smiled as the kiss broke and they both pulled back, “Will our esteemed new Clerk be getting a tour of the hospital today?”</p><p>“I’d say that’s likely, so I’ll probably see you there. I have to escort them myself all day.”</p><p>She straightened and finished buttoning up her jacket, “I’ll see you later.”</p><p>They waved at each other as the Captain stepped out the door.</p><p>“Yeah. I guess I should get ready to go soon too.”</p><hr><p>“Good morning, Lux,” Zoya peeked around the open office door.</p><p>“Oh good, you’re here. Good morning.” Ke looked up from a thin tablet on their desk with documents ke was reviewing. “The new Clerk is coming by later.”</p><aside class="action"><header>Develop Your Relationship</header><p class="action-item">+ progress Lux Valenus bond track</p><p class="action-item">While nothing in particular happened, they’ve been working together for months now and have a pretty amicable working relationship.</p></aside><p>“I heard! Do you want help with anything for that?”</p><p>“No, I don’t think there’s anything to prepare. I just think it’ll be good to have a Teacher present. You know, because it looks good and all that.”</p><p>Zoya laughed, “I’ll do my best.”</p><p>“I’m sure you will.” Ke shook kir head. “I have a couple of cases for you today who came in this morning, but nothing terribly unusual. You’d just handle it faster than I could.” Ke sighed, “you’ve really turned me into a paper pusher you know.”</p><p>“I think it suits you.” They joked.&nbsp;</p><p>“Oh piss off.” Ke looked up from the tablet, “actually don’t. The Clerk is about to get here.”</p><p>“Already?”</p><p>“Yes and apparently he wants to meet you in particular.” Lux grinned, resting their chin on their palm as they leaned forward over the desk, “you’re just really good at taking my spotlight since you got here, you know.”</p><p>“I’m just doing my job, Lux.”</p><p>“Good. Just keep doing that.” Ke looked past Zoya and the grin fell right off kir face as ke stood.</p><p>Zoya stepped aside and looked behind them, where Captain Malek had just come in, accompanying a slight, scruffy-looking man who was even shorter than Zoya.&nbsp;</p><p>“Clerk Holland, welcome.” Lux bowed kir head and glanced aside at Zoya, who got the message and followed suit.</p><p>“Lux Valenus, I assume.” Their tone was dry and unpleasant. “And you must be the Caduceus Teacher.”</p><p>He looked Zoya up and down and pursed his lips. “I’m told you’re also the one who figured out what was going on with that Vault.”</p><p>Zoya looked at the Captain, who was looking straight ahead and not betraying any thoughts.</p><p>“Yes, Clerk, with the help of the rest of the party. I just helped with analysis because I was equipped for it.”</p><p>“By equipped you mean that Caduceus witchcraft, right?”</p><p>Ah. Zoya had forgotten how religious some parts of this sector, including Florin itself was. It occasionally gave them trouble, but most people had known them personally enough to trust them by now. A stranger had no real reason to have that trust yet.</p><p>They thought better than to correct the Clerk. “Yes.”</p><p>“We may yet have use for your skills, then. Once this transfer is completed, I intend to start excavation as soon as possible.”</p><p>Extraction of the Black Iron. It would be a major operation, and likely involve an influx of off-worlders for the workforce. “Do you have plans for where the new workforce will be living, yet? If it’s happening that quickly.”</p><p>The Clerk smiled easily, “Teacher. The workforce is already here. All we’re waiting for is the equipment.”</p><p>Zoya opened their mouth to ask a very stupid question before they realized—he intended to force the current settlers to mine that Vault instead of continue their current work. Most people here were subsistence farmers or other connected labor. They were necessary for the colony to make its own food. Some if the locals had passed down their traditional labor through generations of apprenticeships and were the only ones in the sector really knowledgeable on how to tend to the local crops.</p><p>What the Clerk was doing would make them fully dependent on foreign food imports, and force many laborers who had trained in their crafts their entire lives to work in dangerous conditions operating heavy mining equipment. Zoya wasn’t feeling very hopeful that they would be trained or that thorough safety measures would be taken. And the Clerk all but confirmed it as he spoke again, “I expect we’ll have more of a need of your services in the coming times. As such, we’ve negotiated with your handlers to continue your very valuable here for the foreseeable.”</p><p>Ah. So that’s why they never got reassigned. They’d paid off Caduceus. Certainly something they would be able to afford now that they controlled such a cache of Black Iron, which was a critical component in various Caduceus technologies.</p><p>Zoya felt anger bubbling up inside but did their best to hide it, and said nothing. The Clerk took a long careful look at their face.</p><p>“You may continue your role here, Mx. Valenus. I will, however, have to call upon your Teacher here on occasion. I assume that won’t be a problem.”</p><p>“Not at all, Clerk.” Lux was also hiding kir emotions as best ke could. Ke was also someone whose family had been in Florin for generations.</p><p>“Very well, that will be all, I’ll leave you to whatever it is you do here.” And with that, the Clerk turned and stepped out the door. Zoya and Captain Malek’s eyes met for a few moments, as if they were hoping there was something she would say or do. But she broke off and simply left without saying a thing.</p><p>Lux plopped right down on kir chair and rubbed kir face with kir hand, but said nothing.</p><p>Zoya decided to give kem some time and gripped their tablet before seeing themself out and getting back to work.</p><hr><p>That evening, as Zoya headed back to their apartment, they heard a commotion coming from the plaza. As they approached, they could see a large crowd gathered in the center. The Clerk stood on a small stage behind a line of Wrights troops. There were familiar faces on both sides of the confrontation: these were the local security forces. Right at the front of the line, Zoya spotted Ria, angrily yelling right at Private Ruiz’s face.</p><p>“You can’t do this! You can’t just upend our lives like this!”</p><p>Another voice chimed in, “and your deal is trash! I’ll barely be able to make ends meet with import prices!”</p><p>“Get the hell off our planet!”</p><p>Some kind of trash flew from the crowd, right over the soldiers, and shattered near the Clerk, who made a gesture and said something Zoya couldn’t hear over the rising commotion.</p><p>As they reached the back of the crowd, a gunshot ran out, and the crowd stilled and got quiet. A megaphone announced, the voice of the Clerk ringing out in the otherwise now silent plaza, “that’s your only and final warning. Disperse now. This is a Wrights colony and we have made an important determination about its future, for the good of all of us. If this is against your wishes, you may file an official request to be relocated to one of our other colonies, but you’ll be expected to carry out your assigned work while your petition is processed.” Silence once again, “this is now an illegal gathering. Disperse now or I will be forced to ask the Captain here to make arrests of any who choose to remain.”</p><p>Surely, the Captain wouldn’t go along with this, right? Zoya found an opening in the crowd and pushed through, making it to the front. The crowd, meanwhile, was definitely not dispersing and seemed to be growing angrier by the minute.</p><p>“Sage, please.” Zoya called out to the Captain, hoping she would help deescalate the situation. She’d always been fair as far as Zoya had seen from knowing her all this time.&nbsp;</p><aside class="action"><header>Compel</header><p class="action-item">+heart, +2 from bond</p><dl class="roll miss match">
-      <dt>Action</dt>
-      <dd class="action-die" data-value="3">3</dd>
-      <dt>Stat</dt>
-      <dd class="stat" data-value="3">3</dd>
-      <dt>Add</dt>
-      <dd class="add" data-value="2">2</dd>
-      <dt>Total</dt>
-      <dd class="total" data-value="8">8</dd>
-      <dt>Challenge Die 1</dt>
-      <dd class="challenge-die" data-value="8">8</dd>
-      <dt>Challenge Die 2</dt>
-      <dd class="challenge-die" data-value="8">8</dd>
-      <dt>Outcome</dt>
-      <dd class="outcome">Miss With a Match</dd>
-    </dl><p class="action-item">…I can’t believe it</p></aside><aside class="action"><header>Pay the Price</header></aside><aside class="action"><header>Endure Stress</header><p class="action-item">-3&nbsp;spirit</p><p class="action-item">ouch. Try to resist..</p><dl class="roll miss">
-      <dt>Action</dt>
-      <dd class="action-die" data-value="3">3</dd>
-      <dt>Stat</dt>
-      <dd class="stat" data-value="3">3</dd>
-      <dt>Add</dt>
-      <dd class="add" data-value="0">0</dd>
-      <dt>Total</dt>
-      <dd class="total" data-value="6">6</dd>
-      <dt>Challenge Die 1</dt>
-      <dd class="challenge-die" data-value="10">10</dd>
-      <dt>Challenge Die 2</dt>
-      <dd class="challenge-die" data-value="7">7</dd>
-      <dt>Outcome</dt>
-      <dd class="outcome">Miss</dd>
-    </dl><p class="action-item">-2 momentum</p><p class="action-item">double ouch</p></aside><p>The Captain only looked at Zoya for a moment, a serious look on their face, and said nothing. Instead, she gestured to the troops, who started to advance on the crowd. She shouted above the increasing clamor, “you heard the man. I’m counting to three.” She raised a hand high, her finger sticking up, “One”.</p><p>A pause. The crowd only grew angrier.</p><p>“Two.”</p><p>Suddenly, a loud bang rang out, followed by screams. People started running and several more gunshots followed.</p><p>“Hold your fire! Hold your fire!!”</p><p>Captain Malek ran ahead, pushing down the rifles of the troopers who had raised them, some of them with smoke still coming from the barrel.</p><p>“Hold! Your! Fire!”</p><p>The crowd grew quiet for a moment, followed by cries and screams from the wounded and people calling out for help. Zoya ran to the nearest one—the one who had been shot first, and dropped to their knees. They didn’t have their equipment with them, so they would have to make do.&nbsp;</p><p>The wound was serious, a shot to the chest bleeding rapidly and the victim was already unconscious.</p><aside class="action"><header>Heal</header><p class="action-item">+wits, +1 from Healer</p><dl class="roll miss">
-      <dt>Action</dt>
-      <dd class="action-die" data-value="1">1</dd>
-      <dt>Stat</dt>
-      <dd class="stat" data-value="2">2</dd>
-      <dt>Add</dt>
-      <dd class="add" data-value="1">1</dd>
-      <dt>Total</dt>
-      <dd class="total" data-value="4">4</dd>
-      <dt>Challenge Die 1</dt>
-      <dd class="challenge-die" data-value="6">6</dd>
-      <dt>Challenge Die 2</dt>
-      <dd class="challenge-die" data-value="9">9</dd>
-      <dt>Outcome</dt>
-      <dd class="outcome">Miss</dd>
-    </dl></aside><aside class="action"><header>Pay the Price</header></aside><aside class="action"><header>Endure Stress</header><p class="action-item">-2 spirit</p><p class="action-item">we’re at 0 spirit, so we have to roll…</p><dl class="roll weak-hit">
-      <dt>Action</dt>
-      <dd class="action-die" data-value="5">5</dd>
-      <dt>Stat</dt>
-      <dd class="stat" data-value="3">3</dd>
-      <dt>Add</dt>
-      <dd class="add" data-value="0">0</dd>
-      <dt>Total</dt>
-      <dd class="total" data-value="8">8</dd>
-      <dt>Challenge Die 1</dt>
-      <dd class="challenge-die" data-value="10">10</dd>
-      <dt>Challenge Die 2</dt>
-      <dd class="challenge-die" data-value="3">3</dd>
-      <dt>Outcome</dt>
-      <dd class="outcome">Weak Hit</dd>
-    </dl><p class="action-item">-1 momentum, +1 spirit</p></aside><p>It was too late. Zoya could tell right away that a major artery had been hit, possibly even the heart itself. There was nothing they could do.</p><p>They straightened and shook their head at the person holding the body, and they let out a loud cry, “my son! My son! Why!”</p><p>Captain Malek took in the scene for a moment, in apparent shock, and angrily shouted at her reports, “Out of here, all of you. This is over! Go!”</p><p>She turned to the Clerk, who had been cowering behind the podium as soon as everything started to go down, “You should go, too. With them. I hope you’re happy.”</p><p>The Clerk opened his mouth as if to say something by the Captain unhesitatingly cut him off, “Now. Go.” and she gestured to the retreating soldiers.&nbsp;</p><p>Zoya watched the scene play out, tears welling in their eyes, all sorts of feelings rushing through them as the same time. Anger, shock, fear, sadness, all screaming inside of them.&nbsp;</p><p>They made eye contact with Captain Malek for a brief moment before the tears started to flow, and the Captain turned and left without saying another word.</p><p>And then Zoya really let it all come out.</p>
+  <aside class="action"><header>Begin a Session</header><p class="action-item">+1 momentum</p></aside><p>A year and change passed. Ria, it turned out, was perfectly healthy even after all that. Zoya had sent out a message on a courier as soon as they could to notify Caduceus, but they hadn’t gotten a response back even after this long—meaning this was going to be their assignment for the time being. They’d settled into the rhythm of like in Florin.</p><p>A sunbeam peeked past the curtains, landing right in their eyes, and Zoya rolled over, feeling the bed next to them, realizing there was no one there. Propping themself on their elbow, they rubbed their eyes and looked around, “Sage?”</p><p>Someone stepped out from the bathroom door across the room, buttoning up a military uniform, toothbrush in mouth. “Good morning, Zoya. Did I wake you?”</p><p>Zoya made a sleepy whimper, “No, but it’s so early. Is something happening today?”</p><p>The Captain sighed, “Yeah. The new Clerk is getting here soon and I have to be there. You know how it is.” She went back to brushing her teeth and stepped into the bathroom.</p><p>Zoya leaned over, bringing their knees up under the sheets and looping their arms around them as they sat up. “I wish you could stay longer.”</p><p>Sage leaned her head out of the bathroom, wiping her mouth with a towel. “I can come back tonight. It’ll just be a long, busy day so I might not be very fun.”</p><aside class="action"><header>Develop Your Relationship</header><p class="action-item">+ progress Sage Malek bond track</p></aside><aside class="action"><header>Forge a Bond</header><dl class="roll strong-hit progress">
+        <dt>Progress</dt>
+        <dd class="progress-score" data-value="8">8</dd>
+        <dt>Challenge Die 1</dt>
+        <dd class="challenge-die" data-value="3">3</dd>
+        <dt>Challenge Die 2</dt>
+        <dd class="challenge-die" data-value="5">5</dd>
+        <dt>Outcome</dt>
+        <dd class="outcome">Strong Hit</dd>
+      </dl><p class="action-item">+ bond with Sage</p><p class="action-item">+2 ticks bonds legacy track</p></aside><p>She walked over after hanging up the hand towel and sat on the bedside, leaning in as Zoya tilted their head back. She tasted minty. Zoya smiled as the kiss broke and they both pulled back, “Will our esteemed new Clerk be getting a tour of the hospital today?”</p><p>“I’d say that’s likely, so I’ll probably see you there. I have to escort them myself all day.”</p><p>She straightened and finished buttoning up her jacket, “I’ll see you later.”</p><p>They waved at each other as the Captain stepped out the door.</p><p>“Yeah. I guess I should get ready to go soon too.”</p><hr><p>“Good morning, Lux,” Zoya peeked around the open office door.</p><p>“Oh good, you’re here. Good morning.” Ke looked up from a thin tablet on their desk with documents ke was reviewing. “The new Clerk is coming by later.”</p><aside class="action"><header>Develop Your Relationship</header><p class="action-item">+ progress Lux Valenus bond track</p><p class="action-item">While nothing in particular happened, they’ve been working together for months now and have a pretty amicable working relationship.</p></aside><p>“I heard! Do you want help with anything for that?”</p><p>“No, I don’t think there’s anything to prepare. I just think it’ll be good to have a Teacher present. You know, because it looks good and all that.”</p><p>Zoya laughed, “I’ll do my best.”</p><p>“I’m sure you will.” Ke shook kir head. “I have a couple of cases for you today who came in this morning, but nothing terribly unusual. You’d just handle it faster than I could.” Ke sighed, “you’ve really turned me into a paper pusher you know.”</p><p>“I think it suits you.” They joked.&nbsp;</p><p>“Oh piss off.” Ke looked up from the tablet, “actually don’t. The Clerk is about to get here.”</p><p>“Already?”</p><p>“Yes and apparently he wants to meet you in particular.” Lux grinned, resting their chin on their palm as they leaned forward over the desk, “you’re just really good at taking my spotlight since you got here, you know.”</p><p>“I’m just doing my job, Lux.”</p><p>“Good. Just keep doing that.” Ke looked past Zoya and the grin fell right off kir face as ke stood.</p><p>Zoya stepped aside and looked behind them, where Captain Malek had just come in, accompanying a slight, scruffy-looking man who was even shorter than Zoya.&nbsp;</p><p>“Clerk Holland, welcome.” Lux bowed kir head and glanced aside at Zoya, who got the message and followed suit.</p><p>“Lux Valenus, I assume.” Their tone was dry and unpleasant. “And you must be the Caduceus Teacher.”</p><p>He looked Zoya up and down and pursed his lips. “I’m told you’re also the one who figured out what was going on with that Vault.”</p><p>Zoya looked at the Captain, who was looking straight ahead and not betraying any thoughts.</p><p>“Yes, Clerk, with the help of the rest of the party. I just helped with analysis because I was equipped for it.”</p><p>“By equipped you mean that Caduceus witchcraft, right?”</p><p>Ah. Zoya had forgotten how religious some parts of this sector, including Florin itself was. It occasionally gave them trouble, but most people had known them personally enough to trust them by now. A stranger had no real reason to have that trust yet.</p><p>They thought better than to correct the Clerk. “Yes.”</p><p>“We may yet have use for your skills, then. Once this transfer is completed, I intend to start excavation as soon as possible.”</p><p>Extraction of the Black Iron. It would be a major operation, and likely involve an influx of off-worlders for the workforce. “Do you have plans for where the new workforce will be living, yet? If it’s happening that quickly.”</p><p>The Clerk smiled easily, “Teacher. The workforce is already here. All we’re waiting for is the equipment.”</p><p>Zoya opened their mouth to ask a very stupid question before they realized—he intended to force the current settlers to mine that Vault instead of continue their current work. Most people here were subsistence farmers or other connected labor. They were necessary for the colony to make its own food. Some if the locals had passed down their traditional labor through generations of apprenticeships and were the only ones in the sector really knowledgeable on how to tend to the local crops.</p><p>What the Clerk was doing would make them fully dependent on foreign food imports, and force many laborers who had trained in their crafts their entire lives to work in dangerous conditions operating heavy mining equipment. Zoya wasn’t feeling very hopeful that they would be trained or that thorough safety measures would be taken. And the Clerk all but confirmed it as he spoke again, “I expect we’ll have more of a need of your services in the coming times. As such, we’ve negotiated with your handlers to continue your very valuable here for the foreseeable.”</p><p>Ah. So that’s why they never got reassigned. They’d paid off Caduceus. Certainly something they would be able to afford now that they controlled such a cache of Black Iron, which was a critical component in various Caduceus technologies.</p><p>Zoya felt anger bubbling up inside but did their best to hide it, and said nothing. The Clerk took a long careful look at their face.</p><p>“You may continue your role here, Mx. Valenus. I will, however, have to call upon your Teacher here on occasion. I assume that won’t be a problem.”</p><p>“Not at all, Clerk.” Lux was also hiding kir emotions as best ke could. Ke was also someone whose family had been in Florin for generations.</p><p>“Very well, that will be all, I’ll leave you to whatever it is you do here.” And with that, the Clerk turned and stepped out the door. Zoya and Captain Malek’s eyes met for a few moments, as if they were hoping there was something she would say or do. But she broke off and simply left without saying a thing.</p><p>Lux plopped right down on kir chair and rubbed kir face with kir hand, but said nothing.</p><p>Zoya decided to give kem some time and gripped their tablet before seeing themself out and getting back to work.</p><hr><p>That evening, as Zoya headed back to their apartment, they heard a commotion coming from the plaza. As they approached, they could see a large crowd gathered in the center. The Clerk stood on a small stage behind a line of Wrights troops. There were familiar faces on both sides of the confrontation: these were the local security forces. Right at the front of the line, Zoya spotted Ria, angrily yelling right at Private Ruiz’s face.</p><p>“You can’t do this! You can’t just upend our lives like this!”</p><p>Another voice chimed in, “and your deal is trash! I’ll barely be able to make ends meet with import prices!”</p><p>“Get the hell off our planet!”</p><p>Some kind of trash flew from the crowd, right over the soldiers, and shattered near the Clerk, who made a gesture and said something Zoya couldn’t hear over the rising commotion.</p><p>As they reached the back of the crowd, a gunshot ran out, and the crowd stilled and got quiet. A megaphone announced, the voice of the Clerk ringing out in the otherwise now silent plaza, “that’s your only and final warning. Disperse now. This is a Wrights colony and we have made an important determination about its future, for the good of all of us. If this is against your wishes, you may file an official request to be relocated to one of our other colonies, but you’ll be expected to carry out your assigned work while your petition is processed.” Silence once again, “this is now an illegal gathering. Disperse now or I will be forced to ask the Captain here to make arrests of any who choose to remain.”</p><p>Surely, the Captain wouldn’t go along with this, right? Zoya found an opening in the crowd and pushed through, making it to the front. The crowd, meanwhile, was definitely not dispersing and seemed to be growing angrier by the minute.</p><p>“Sage, please.” Zoya called out to the Captain, hoping she would help deescalate the situation. She’d always been fair as far as Zoya had seen from knowing her all this time.&nbsp;</p><aside class="action"><header>Compel</header><p class="action-item">+heart, +2 from bond</p><dl class="roll miss match">
+        <dt>Action</dt>
+        <dd class="action-die" data-value="3">3</dd>
+        <dt>Stat</dt>
+        <dd class="stat" data-value="3">3</dd>
+        <dt>Add</dt>
+        <dd class="add" data-value="2">2</dd>
+        <dt>Total</dt>
+        <dd class="total" data-value="8">8</dd>
+        <dt>Challenge Die 1</dt>
+        <dd class="challenge-die" data-value="8">8</dd>
+        <dt>Challenge Die 2</dt>
+        <dd class="challenge-die" data-value="8">8</dd>
+        <dt>Outcome</dt>
+        <dd class="outcome">Miss With a Match</dd>
+      </dl><p class="action-item">…I can’t believe it</p></aside><aside class="action"><header>Pay the Price</header></aside><aside class="action"><header>Endure Stress</header><p class="action-item">-3&nbsp;spirit</p><p class="action-item">ouch. Try to resist..</p><dl class="roll miss">
+        <dt>Action</dt>
+        <dd class="action-die" data-value="3">3</dd>
+        <dt>Stat</dt>
+        <dd class="stat" data-value="3">3</dd>
+        <dt>Add</dt>
+        <dd class="add" data-value="0">0</dd>
+        <dt>Total</dt>
+        <dd class="total" data-value="6">6</dd>
+        <dt>Challenge Die 1</dt>
+        <dd class="challenge-die" data-value="10">10</dd>
+        <dt>Challenge Die 2</dt>
+        <dd class="challenge-die" data-value="7">7</dd>
+        <dt>Outcome</dt>
+        <dd class="outcome">Miss</dd>
+      </dl><p class="action-item">-2 momentum</p><p class="action-item">double ouch</p></aside><p>The Captain only looked at Zoya for a moment, a serious look on their face, and said nothing. Instead, she gestured to the troops, who started to advance on the crowd. She shouted above the increasing clamor, “you heard the man. I’m counting to three.” She raised a hand high, her finger sticking up, “One”.</p><p>A pause. The crowd only grew angrier.</p><p>“Two.”</p><p>Suddenly, a loud bang rang out, followed by screams. People started running and several more gunshots followed.</p><p>“Hold your fire! Hold your fire!!”</p><p>Captain Malek ran ahead, pushing down the rifles of the troopers who had raised them, some of them with smoke still coming from the barrel.</p><p>“Hold! Your! Fire!”</p><p>The crowd grew quiet for a moment, followed by cries and screams from the wounded and people calling out for help. Zoya ran to the nearest one—the one who had been shot first, and dropped to their knees. They didn’t have their equipment with them, so they would have to make do.&nbsp;</p><p>The wound was serious, a shot to the chest bleeding rapidly and the victim was already unconscious.</p><aside class="action"><header>Heal</header><p class="action-item">+wits, +1 from Healer</p><dl class="roll miss">
+        <dt>Action</dt>
+        <dd class="action-die" data-value="1">1</dd>
+        <dt>Stat</dt>
+        <dd class="stat" data-value="2">2</dd>
+        <dt>Add</dt>
+        <dd class="add" data-value="1">1</dd>
+        <dt>Total</dt>
+        <dd class="total" data-value="4">4</dd>
+        <dt>Challenge Die 1</dt>
+        <dd class="challenge-die" data-value="6">6</dd>
+        <dt>Challenge Die 2</dt>
+        <dd class="challenge-die" data-value="9">9</dd>
+        <dt>Outcome</dt>
+        <dd class="outcome">Miss</dd>
+      </dl></aside><aside class="action"><header>Pay the Price</header></aside><aside class="action"><header>Endure Stress</header><p class="action-item">-2 spirit</p><p class="action-item">we’re at 0 spirit, so we have to roll…</p><dl class="roll weak-hit">
+        <dt>Action</dt>
+        <dd class="action-die" data-value="5">5</dd>
+        <dt>Stat</dt>
+        <dd class="stat" data-value="3">3</dd>
+        <dt>Add</dt>
+        <dd class="add" data-value="0">0</dd>
+        <dt>Total</dt>
+        <dd class="total" data-value="8">8</dd>
+        <dt>Challenge Die 1</dt>
+        <dd class="challenge-die" data-value="10">10</dd>
+        <dt>Challenge Die 2</dt>
+        <dd class="challenge-die" data-value="3">3</dd>
+        <dt>Outcome</dt>
+        <dd class="outcome">Weak Hit</dd>
+      </dl><p class="action-item">-1 momentum, +1 spirit</p></aside><p>It was too late. Zoya could tell right away that a major artery had been hit, possibly even the heart itself. There was nothing they could do.</p><p>They straightened and shook their head at the person holding the body, and they let out a loud cry, “my son! My son! Why!”</p><p>Captain Malek took in the scene for a moment, in apparent shock, and angrily shouted at her reports, “Out of here, all of you. This is over! Go!”</p><p>She turned to the Clerk, who had been cowering behind the podium as soon as everything started to go down, “You should go, too. With them. I hope you’re happy.”</p><p>The Clerk opened his mouth as if to say something by the Captain unhesitatingly cut him off, “Now. Go.” and she gestured to the retreating soldiers.&nbsp;</p><p>Zoya watched the scene play out, tears welling in their eyes, all sorts of feelings rushing through them as the same time. Anger, shock, fear, sadness, all screaming inside of them.&nbsp;</p><p>They made eye contact with Captain Malek for a brief moment before the tears started to flow, and the Captain turned and left without saying another word.</p><p>And then Zoya really let it all come out.</p>
 
   <hr>
 
@@ -812,6 +861,6 @@ article.campaign-entry {
 
 		<footer></footer>
 
-		<!-- This page `/campaigns/a-lantern-in-the-void/chapter-05-a-new-normal/` was built on 2024-05-05T07:13:25.141Z -->
+		<!-- This page `/campaigns/a-lantern-in-the-void/chapter-05-a-new-normal/` was built on 2024-05-05T07:30:41.702Z -->
 	</body>
 </html>

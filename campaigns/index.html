@@ -466,6 +466,11 @@ article.campaign-entry {
         display: grid;
         grid-template-columns: repeat(7, 1fr);
       }
+      &.progress {
+        @media (min-width: 640px) {
+          grid-template-columns: repeat(8, 1fr);
+        }
+      }
       & * {
         filter: invert(1) hue-rotate(180deg);
       }
@@ -525,7 +530,7 @@ article.campaign-entry {
         margin: auto;
         width: 30px;
         flex-basis: 1em;
-        &:has(+ .action-die) {
+        &:has(+ .action-die), &:has(+ .progress-score) {
           width: 0;
           height: 0;
           display: none;
@@ -698,6 +703,41 @@ article.campaign-entry {
             background-image: url("/img/Shortcut_Images/D10/d10-10-t.svg");
           }
         }
+        &.progress-score {
+          &[data-value="0"] {
+            background-image: url("/img/Shortcut_Images/Progress/progress-0-t.svg");
+          }
+          &[data-value="1"] {
+            background-image: url("/img/Shortcut_Images/Progress/progress-1-t.svg");
+          }
+          &[data-value="2"] {
+            background-image: url("/img/Shortcut_Images/Progress/progress-2-t.svg");
+          }
+          &[data-value="3"] {
+            background-image: url("/img/Shortcut_Images/Progress/progress-3-t.svg");
+          }
+          &[data-value="4"] {
+            background-image: url("/img/Shortcut_Images/Progress/progress-4-t.svg");
+          }
+          &[data-value="5"] {
+            background-image: url("/img/Shortcut_Images/Progress/progress-5-t.svg");
+          }
+          &[data-value="6"] {
+            background-image: url("/img/Shortcut_Images/Progress/progress-6-t.svg");
+          }
+          &[data-value="7"] {
+            background-image: url("/img/Shortcut_Images/Progress/progress-7-t.svg");
+          }
+          &[data-value="8"] {
+            background-image: url("/img/Shortcut_Images/Progress/progress-8-t.svg");
+          }
+          &[data-value="9"] {
+            background-image: url("/img/Shortcut_Images/Progress/progress-9-t.svg");
+          }
+          &[data-value="10"] {
+            background-image: url("/img/Shortcut_Images/Progress/progress-10-t.svg");
+          }
+        }
       }
     }
   }
@@ -739,6 +779,6 @@ article.campaign-entry {
 
 		<footer></footer>
 
-		<!-- This page `/campaigns/` was built on 2024-05-05T07:13:24.305Z -->
+		<!-- This page `/campaigns/` was built on 2024-05-05T07:30:41.046Z -->
 	</body>
 </html>
