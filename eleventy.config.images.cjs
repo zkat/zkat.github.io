@@ -38,6 +38,30 @@ module.exports = function (eleventyConfig) {
     },
   });
 
+  eleventyConfig.addAsyncFilter("image", async function imageFilter(src) {
+    let input;
+    if (isFullUrl(src)) {
+      input = src;
+    } else {
+      input = relativeToInputPath(this.page.inputPath, src);
+    }
+
+    let metadata = await eleventyImage(input, {
+      widths: ["auto"],
+      formats: ["auto"],
+      outputDir: path.join(eleventyConfig.dir.output, "img"),
+    });
+
+    let imageAttributes = {
+      alt: "",
+      loading: "lazy",
+      decoding: "async",
+    };
+
+    const obj = eleventyImage.generateObject(metadata, imageAttributes);
+    return obj.img.src;
+  });
+
   // Eleventy Image shortcode
   // https://www.11ty.dev/docs/plugins/image/
   eleventyConfig.addAsyncShortcode("image", async function imageShortcode(src, alt, widths, sizes) {

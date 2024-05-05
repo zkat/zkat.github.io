@@ -8,7 +8,7 @@ eleventyComputed:
   title: "{{ lore.campaignName }}: {{ lore.title }}"
   description: "{{ lore.content | striptags | safe | truncate(100) }}"
   permalink: campaigns/{{ lore.campaignName | slugify }}/lore/{{ lore.title | slugify }}/
-  previewImage: "{{ lore.image.src }}"
+  previewImage: ".{{ lore.image.src }}"
 ---
 
 <article class="campaign-entry">
