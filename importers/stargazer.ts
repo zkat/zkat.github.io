@@ -172,16 +172,21 @@ function makeActionItem(
   if (roll) {
     const actionItem = document.createElement("dl");
     actionItem.classList.add("roll");
+    let outcome;
     const actionScore = roll.action + roll.stat + roll.add;
     if (actionScore > roll.challenge1 && actionScore > roll.challenge2) {
       actionItem.classList.add("strong-hit");
+      outcome = "Strong Hit";
     } else if (actionScore > roll.challenge1 || actionScore > roll.challenge2) {
       actionItem.classList.add("weak-hit");
+      outcome = "Weak Hit";
     } else {
       actionItem.classList.add("miss");
+      outcome = "Miss";
     }
     if (roll.challenge1 === roll.challenge2) {
       actionItem.classList.add("match");
+      outcome += " With a Match";
     }
     actionItem.innerHTML = `
       <dt>Action</dt>
@@ -196,6 +201,8 @@ function makeActionItem(
       <dd class="challenge-die" data-value="${roll.challenge1}">${roll.challenge1}</dd>
       <dt>Challenge Die 2</dt>
       <dd class="challenge-die" data-value="${roll.challenge2}">${roll.challenge2}</dd>
+      <dt>Outcome</dt>
+      <dd class="outcome">${outcome}</dd>
     `;
     return actionItem;
   } else {
