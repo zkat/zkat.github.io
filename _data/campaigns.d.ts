@@ -200,8 +200,8 @@ export interface IFaction {
 
 export interface IRoll {
   action: number,
-  stat: number,
-  add: number,
+  stat?: number,
+  add?: number,
   challenge1: number,
   challenge2: number,
 }

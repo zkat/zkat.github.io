@@ -173,7 +173,7 @@ function makeActionItem(
     const actionItem = document.createElement("dl");
     actionItem.classList.add("roll");
     let outcome;
-    const actionScore = roll.action + roll.stat + roll.add;
+    const actionScore = roll.action + (roll.stat ?? 0) + (roll.add ?? 0);
     if (actionScore > roll.challenge1 && actionScore > roll.challenge2) {
       actionItem.classList.add("strong-hit");
       outcome = "Strong Hit";
@@ -188,23 +188,39 @@ function makeActionItem(
       actionItem.classList.add("match");
       outcome += " With a Match";
     }
-    actionItem.innerHTML = `
-      <dt>Action</dt>
-      <dd class="action-die" data-value="${roll.action}">${roll.action}</dd>
-      <dt>Stat</dt>
-      <dd class="stat" data-value="${roll.stat}">${roll.stat}</dd>
-      <dt>Add</dt>
-      <dd class="add" data-value="${roll.add}">${roll.add}</dd>
-      <dt>Total</dt>
-      <dd class="total" data-value="${roll.action + roll.stat + roll.add}">${roll.action + roll.stat + roll.add}</dd>
-      <dt>Challenge Die 1</dt>
-      <dd class="challenge-die" data-value="${roll.challenge1}">${roll.challenge1}</dd>
-      <dt>Challenge Die 2</dt>
-      <dd class="challenge-die" data-value="${roll.challenge2}">${roll.challenge2}</dd>
-      <dt>Outcome</dt>
-      <dd class="outcome">${outcome}</dd>
-    `;
+    if (roll.stat !== undefined && roll.add !== undefined) {
+      actionItem.innerHTML = `
+        <dt>Action</dt>
+        <dd class="action-die" data-value="${roll.action}">${roll.action}</dd>
+        <dt>Stat</dt>
+        <dd class="stat" data-value="${roll.stat}">${roll.stat}</dd>
+        <dt>Add</dt>
+        <dd class="add" data-value="${roll.add}">${roll.add}</dd>
+        <dt>Total</dt>
+        <dd class="total" data-value="${roll.action + roll.stat + roll.add}">${roll.action + roll.stat + roll.add}</dd>
+        <dt>Challenge Die 1</dt>
+        <dd class="challenge-die" data-value="${roll.challenge1}">${roll.challenge1}</dd>
+        <dt>Challenge Die 2</dt>
+        <dd class="challenge-die" data-value="${roll.challenge2}">${roll.challenge2}</dd>
+        <dt>Outcome</dt>
+        <dd class="outcome">${outcome}</dd>
+      `;
+    } else {
+      actionItem.classList.add("progress");
+      actionItem.innerHTML = `
+        <dt>Progress</dt>
+        <dd class="progress-score" data-value="${roll.action}">${roll.action}</dd>
+        <dt>Challenge Die 1</dt>
+        <dd class="challenge-die" data-value="${roll.challenge1}">${roll.challenge1}</dd>
+        <dt>Challenge Die 2</dt>
+        <dd class="challenge-die" data-value="${roll.challenge2}">${roll.challenge2}</dd>
+        <dt>Outcome</dt>
+        <dd class="outcome">${outcome}</dd>
+      `;
+    }
     return actionItem;
+  } else if (roll) {
+
   } else {
     const actionItem = document.createElement("p");
     actionItem.classList.add("action-item");
@@ -347,5 +363,15 @@ function parseRoll(text: string): IRoll | undefined {
       challenge1: parseInt(match[4]),
       challenge2: parseInt(match[5]),
     };
+  }
+  const progressMatch = text.match(
+    /^\s*progress roll:.*?= (\d+) vs (\d+) \| (\d+)\s*$/i
+  );
+  if (progressMatch) {
+    return {
+      action: parseInt(progressMatch[1]),
+      challenge1: parseInt(progressMatch[2]),
+      challenge2: parseInt(progressMatch[3]),
+    }
   }
 }
