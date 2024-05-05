@@ -604,30 +604,194 @@ article.campaign-entry {
       }
     }
 
-    & div {
+    & p {
       margin: 1em;
       font-weight: bold;
       &:before {
         content: "➡️";
         margin-right: 0.5em;
       }
-      &.roll {
-        opacity: 0.75;
-        &:before {
-          content: "🎲";
+    }
+    & dl.roll {
+      margin: 1em;
+      padding-left: 1em;
+      display: flex;
+      flex-wrap: wrap;
+      & * {
+        filter: invert(1) hue-rotate(180deg);
+      }
+      &:before {
+        content: "🎲";
+        margin-right: 0.5em;
+      }
+      & dt, & dd {
+        display: inline-block;
+        margin: auto;
+        height: 40px;
+        text-indent: -9999px;
+        background-position: center;
+        background-size: contain;
+        background-repeat: no-repeat;
+        text-align: center;
+      }
+      & dt {
+        margin: auto;
+        width: 30px;
+        &:has(+ .action-die) {
+          width: 0;
+          height: 0;
+          display: none;
         }
-        &.miss {
-          color: darkred;
+        &:has(+ .stat) {
+          background-image: url("/img/Shortcut_Images/Words/plus-t.svg");
         }
-        &.weak-hit {
-          color: darkgoldenrod;
+        &:has(+ .add) {
+          background-image: url("/img/Shortcut_Images/Words/plus-t.svg");
         }
-        &.strong-hit {
-          color: darkgreen;
+        &:has(+ .total) {
+          background-image: url("/img/Shortcut_Images/Words/equals-t.svg");
         }
-        &.roll.match:after {
-          content: "✅";
-          margin-left: 0.5em;
+        &:has(+ .challenge-die) {
+          &:before {
+            display: inline;
+            content: "\A";
+          }
+          background-image: url("/img/Shortcut_Images/Words/vs-t.svg");
+          width: 100%;
+          & ~ dt {
+            &:before {
+              content: none;
+            }
+            background-image: url("/img/Shortcut_Images/Words/and-t.svg");
+            width: 60px;
+          }
+        }
+      }
+      & dd {
+        width: 60px;
+        &.action-die {
+          &[data-value="1"] {
+            background-image: url("/img/Shortcut_Images/D6/d6-1-t.svg");
+          }
+          &[data-value="2"] {
+            background-image: url("/img/Shortcut_Images/D6/d6-2-t.svg");
+          }
+          &[data-value="3"] {
+            background-image: url("/img/Shortcut_Images/D6/d6-3-t.svg");
+          }
+          &[data-value="4"] {
+            background-image: url("/img/Shortcut_Images/D6/d6-4-t.svg");
+          }
+          &[data-value="5"] {
+            background-image: url("/img/Shortcut_Images/D6/d6-5-t.svg");
+          }
+          &[data-value="6"] {
+            background-image: url("/img/Shortcut_Images/D6/d6-6-t.svg");
+          }
+        }
+        &.stat {
+          &[data-value="1"] {
+            background-image: url("/img/Shortcut_Images/Stat/stat-1-t.svg");
+          }
+          &[data-value="2"] {
+            background-image: url("/img/Shortcut_Images/Stat/stat-2-t.svg");
+          }
+          &[data-value="3"] {
+            background-image: url("/img/Shortcut_Images/Stat/stat-3-t.svg");
+          }
+          &[data-value="4"] {
+            background-image: url("/img/Shortcut_Images/Stat/stat-4-t.svg");
+          }
+          &[data-value="5"] {
+            background-image: url("/img/Shortcut_Images/Stat/stat-5-t.svg");
+          }
+        }
+        &.add {
+          &[data-value="0"] {
+            background-image: url("/img/Shortcut_Images/Add/add-0-t.svg");
+          }
+          &[data-value="1"] {
+            background-image: url("/img/Shortcut_Images/Add/add-1-t.svg");
+          }
+          &[data-value="2"] {
+            background-image: url("/img/Shortcut_Images/Add/add-2-t.svg");
+          }
+          &[data-value="3"] {
+            background-image: url("/img/Shortcut_Images/Add/add-3-t.svg");
+          }
+          &[data-value="4"] {
+            background-image: url("/img/Shortcut_Images/Add/add-4-t.svg");
+          }
+          &[data-value="5"] {
+            background-image: url("/img/Shortcut_Images/Add/add-5-t.svg");
+          }
+        }
+        &.total {
+          &[data-value="0"] {
+            background-image: url("/img/Shortcut_Images/Total/total-0-t.svg");
+          }
+          &[data-value="1"] {
+            background-image: url("/img/Shortcut_Images/Total/total-1-t.svg");
+          }
+          &[data-value="2"] {
+            background-image: url("/img/Shortcut_Images/Total/total-2-t.svg");
+          }
+          &[data-value="3"] {
+            background-image: url("/img/Shortcut_Images/Total/total-3-t.svg");
+          }
+          &[data-value="4"] {
+            background-image: url("/img/Shortcut_Images/Total/total-4-t.svg");
+          }
+          &[data-value="5"] {
+            background-image: url("/img/Shortcut_Images/Total/total-5-t.svg");
+          }
+          &[data-value="6"] {
+            background-image: url("/img/Shortcut_Images/Total/total-6-t.svg");
+          }
+          &[data-value="7"] {
+            background-image: url("/img/Shortcut_Images/Total/total-7-t.svg");
+          }
+          &[data-value="8"] {
+            background-image: url("/img/Shortcut_Images/Total/total-8-t.svg");
+          }
+          &[data-value="9"] {
+            background-image: url("/img/Shortcut_Images/Total/total-9-t.svg");
+          }
+          &[data-value="10"] {
+            background-image: url("/img/Shortcut_Images/Total/total-10-t.svg");
+          }
+        }
+        &.challenge-die {
+          &[data-value="1"] {
+            background-image: url("/img/Shortcut_Images/D10/d10-1-t.svg");
+          }
+          &[data-value="2"] {
+            background-image: url("/img/Shortcut_Images/D10/d10-2-t.svg");
+          }
+          &[data-value="3"] {
+            background-image: url("/img/Shortcut_Images/D10/d10-3-t.svg");
+          }
+          &[data-value="4"] {
+            background-image: url("/img/Shortcut_Images/D10/d10-4-t.svg");
+          }
+          &[data-value="5"] {
+            background-image: url("/img/Shortcut_Images/D10/d10-5-t.svg");
+          }
+          &[data-value="6"] {
+            background-image: url("/img/Shortcut_Images/D10/d10-6-t.svg");
+          }
+          &[data-value="7"] {
+            background-image: url("/img/Shortcut_Images/D10/d10-7-t.svg");
+          }
+          &[data-value="8"] {
+            background-image: url("/img/Shortcut_Images/D10/d10-8-t.svg");
+          }
+          &[data-value="9"] {
+            background-image: url("/img/Shortcut_Images/D10/d10-9-t.svg");
+          }
+          &[data-value="10"] {
+            background-image: url("/img/Shortcut_Images/D10/d10-10-t.svg");
+          }
         }
       }
     }
@@ -667,6 +831,6 @@ article.campaign-entry {
 
 		<footer></footer>
 
-		<!-- This page `/blog/firstpost/` was built on 2024-05-04T16:17:41.494Z -->
+		<!-- This page `/blog/firstpost/` was built on 2024-05-05T04:03:04.591Z -->
 	</body>
 </html>

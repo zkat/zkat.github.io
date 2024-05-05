@@ -436,30 +436,194 @@ article.campaign-entry {
       }
     }
 
-    & div {
+    & p {
       margin: 1em;
       font-weight: bold;
       &:before {
         content: "➡️";
         margin-right: 0.5em;
       }
-      &.roll {
-        opacity: 0.75;
-        &:before {
-          content: "🎲";
+    }
+    & dl.roll {
+      margin: 1em;
+      padding-left: 1em;
+      display: flex;
+      flex-wrap: wrap;
+      & * {
+        filter: invert(1) hue-rotate(180deg);
+      }
+      &:before {
+        content: "🎲";
+        margin-right: 0.5em;
+      }
+      & dt, & dd {
+        display: inline-block;
+        margin: auto;
+        height: 40px;
+        text-indent: -9999px;
+        background-position: center;
+        background-size: contain;
+        background-repeat: no-repeat;
+        text-align: center;
+      }
+      & dt {
+        margin: auto;
+        width: 30px;
+        &:has(+ .action-die) {
+          width: 0;
+          height: 0;
+          display: none;
         }
-        &.miss {
-          color: darkred;
+        &:has(+ .stat) {
+          background-image: url("/img/Shortcut_Images/Words/plus-t.svg");
         }
-        &.weak-hit {
-          color: darkgoldenrod;
+        &:has(+ .add) {
+          background-image: url("/img/Shortcut_Images/Words/plus-t.svg");
         }
-        &.strong-hit {
-          color: darkgreen;
+        &:has(+ .total) {
+          background-image: url("/img/Shortcut_Images/Words/equals-t.svg");
         }
-        &.roll.match:after {
-          content: "✅";
-          margin-left: 0.5em;
+        &:has(+ .challenge-die) {
+          &:before {
+            display: inline;
+            content: "\A";
+          }
+          background-image: url("/img/Shortcut_Images/Words/vs-t.svg");
+          width: 100%;
+          & ~ dt {
+            &:before {
+              content: none;
+            }
+            background-image: url("/img/Shortcut_Images/Words/and-t.svg");
+            width: 60px;
+          }
+        }
+      }
+      & dd {
+        width: 60px;
+        &.action-die {
+          &[data-value="1"] {
+            background-image: url("/img/Shortcut_Images/D6/d6-1-t.svg");
+          }
+          &[data-value="2"] {
+            background-image: url("/img/Shortcut_Images/D6/d6-2-t.svg");
+          }
+          &[data-value="3"] {
+            background-image: url("/img/Shortcut_Images/D6/d6-3-t.svg");
+          }
+          &[data-value="4"] {
+            background-image: url("/img/Shortcut_Images/D6/d6-4-t.svg");
+          }
+          &[data-value="5"] {
+            background-image: url("/img/Shortcut_Images/D6/d6-5-t.svg");
+          }
+          &[data-value="6"] {
+            background-image: url("/img/Shortcut_Images/D6/d6-6-t.svg");
+          }
+        }
+        &.stat {
+          &[data-value="1"] {
+            background-image: url("/img/Shortcut_Images/Stat/stat-1-t.svg");
+          }
+          &[data-value="2"] {
+            background-image: url("/img/Shortcut_Images/Stat/stat-2-t.svg");
+          }
+          &[data-value="3"] {
+            background-image: url("/img/Shortcut_Images/Stat/stat-3-t.svg");
+          }
+          &[data-value="4"] {
+            background-image: url("/img/Shortcut_Images/Stat/stat-4-t.svg");
+          }
+          &[data-value="5"] {
+            background-image: url("/img/Shortcut_Images/Stat/stat-5-t.svg");
+          }
+        }
+        &.add {
+          &[data-value="0"] {
+            background-image: url("/img/Shortcut_Images/Add/add-0-t.svg");
+          }
+          &[data-value="1"] {
+            background-image: url("/img/Shortcut_Images/Add/add-1-t.svg");
+          }
+          &[data-value="2"] {
+            background-image: url("/img/Shortcut_Images/Add/add-2-t.svg");
+          }
+          &[data-value="3"] {
+            background-image: url("/img/Shortcut_Images/Add/add-3-t.svg");
+          }
+          &[data-value="4"] {
+            background-image: url("/img/Shortcut_Images/Add/add-4-t.svg");
+          }
+          &[data-value="5"] {
+            background-image: url("/img/Shortcut_Images/Add/add-5-t.svg");
+          }
+        }
+        &.total {
+          &[data-value="0"] {
+            background-image: url("/img/Shortcut_Images/Total/total-0-t.svg");
+          }
+          &[data-value="1"] {
+            background-image: url("/img/Shortcut_Images/Total/total-1-t.svg");
+          }
+          &[data-value="2"] {
+            background-image: url("/img/Shortcut_Images/Total/total-2-t.svg");
+          }
+          &[data-value="3"] {
+            background-image: url("/img/Shortcut_Images/Total/total-3-t.svg");
+          }
+          &[data-value="4"] {
+            background-image: url("/img/Shortcut_Images/Total/total-4-t.svg");
+          }
+          &[data-value="5"] {
+            background-image: url("/img/Shortcut_Images/Total/total-5-t.svg");
+          }
+          &[data-value="6"] {
+            background-image: url("/img/Shortcut_Images/Total/total-6-t.svg");
+          }
+          &[data-value="7"] {
+            background-image: url("/img/Shortcut_Images/Total/total-7-t.svg");
+          }
+          &[data-value="8"] {
+            background-image: url("/img/Shortcut_Images/Total/total-8-t.svg");
+          }
+          &[data-value="9"] {
+            background-image: url("/img/Shortcut_Images/Total/total-9-t.svg");
+          }
+          &[data-value="10"] {
+            background-image: url("/img/Shortcut_Images/Total/total-10-t.svg");
+          }
+        }
+        &.challenge-die {
+          &[data-value="1"] {
+            background-image: url("/img/Shortcut_Images/D10/d10-1-t.svg");
+          }
+          &[data-value="2"] {
+            background-image: url("/img/Shortcut_Images/D10/d10-2-t.svg");
+          }
+          &[data-value="3"] {
+            background-image: url("/img/Shortcut_Images/D10/d10-3-t.svg");
+          }
+          &[data-value="4"] {
+            background-image: url("/img/Shortcut_Images/D10/d10-4-t.svg");
+          }
+          &[data-value="5"] {
+            background-image: url("/img/Shortcut_Images/D10/d10-5-t.svg");
+          }
+          &[data-value="6"] {
+            background-image: url("/img/Shortcut_Images/D10/d10-6-t.svg");
+          }
+          &[data-value="7"] {
+            background-image: url("/img/Shortcut_Images/D10/d10-7-t.svg");
+          }
+          &[data-value="8"] {
+            background-image: url("/img/Shortcut_Images/D10/d10-8-t.svg");
+          }
+          &[data-value="9"] {
+            background-image: url("/img/Shortcut_Images/D10/d10-9-t.svg");
+          }
+          &[data-value="10"] {
+            background-image: url("/img/Shortcut_Images/D10/d10-10-t.svg");
+          }
         }
       }
     }
@@ -503,7 +667,7 @@ article.campaign-entry {
 
 
 
-  <aside class="action"><header>Set a Flag</header><div>Death, corpses, imperialism</div></aside><p><span style="-webkit-text-size-adjust: 100%;">Becoming a healer and joining Caduceus was never really Zoya’s plan in life. Like so many around them, they were just another soul among the masses in the Terminus. But destiny has a way of wrecking one’s expectations like that.</span></p><p><span style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); -webkit-text-size-adjust: 100%;">When they were a teenager, Zoya and their younger brother Kylar were caught in an attack by the Vanguard of the Ebon Order on their home town. The empire was using the attack to suppress “disloyalty” from Zoya’s home planet.&nbsp;</span><span style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); -webkit-text-size-adjust: 100%;">It took three days for rescuers to pull Zoya and Kylar out of the rubble that used to be their apartment building. Two days too late to save Kylar.</span><span style="-webkit-text-size-adjust: 100%;"><br></span></p><p><span style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); -webkit-text-size-adjust: 100%;">He’d held on as long as he could, but Zoya had to sit there, wounded and helpless, as they watched their brother fade. He was so afraid, and there was nothing they could do. Zoya sat with his remains for days before their rescue.</span><span style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); -webkit-text-size-adjust: 100%;"><br></span></p><p><span style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); -webkit-text-size-adjust: 100%;">After getting free, Zoya learned that their family had also been caught in the rest of the attack. But it turned out they wouldn’t be alone. Kylar, it turned out, never left their side. They remained tethered to this world, tethered to Zoya, where he would sometimes appear in her dreams, or in daytime visions, as a variety of floating lanterns, to speak to her.</span><span style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); -webkit-text-size-adjust: 100%;"><br></span></p><p><span style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); -webkit-text-size-adjust: 100%;">He was there, Zoya saw, when they were inducted into Caduceus, a Forge-wide faction of healers who would send out their well-trained members beyond the Terminus systems. And he would go with her on her journey to the stars. And with the knowledge gained from Caduceus and their explorations, perhaps one day they would be able to bring Kylar back—or finally lay him to rest.</span></p><p><span style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); -webkit-text-size-adjust: 100%;">With the Vanguard encroaching deeper over the years, staying behind no longer felt like a choice they could make. Like so many others, Zoya was scattered to the wind as their home was essentially sold for parts to the ruling class, their history and culture slowly erased—or at least twisted into something new.&nbsp;</span><span style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); -webkit-text-size-adjust: 100%;"><br></span></p><p><span style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); -webkit-text-size-adjust: 100%;">Being part of Caduceus fit them, too, in the end—they were a kind, empathic person with a deep reverence for life and they found deep fulfillment in their work and mission.</span><span style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); -webkit-text-size-adjust: 100%;"><br></span></p>
+  <aside class="action"><header>Set a Flag</header><p class="action-item">Death, corpses, imperialism</p></aside><p><span style="-webkit-text-size-adjust: 100%;">Becoming a healer and joining Caduceus was never really Zoya’s plan in life. Like so many around them, they were just another soul among the masses in the Terminus. But destiny has a way of wrecking one’s expectations like that.</span></p><p><span style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); -webkit-text-size-adjust: 100%;">When they were a teenager, Zoya and their younger brother Kylar were caught in an attack by the Vanguard of the Ebon Order on their home town. The empire was using the attack to suppress “disloyalty” from Zoya’s home planet.&nbsp;</span><span style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); -webkit-text-size-adjust: 100%;">It took three days for rescuers to pull Zoya and Kylar out of the rubble that used to be their apartment building. Two days too late to save Kylar.</span><span style="-webkit-text-size-adjust: 100%;"><br></span></p><p><span style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); -webkit-text-size-adjust: 100%;">He’d held on as long as he could, but Zoya had to sit there, wounded and helpless, as they watched their brother fade. He was so afraid, and there was nothing they could do. Zoya sat with his remains for days before their rescue.</span><span style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); -webkit-text-size-adjust: 100%;"><br></span></p><p><span style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); -webkit-text-size-adjust: 100%;">After getting free, Zoya learned that their family had also been caught in the rest of the attack. But it turned out they wouldn’t be alone. Kylar, it turned out, never left their side. They remained tethered to this world, tethered to Zoya, where he would sometimes appear in her dreams, or in daytime visions, as a variety of floating lanterns, to speak to her.</span><span style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); -webkit-text-size-adjust: 100%;"><br></span></p><p><span style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); -webkit-text-size-adjust: 100%;">He was there, Zoya saw, when they were inducted into Caduceus, a Forge-wide faction of healers who would send out their well-trained members beyond the Terminus systems. And he would go with her on her journey to the stars. And with the knowledge gained from Caduceus and their explorations, perhaps one day they would be able to bring Kylar back—or finally lay him to rest.</span></p><p><span style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); -webkit-text-size-adjust: 100%;">With the Vanguard encroaching deeper over the years, staying behind no longer felt like a choice they could make. Like so many others, Zoya was scattered to the wind as their home was essentially sold for parts to the ruling class, their history and culture slowly erased—or at least twisted into something new.&nbsp;</span><span style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); -webkit-text-size-adjust: 100%;"><br></span></p><p><span style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); -webkit-text-size-adjust: 100%;">Being part of Caduceus fit them, too, in the end—they were a kind, empathic person with a deep reverence for life and they found deep fulfillment in their work and mission.</span><span style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); -webkit-text-size-adjust: 100%;"><br></span></p>
 
   <hr>
 
@@ -516,6 +680,6 @@ article.campaign-entry {
 
 		<footer></footer>
 
-		<!-- This page `/campaigns/a-lantern-in-the-void/lore/zoya-s-backstory/` was built on 2024-05-04T16:17:42.248Z -->
+		<!-- This page `/campaigns/a-lantern-in-the-void/lore/zoya-s-backstory/` was built on 2024-05-05T04:03:05.555Z -->
 	</body>
 </html>
