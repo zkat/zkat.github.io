@@ -303,9 +303,12 @@ table {
   .entry-card {
     font-size: 1.4em;
   }
+  /* dl.roll {
+    grid-template-columns: repeat(3, 1fr);
+  } */
 }
 
-@media (min-width: 1025px) {
+@media (min-width: 768px) {
   /* big landscape tablets, laptops, and desktops */
   .entry-cards {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -313,9 +316,12 @@ table {
   .entry-card {
     font-size: 1em;
   }
+  /* dl.roll {
+    grid-template-columns: repeat(5, 1fr);
+  } */
 }
 
-@media (min-width: 1281px) {
+@media (min-width: 1024px) {
   /* hi-res laptops and desktops */
   .entry-cards {
     grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -323,6 +329,9 @@ table {
   .entry-card {
     font-size: 0.8em;
   }
+  /* dl.roll {
+    grid-template-columns: repeat(7, 1fr);
+  } */
 }
 
 article.entry-card {
@@ -447,14 +456,17 @@ article.campaign-entry {
     & dl.roll {
       margin: 1em;
       padding-left: 1em;
-      display: flex;
-      flex-wrap: wrap;
+      display: grid;
+      @media (min-width: 320px) {
+        display: flex;
+        flex-wrap: wrap;
+      }
+      @media (min-width: 640px) {
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+      }
       & * {
         filter: invert(1) hue-rotate(180deg);
-      }
-      &:before {
-        content: "🎲";
-        margin-right: 0.5em;
       }
       & dt, & dd {
         display: inline-block;
@@ -466,9 +478,52 @@ article.campaign-entry {
         background-repeat: no-repeat;
         text-align: center;
       }
+      &:after {
+        font-size: 2em;
+        font-weight: bold;
+        text-align: center;
+        margin-right: auto;
+      }
+      &.strong-hit {
+        &:after {
+          content: "Strong Hit";
+          color: green;
+        }
+        &.match:after {
+          content: "Strong Hit (Match)";
+        }
+        & dd.outcome {
+          background-image: url("/img/Shortcut_Images/Outcomes/outcome-strong-hit.svg");
+        }
+      }
+      &.weak-hit {
+        &:after {
+          content: "Weak Hit";
+          color: goldenrod;
+        }
+        &.match:after {
+          content: "Weak Hit (Match)";
+        }
+        & dd.outcome {
+          background-image: url("/img/Shortcut_Images/Outcomes/outcome-weak-hit.svg");
+        }
+      }
+      &.miss {
+        &:after {
+          content: "Miss";
+          color: red;
+        }
+        &.match:after {
+          content: "Miss (Match)";
+        }
+        & dd.outcome {
+          background-image: url("/img/Shortcut_Images/Outcomes/outcome-miss.svg");
+        }
+      }
       & dt {
         margin: auto;
         width: 30px;
+        flex-basis: 1em;
         &:has(+ .action-die) {
           width: 0;
           height: 0;
@@ -482,15 +537,22 @@ article.campaign-entry {
         }
         &:has(+ .total) {
           background-image: url("/img/Shortcut_Images/Words/equals-t.svg");
+          width: 100%;
+          flex-basis: initial;
+          &:before {
+            display: inline;
+            content: "\A";
+          }
         }
         &:has(+ .challenge-die) {
           &:before {
             display: inline;
             content: "\A";
           }
+          flex-basis: initial;
           background-image: url("/img/Shortcut_Images/Words/vs-t.svg");
           width: 100%;
-          & ~ dt {
+          & ~ dt:has(+ .challenge-die) {
             &:before {
               content: none;
             }
@@ -498,10 +560,20 @@ article.campaign-entry {
             width: 60px;
           }
         }
+        &:has(+ .outcome) {
+          background-image: url("/img/Shortcut_Images/Words/equals-t.svg");
+          width: 100%;
+          flex-basis: initial;
+          &:before {
+            display: inline;
+            content: "\A";
+          }
+        }
       }
       & dd {
         width: 60px;
         &.action-die {
+          grid-column-start: 1;
           &[data-value="1"] {
             background-image: url("/img/Shortcut_Images/D6/d6-1-t.svg");
           }
@@ -680,6 +752,6 @@ article.campaign-entry {
 
 		<footer></footer>
 
-		<!-- This page `/campaigns/a-lantern-in-the-void/lore/faction-vanguards-of-the-ebon-order/` was built on 2024-05-05T04:03:05.517Z -->
+		<!-- This page `/campaigns/a-lantern-in-the-void/lore/faction-vanguards-of-the-ebon-order/` was built on 2024-05-05T07:13:25.231Z -->
 	</body>
 </html>

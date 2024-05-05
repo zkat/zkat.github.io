@@ -303,9 +303,12 @@ table {
   .entry-card {
     font-size: 1.4em;
   }
+  /* dl.roll {
+    grid-template-columns: repeat(3, 1fr);
+  } */
 }
 
-@media (min-width: 1025px) {
+@media (min-width: 768px) {
   /* big landscape tablets, laptops, and desktops */
   .entry-cards {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -313,9 +316,12 @@ table {
   .entry-card {
     font-size: 1em;
   }
+  /* dl.roll {
+    grid-template-columns: repeat(5, 1fr);
+  } */
 }
 
-@media (min-width: 1281px) {
+@media (min-width: 1024px) {
   /* hi-res laptops and desktops */
   .entry-cards {
     grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -323,6 +329,9 @@ table {
   .entry-card {
     font-size: 0.8em;
   }
+  /* dl.roll {
+    grid-template-columns: repeat(7, 1fr);
+  } */
 }
 
 article.entry-card {
@@ -447,14 +456,17 @@ article.campaign-entry {
     & dl.roll {
       margin: 1em;
       padding-left: 1em;
-      display: flex;
-      flex-wrap: wrap;
+      display: grid;
+      @media (min-width: 320px) {
+        display: flex;
+        flex-wrap: wrap;
+      }
+      @media (min-width: 640px) {
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+      }
       & * {
         filter: invert(1) hue-rotate(180deg);
-      }
-      &:before {
-        content: "🎲";
-        margin-right: 0.5em;
       }
       & dt, & dd {
         display: inline-block;
@@ -466,9 +478,52 @@ article.campaign-entry {
         background-repeat: no-repeat;
         text-align: center;
       }
+      &:after {
+        font-size: 2em;
+        font-weight: bold;
+        text-align: center;
+        margin-right: auto;
+      }
+      &.strong-hit {
+        &:after {
+          content: "Strong Hit";
+          color: green;
+        }
+        &.match:after {
+          content: "Strong Hit (Match)";
+        }
+        & dd.outcome {
+          background-image: url("/img/Shortcut_Images/Outcomes/outcome-strong-hit.svg");
+        }
+      }
+      &.weak-hit {
+        &:after {
+          content: "Weak Hit";
+          color: goldenrod;
+        }
+        &.match:after {
+          content: "Weak Hit (Match)";
+        }
+        & dd.outcome {
+          background-image: url("/img/Shortcut_Images/Outcomes/outcome-weak-hit.svg");
+        }
+      }
+      &.miss {
+        &:after {
+          content: "Miss";
+          color: red;
+        }
+        &.match:after {
+          content: "Miss (Match)";
+        }
+        & dd.outcome {
+          background-image: url("/img/Shortcut_Images/Outcomes/outcome-miss.svg");
+        }
+      }
       & dt {
         margin: auto;
         width: 30px;
+        flex-basis: 1em;
         &:has(+ .action-die) {
           width: 0;
           height: 0;
@@ -482,15 +537,22 @@ article.campaign-entry {
         }
         &:has(+ .total) {
           background-image: url("/img/Shortcut_Images/Words/equals-t.svg");
+          width: 100%;
+          flex-basis: initial;
+          &:before {
+            display: inline;
+            content: "\A";
+          }
         }
         &:has(+ .challenge-die) {
           &:before {
             display: inline;
             content: "\A";
           }
+          flex-basis: initial;
           background-image: url("/img/Shortcut_Images/Words/vs-t.svg");
           width: 100%;
-          & ~ dt {
+          & ~ dt:has(+ .challenge-die) {
             &:before {
               content: none;
             }
@@ -498,10 +560,20 @@ article.campaign-entry {
             width: 60px;
           }
         }
+        &:has(+ .outcome) {
+          background-image: url("/img/Shortcut_Images/Words/equals-t.svg");
+          width: 100%;
+          flex-basis: initial;
+          &:before {
+            display: inline;
+            content: "\A";
+          }
+        }
       }
       & dd {
         width: 60px;
         &.action-die {
+          grid-column-start: 1;
           &[data-value="1"] {
             background-image: url("/img/Shortcut_Images/D6/d6-1-t.svg");
           }
@@ -680,6 +752,8 @@ article.campaign-entry {
       <dd class="challenge-die" data-value="7">7</dd>
       <dt>Challenge Die 2</dt>
       <dd class="challenge-die" data-value="1">1</dd>
+      <dt>Outcome</dt>
+      <dd class="outcome">Weak Hit</dd>
     </dl><p class="action-item">-1 health, -1 spirit</p><p class="action-item">+ progress</p></aside><p>The Vault was pitch black inside. Even with the flashlights, it seemed like the light barely penetrated the darkness. The walls were rough, mottled black and sometimes a brownish color—clearly fitting the description for Black Iron. Zoya had never seen so much of it, much less in one place. They probably never would, with how rare these findings were. They weren’t sure they’d even heard of such a thing.&nbsp;</p><p>Navigating this place felt like navigating a maze. At some points, they were sure that a place they had backtracked to had been previously open, only to find a solid wall where a hallway or an intersection would have been.&nbsp;</p><p>As they delved deeper into this place, something else weighed on them. A deep sense of foreboding and doom overcame them and they stopped in their tracks, gasping for breath behind their respirator as they clutched their chest. There was pain, too, and they felt lightheaded.&nbsp;</p><p>The masks should’ve taken care of this. They quickly analyzed themself and realized that it wasn’t the air causing this: it was something else entirely. Something ever-present in this space that they couldn’t pick out.&nbsp;</p><p>They heard coughs coming from ahead, as one of the troops fell to their knees and started heaving. In a panic, they reached for their mask.</p><p>“No! Don’t!” Was all Zoya could say before the panicking soldier exposed themself to the toxic air and immediately collapsed, convulsing violently on the floor.</p><p>Zoya rushed over and shoved the mask back in place, then laid their other hand on the trooper’s chest. There wasn’t much time.&nbsp;</p><aside class="action"><header>Heal</header><dl class="roll weak-hit">
       <dt>Action</dt>
       <dd class="action-die" data-value="4">4</dd>
@@ -693,6 +767,8 @@ article.campaign-entry {
       <dd class="challenge-die" data-value="9">9</dd>
       <dt>Challenge Die 2</dt>
       <dd class="challenge-die" data-value="5">5</dd>
+      <dt>Outcome</dt>
+      <dd class="outcome">Weak Hit</dd>
     </dl><p class="action-item">-2 momentum</p></aside><p>It took them longer than they would’ve liked to identify the problem, and it would take them even longer to treat and stabilize the patient.&nbsp;</p><p>They worked as fast as they could. Even the Captain stood by quietly. Nobody said a word. The gravity of what they were doing was slowly sinking in for everyone.&nbsp;</p><p>“We can’t let this one stay in here. They need fresh air and rest. I’ve done what I can, but they’ll only get worse if they stay exposed to… whatever this is.” They looked at the Captain seriously, who clicked her tongue.&nbsp;</p><p>“Private Wolfe”, the Captain gestured towards one of the rear guard troops. “Take Corporal Reyes with you and wait outside.” She looked down at the Corporal with genuine concern on her face, “take care of them. We’ll see you soon.”</p><p>The Private hesitated for a moment but chose not to speak his thoughts, “yes sir. Good hunting, sir.”</p><p>He leaned down to pick up the Corporal and foisted them over his shoulder, before hurrying off in the direction they had all come from.&nbsp;</p><p>“Alright, that’s enough of that show. Everyone, keep moving.”</p><p>Zoya and the Captain’s eyes met for a moment. Was this really a good idea? The Captain turned away and continued onward, as Zoya hurried to get their supplies back in their pack and rejoin the group.</p><p>The remaining seven of the group continued on, deeper into the dark, oppressive maze.&nbsp;</p><aside class="action"><header>Undertake an Expedition</header><p class="action-item">Stay vigilant (+ wits)</p><dl class="roll miss">
       <dt>Action</dt>
       <dd class="action-die" data-value="1">1</dd>
@@ -706,6 +782,8 @@ article.campaign-entry {
       <dd class="challenge-die" data-value="10">10</dd>
       <dt>Challenge Die 2</dt>
       <dd class="challenge-die" data-value="8">8</dd>
+      <dt>Outcome</dt>
+      <dd class="outcome">Miss</dd>
     </dl></aside><aside class="action"><header>Pay the Price</header><p class="action-item"> You are stressed</p><p class="action-item">-1 spirit</p></aside><p>The deep sense of doom only got worse as they continued on. Zoya felt nauseous. They noticed others becoming incredibly uncomfortable. It didn’t take a nanite scan to figure out they were feeling this, too.&nbsp;</p><p>And then, as they rounded a corner, they realized: they’d been going in circles. There was a large scratch on the wall that they’d noticed maybe an hour before, and they’d just come across it again.</p><p>Zoya felt their stomach drop, and stopped in their tracks, “Captain, I think…”</p><p>“I know. I suspected as much for a while.” They stepped towards the mark on the wall. “I’m more concerned about what made this. We should try a different route this time.”</p><p>Zoya followed the Captain’s gaze. Their brow furrowed, and they unholstered their sidearm.&nbsp;<span style="-webkit-text-size-adjust: 100%;">They muttered under their breath, “can you feel anything at all about what’s going on, Ky?”</span></p><p>They heard no voice this time, but they did see a glow coming from over their shoulder, focusing in the direction they had just come from. Or thought they’d come from.&nbsp;</p><p>“I have an idea. This way.” And they took the initiative to head in that direction.</p><p><span style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">“Right.” The Captain gave them an amused look. Who was giving orders here? Either way, they signaled to their squad and followed along with Zoya, everyone eventually falling into their formation.&nbsp;</span><br></p><aside class="action"><header>Undertake an Expedition</header><p class="action-item">Stay vigilant (+wits)</p><p class="action-item">+1 Haunted</p><dl class="roll weak-hit">
       <dt>Action</dt>
       <dd class="action-die" data-value="1">1</dd>
@@ -719,6 +797,8 @@ article.campaign-entry {
       <dd class="challenge-die" data-value="4">4</dd>
       <dt>Challenge Die 2</dt>
       <dd class="challenge-die" data-value="1">1</dd>
+      <dt>Outcome</dt>
+      <dd class="outcome">Weak Hit</dd>
     </dl><p class="action-item">+ progress</p></aside><p>The longer they went, the thicker the air felt. A couple of people had to stop along the way, but no one had to go back. Their luck would likely only last so long: they needed to hurry.&nbsp;</p><p>Eventually, they came to a large, domed room with a large pit in the middle. Spiraling down the pit was a wide ramp seemingly carved into its walls. It was dark enough and deep enough that they couldn’t see the bottom when they leaned over to look.&nbsp;</p><p>A voice called from the back of the group, “Hey! Look over here!”</p><p>The entire group turned towards the trooper and looked at what at their feet: a literal pile of what was clearly loose Black Iron chunks. Enough for the group to carry some back as a prize. Black Iron typically required very advanced and expensive-to-operate equipment, so finding some like this was significant: that pile alone, which the group could reasonably carry by spreading across their packs, could probably fund over a year of wages for the entire squad and their families, with some to spare.</p><p>While the Captain organized the group into splitting up and packing the precious metal, Zoya took their chance to sit and breathe for a moment. The sticky sweat accumulating under their respirator was uncomfortable and they couldn’t just wipe it, and their pack was heavy and hurting their back—And they made a good guess that Captain Malek would make them carry some of the Iron as well, so it was about to get worse.</p><p>As they sat, they took the opportunity to further analyze the issues with the atmosphere in the Vault, in hopes of finding more clues as to its nature—and whether there was anything to be done about it.</p><p>Their hands started to glow again.&nbsp;</p><aside class="action"><header>Gather Information</header><dl class="roll weak-hit">
       <dt>Action</dt>
       <dd class="action-die" data-value="2">2</dd>
@@ -732,6 +812,8 @@ article.campaign-entry {
       <dd class="challenge-die" data-value="6">6</dd>
       <dt>Challenge Die 2</dt>
       <dd class="challenge-die" data-value="3">3</dd>
+      <dt>Outcome</dt>
+      <dd class="outcome">Weak Hit</dd>
     </dl><p class="action-item">The information provides new insights, but also complicates your quest. Envision what you discover.</p><p class="action-item">+1 momentum</p></aside><p>Zoya’s breath grew slow and steady as they closed their eyes and focused. Nanites required care when operating. As they centered themself, they felt the readings starting to come in: the strange feeling everyone had been experiencing was definitely a more focused version of what the settlement folk had been going through. That didn’t give them much time before the crew also succumbed, since things seemed to be moving faster.&nbsp;</p><p>They weren’t sure whether to consider it good news, but they also detected that the strange energy was definitely emanating from a specific point, spreading outwards like waves. Zoya didn’t have an exact lock on where that might be, but they managed to collect enough detail to point them in the right direction.&nbsp;</p><p>And then, perhaps, they would be able to directly analyze and deal with the source.</p><p>Zoya lowered their hands and slowly looked to their side. Captain Malek was standing there—or had been standing there—waiting to usher them along.&nbsp;</p><p>“We need to go down. And North.”</p><p>“Do you know what we’ll find there?” Asked the Captain.&nbsp;</p><p>“Not yet, but I think we should so be on guard. We don’t have much time.”</p><aside class="action"><header>+1 tension clock, “overwhelmed by energy”</header></aside><p>“Let’s get down there, then.”</p><p>They nodded to each other as the Captain signaled for everyone to get a move on. They fell back in formation as they headed down, into the abyss.</p><aside class="action"><header>Undertake an Expedition</header><p class="action-item">Stay vigilant (+ wits)</p><dl class="roll strong-hit">
       <dt>Action</dt>
       <dd class="action-die" data-value="3">3</dd>
@@ -745,6 +827,8 @@ article.campaign-entry {
       <dd class="challenge-die" data-value="3">3</dd>
       <dt>Challenge Die 2</dt>
       <dd class="challenge-die" data-value="4">4</dd>
+      <dt>Outcome</dt>
+      <dd class="outcome">Strong Hit</dd>
     </dl><p class="action-item">+1 tension clock, “overwhelmed by energy”</p></aside><p>It took them nearly an hour to descend the chasm. This time, everyone held it together, even as the pressure from the emanations became stronger, now almost like a pounding headache.</p><p>At the bottom, they came to an enormous gate. To the North, as Zoya predicted.</p><p>“I think this is going to be the center of the place. Are your people ready?”</p><p>The Captain grinned at Zoya. Anyone else acting like they were in charge would annoy them, but Zoya had gotten on their good side somehow, so they just played along.</p><p>“Ready as we’ll ever be.”</p><p>The group’s vanguard stepped forward and pushed open the gates. It took three people to push just one of the doors open, and they weren’t even locked. Just enormous, heavy, thick slabs of Black Iron.</p><p>They immediately felt it, the waves of energy washing over them. The pressure they’d been feeling this whole time felt like a breeze in comparison. Several troopers fell to their knees, clutching their heads, when it first hit.</p><p>Zoya almost fell, too, but they’d been bracing themself, expecting something like this to happen. “We have to push through! It’ll be more diffuse when we’re past the choke point!”, they yelled, and everyone decided that was as good a decision as any. They just wanted it to be over and any relief was welcome.</p><p>As they finished making it through, they pulled the door closed again—and things improved. Having that open gap had created a focus point for the energy to rush through. With nowhere to go with such intensity, it had died does to a dull roar once again, much to everyone’s relief.&nbsp;</p><p>Ahead of them, now, the journey seemed simpler. They found themselves in a long, dark hallway. No one could see where it ended, and it was wide enough that sometimes they couldn’t see the sides, but there was only one way to go now: straight.&nbsp;</p><aside class="action"><header>Undertake an Expedition</header><p class="action-item">Stay vigilant (+ wits)</p><dl class="roll miss">
       <dt>Action</dt>
       <dd class="action-die" data-value="1">1</dd>
@@ -758,6 +842,8 @@ article.campaign-entry {
       <dd class="challenge-die" data-value="8">8</dd>
       <dt>Challenge Die 2</dt>
       <dd class="challenge-die" data-value="3">3</dd>
+      <dt>Outcome</dt>
+      <dd class="outcome">Miss</dd>
     </dl><p class="action-item">Burn momentum 4</p><p class="action-item">-1 health, -1 spirit</p><p class="action-item">+1 expedition progress</p><p class="action-item">+1 tension clock, “overwhelmed by energy”</p></aside><p>Unfortunately, their reprieve was short-lived. As they moved further and further down the passageway, they only fell sicker. Zoya coughed and tasted the familiar flavor of iron—blood—in their mouth. Their bodies wouldn’t be able to take much more of this, and Zoya began to wonder if they would even be able to go back. At this point, they were in too deep: they had to stop this effect altogether.</p><p>Their only hope, Zoya thought, might be behind these two enormous doors they were now approaching.</p><aside class="action"><header>Finish an Expedition</header><p class="action-item">Progress Roll: Expedition into the Black Vault :Strong Hit with a match = 8 vs 2 | 2</p><p class="action-item">+1 box discoveries (upgraded to “formidable” rank because of match)</p><p class="action-item">Cancel clock: “overwhelmed by energy”</p><p class="action-item">Vault Oracle, Vault Purpose: Generation or transformation of energy, Shelter for inhabitants</p></aside><aside class="action"><header>Earn Experience</header><p class="action-item">+2 experience from discoveries legacy box</p></aside><p>These doors were bigger, yet lighter. As they pushed them open, light flooded in from the other side, almost blinding after all this time in the darkness.&nbsp;<span style="-webkit-text-size-adjust: 100%;">Zoya shielded their eyes.&nbsp;</span></p><p><span style="-webkit-text-size-adjust: 100%;">As everyone’s eyes adjusted, they felt their jaws go slack.</span></p><p><span style="-webkit-text-size-adjust: 100%;">A large garden, as if the jungle outside had been tamed, spread out ahead of and below them so far that they couldn’t see the other end. Another ramp led considerably down into a carefully groomed path. Tubes and lines intermingled with the vegetation, humming with a familiar sound reminiscent of the throbbing in their heads they had just escaped. And they let them down the path, deeper into the garden.</span></p><p><span style="-webkit-text-size-adjust: 100%;">“It’s… beautiful”, was all that escaped Zoya’s lips. Everyone stopped to take in the view.&nbsp;</span></p><p><span style="-webkit-text-size-adjust: 100%;">And then it occurred to them. Their hands glowed again for a moment, “the air is clear here. We don’t need the respirators anymore.” And they took theirs off. They took the opportunity to spit a glob of coagulated blood at the ground and take a swig of water to clear it all out. There was a wave of relief through the group as they all freed their faces.</span></p><p>Captain Malek, though, decided they had taken enough of a moment and signaled everyone back to attention, “we still have a job to do here, people, drink your water, and let’s move again. We’ll follow the path, that should lead to the core.”</p><p>And indeed it did. It didn’t take them too long to arrive at a large, building-sized machine. It was pumping and steaming and had all sorts of pipes and cables and lines and antennae coming out of it. At the foot of it, a series of panels with blinking lights and indecipherable symbols glowed.</p><p>“Let me take a look, Captain.” Zoya said, eyes locked onto the machine.&nbsp;</p><p>“Be my guest. Think you can figure it out?”</p><p>“I’ll try,” they smiled. A tired smile. They were ready for this to be over. They stepped up to the panels, and concentrated again. Their eyes emanated a gentle blue energy, then their hands as they lifted them.</p><aside class="action"><header>Gather Information</header><dl class="roll weak-hit">
       <dt>Action</dt>
       <dd class="action-die" data-value="5">5</dd>
@@ -771,6 +857,8 @@ article.campaign-entry {
       <dd class="challenge-die" data-value="8">8</dd>
       <dt>Challenge Die 2</dt>
       <dd class="challenge-die" data-value="5">5</dd>
+      <dt>Outcome</dt>
+      <dd class="outcome">Weak Hit</dd>
     </dl><p class="action-item">+1 momentum</p></aside><p>“It’s some kind of energy hub. It’s extracting its power from all this vegetation, but somehow still turning that towards a feedback loop where the vegetation is further nourished. It acts as a closed system. It could operate forever. I think… it’s just better to make the place habitable.”</p><p>They took a step back and gazed up at the towering structure before then, puffs of steam escaping here and there as it gurgled and sputtered.</p><p>“Can you shut it down safely?” Asked the Captain.&nbsp;</p><p>“I don’t know where I would even begin. I could barely put two and two together about what it does. Working with it, and what its full purpose was, is beyond all of us, I think.”</p><p>Zoya felt a twinge of sadness. Such a thing was possibly very meaningful at one point in time, now left to operate for eternity, divorced from its true purpose, left unused. And that knew what the Captain would have to do next.&nbsp;</p><p>Captain Malek gave a signal to some of her troops, “only one thing we can do, then. If this is the source of all this shit, it needs to be taken care of.”</p><p>They glanced at Zoya, “unless you think it’ll blow up the planet or something.”</p><p>They shook their head, still feeling the regret in them, “No, I think it’s the only thing we can do.”</p><p>Once the charges were placed and everyone was at a safe distance, the donation blew the device to pieces. The hum stopped, the room dimmed. And it was simply… quiet.</p><p>No one said a word. They’d finished what they came here to do, but it didn’t quite sit right with anyone. Regret wasn’t quite the word, but it was certainly something they’d wished had resolved differently.</p><p>Their journey back out of the Vault was uneventful. The air had cleared and the energy was gone, replaced by the solemn silence of the group.</p><p>They decided to have a quiet celebration that night. Muted, compared to what might’ve been for the prize they had come to, and the rewards they were not carrying in their packs as just a taste of things to come.</p><p>The Captain sat next to Zoya as the fire crackled before them that night, “you did a hell of a job there, Teacher. I’m sorry I ever doubted you.” They offered a hand, with a small grin.&nbsp;</p><p>Zoya took and shook it, “I can’t say I expected any less of you, Captain, but thanks for keeping us alive and doing the thing that needed to be done.”</p><p>“I’ll put in a good word for you when we get back. You’ll have an easier time of it that way. Maybe Lucas will even stop giving you so much shit.” She laughed.</p><p>Zoya couldn’t help but chuckle at that. Note that seemed unlikely. Their face grew more serious as they remembered something. They looked around and saw everyone else quite a ways away, then looked back at the Captain, “I could tell you were sick the moment we met. You were just gritting your teeth through the pain, this whole time, and managed to hold on even when it was at its worse in there. I don’t know how you managed to hold on.”</p><p>The Captain’s smile faded, and she nodded, trying to collect her words, “I have things I still need to do. I wasn’t about to let that take me. I refused to let it. That would’ve meant giving up on so much.”</p><p>Zoya pulled their knees up to their chest and hugged them, “I’m thankful that you managed that. I just hope you don’t have to do something like that ever again.” The flames danced in their eyes.&nbsp;</p><p>“Teacher, I would do this a hundred times over if that’s what it took.” She said, taking a swig of her canteen.&nbsp;</p><p>After that, they sat in silence, the warmth of the fire calming them as the jungle night sang its deafening song.</p><aside class="action"><header>Develop Your Relationship</header></aside><p>They took their time on their way back to Florin. It was an uneventful journey, with little conversation or much ado. Everyone was just glad it was over, in the end.</p><aside class="action"><header>Clock cancelled: Ria succumbs</header></aside>
 
   <hr>
@@ -784,6 +872,6 @@ article.campaign-entry {
 
 		<footer></footer>
 
-		<!-- This page `/campaigns/a-lantern-in-the-void/chapter-03-the-black-vault/` was built on 2024-05-05T04:03:05.537Z -->
+		<!-- This page `/campaigns/a-lantern-in-the-void/chapter-03-the-black-vault/` was built on 2024-05-05T07:13:25.148Z -->
 	</body>
 </html>

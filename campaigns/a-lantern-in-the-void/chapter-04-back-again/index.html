@@ -303,9 +303,12 @@ table {
   .entry-card {
     font-size: 1.4em;
   }
+  /* dl.roll {
+    grid-template-columns: repeat(3, 1fr);
+  } */
 }
 
-@media (min-width: 1025px) {
+@media (min-width: 768px) {
   /* big landscape tablets, laptops, and desktops */
   .entry-cards {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -313,9 +316,12 @@ table {
   .entry-card {
     font-size: 1em;
   }
+  /* dl.roll {
+    grid-template-columns: repeat(5, 1fr);
+  } */
 }
 
-@media (min-width: 1281px) {
+@media (min-width: 1024px) {
   /* hi-res laptops and desktops */
   .entry-cards {
     grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -323,6 +329,9 @@ table {
   .entry-card {
     font-size: 0.8em;
   }
+  /* dl.roll {
+    grid-template-columns: repeat(7, 1fr);
+  } */
 }
 
 article.entry-card {
@@ -447,14 +456,17 @@ article.campaign-entry {
     & dl.roll {
       margin: 1em;
       padding-left: 1em;
-      display: flex;
-      flex-wrap: wrap;
+      display: grid;
+      @media (min-width: 320px) {
+        display: flex;
+        flex-wrap: wrap;
+      }
+      @media (min-width: 640px) {
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+      }
       & * {
         filter: invert(1) hue-rotate(180deg);
-      }
-      &:before {
-        content: "🎲";
-        margin-right: 0.5em;
       }
       & dt, & dd {
         display: inline-block;
@@ -466,9 +478,52 @@ article.campaign-entry {
         background-repeat: no-repeat;
         text-align: center;
       }
+      &:after {
+        font-size: 2em;
+        font-weight: bold;
+        text-align: center;
+        margin-right: auto;
+      }
+      &.strong-hit {
+        &:after {
+          content: "Strong Hit";
+          color: green;
+        }
+        &.match:after {
+          content: "Strong Hit (Match)";
+        }
+        & dd.outcome {
+          background-image: url("/img/Shortcut_Images/Outcomes/outcome-strong-hit.svg");
+        }
+      }
+      &.weak-hit {
+        &:after {
+          content: "Weak Hit";
+          color: goldenrod;
+        }
+        &.match:after {
+          content: "Weak Hit (Match)";
+        }
+        & dd.outcome {
+          background-image: url("/img/Shortcut_Images/Outcomes/outcome-weak-hit.svg");
+        }
+      }
+      &.miss {
+        &:after {
+          content: "Miss";
+          color: red;
+        }
+        &.match:after {
+          content: "Miss (Match)";
+        }
+        & dd.outcome {
+          background-image: url("/img/Shortcut_Images/Outcomes/outcome-miss.svg");
+        }
+      }
       & dt {
         margin: auto;
         width: 30px;
+        flex-basis: 1em;
         &:has(+ .action-die) {
           width: 0;
           height: 0;
@@ -482,15 +537,22 @@ article.campaign-entry {
         }
         &:has(+ .total) {
           background-image: url("/img/Shortcut_Images/Words/equals-t.svg");
+          width: 100%;
+          flex-basis: initial;
+          &:before {
+            display: inline;
+            content: "\A";
+          }
         }
         &:has(+ .challenge-die) {
           &:before {
             display: inline;
             content: "\A";
           }
+          flex-basis: initial;
           background-image: url("/img/Shortcut_Images/Words/vs-t.svg");
           width: 100%;
-          & ~ dt {
+          & ~ dt:has(+ .challenge-die) {
             &:before {
               content: none;
             }
@@ -498,10 +560,20 @@ article.campaign-entry {
             width: 60px;
           }
         }
+        &:has(+ .outcome) {
+          background-image: url("/img/Shortcut_Images/Words/equals-t.svg");
+          width: 100%;
+          flex-basis: initial;
+          &:before {
+            display: inline;
+            content: "\A";
+          }
+        }
       }
       & dd {
         width: 60px;
         &.action-die {
+          grid-column-start: 1;
           &[data-value="1"] {
             background-image: url("/img/Shortcut_Images/D6/d6-1-t.svg");
           }
@@ -680,6 +752,8 @@ article.campaign-entry {
       <dd class="challenge-die" data-value="2">2</dd>
       <dt>Challenge Die 2</dt>
       <dd class="challenge-die" data-value="7">7</dd>
+      <dt>Outcome</dt>
+      <dd class="outcome">Weak Hit</dd>
     </dl><p class="action-item">connection made, with a complication</p><p class="action-item">Rank: Formidable - it would take a lot to get the attention of someone of her rank, much less impress them</p></aside><p>“You’ll be kept here in observation for the next two days, and if you’re still alive, we will proceed to the next steps. We will not be seeing each other again.” She turned and walked towards the door, pausing for a second and taking a good long look at Zoya before waving her hand and stepping out the door.</p><hr><p>Zoya rubbed their jaw as the group approached the makeshift gates of Florin. The initiation rites still felt like a fresh wound. They wondered how long it would take to heal.</p><p>Everyone around them was tired. While the journey back was easier, the group still hadn’t had a chance to process everything that had happened, to understand the magnitude of the changes that would be coming their way very soon. Some of them had grown up in Florin, used to its relative isolation and lack of resources. The thought of it becoming a place of riches and intrigue was something they were certainly ambivalent about. Some of them had whispered of leaving before it went down, as they say by their campfires those last couple of nights. Or of waiting for the first batch of treasure to come and use that to start a new, more comfortable life with their families, back in the Terminus systems.</p><p>And so, most of them were too tired to feel the excitement when the gates opened and practically the entire settlement cheered, flowers flying in their direction, the crowd parting solely for them as the party made their way towards the plaza.</p><p>Lucas Savarin waited for them at the center, looking terribly official as someone who took his self image and position very seriously. Zoya wondered whether the Wrights would actually give this man the power he was hoping for, or replace him with someone more competent now that this place mattered so much more. It would remain to be seen, they guessed. He certainly seemed confident that things would go his way.&nbsp;</p><p>Either way, Zoya was sure he wouldn’t give them the time of day once this whole thing was finally resolved and he was done with his little ceremony.</p><p>He opened his arms, magnanimously, and welcomed the group, “We are all overjoyed to see you back safely with us, and beyond thankful for what you’ve all done for us. Please, step over here.”</p><p>Captain Malek nodded, she knew the drill with this guy. Not that her face revealed the slightest hint of an opinion about what was going on. She was a soldier, a tool, and she was just here to do her job. “Atten-hut!” The soldiers around Zoya immediately fell in line near where Savarin was standing and the Captain took her place next to the Clerk, who seemed to be pleased with everything happening just as he would like.&nbsp;</p><p>Before Zoya could feel any more awkward, the Captain gestured, summoning them to their other side. She wouldn’t, at least, let Zoya’s role in all this be ignored.&nbsp;</p><aside class="action"><header>Fulfill Your Vow</header><p class="action-item">Progress Roll: I vow to find the truth of the Vault near Florin and bring back anything of value. :Strong Hit = 8 vs 5 | 7</p><p class="action-item">+2 ticks quest legacy track</p></aside><p>Once everyone had taken position, Savarin smiled and went into a long, self-important speech. Zoya was surprised at how much attention they were getting from the crowd, as if this was someone they all really did admire and respect. They were even more surprised when Savarin acknowledged them and thanked them for their part in the mission’s success, and for fulfilling a solemn iron vow so well and fully. He was certainly a man of charisma, but he would probably not give Zoya the time of day after this.</p><p>It took forever for the speech to finish, not that the crowd seemed to mind. Afterwards, Savarin exchanged a few words with the Captain before heading back to his office, where Zoya was sure he had plenty of scheming to work on.</p><p>As she watched the Clerk walk away, a familiar face approached her, much healthier-looking than the last time she saw it. “I’m glad to see you back well, Teacher, and thank you.” Ria smiled, looking up at them.</p><aside class="action"><header>Fulfill Your Vow</header><p class="action-item">Progress Roll: I vow to cure Ria and save the others in Florin from the effects of the Remnant.  :Weak Hit = 6 vs 9 | 1</p><p class="action-item">+2 ticks quest legacy track</p><p class="action-item">Will need to swear another iron vow: something didn’t quite get resolved</p></aside><aside class="action"><header>Earn Experience</header><p class="action-item">+2 experience from quest legacy box</p></aside><aside class="action"><header>Develop Your Relationship</header><p class="action-item">+ progress on Ria Arden bond track</p></aside><aside class="action"><header>Advance</header><p class="action-item">New Asset: Medbay Ship Module</p><p class="action-item">-3 experience</p><p class="action-item">Ostensibly, the ship has always had this module, it was just not narratively or mechanically available</p></aside><aside class="action"><header>Ask the Oracle</header><p class="action-item">What’s the nature of the complication that would lead to Zoya having to swear another vow?</p><p class="action-item">Trusted information is shown to be false.</p><p class="action-item">Theme: Ability</p><p class="action-item">Descriptor: Advanced</p><p class="action-item">Focus: Illusion</p><p class="action-item">Action: Threaten</p><p class="action-item">Interesting! Perhaps the idea that this is all going to be good for the community is actually wrong, and the Vault continues to be some kind of threat. The threat is just more complex now, or more subtle. It’ll need investigation and resolution.</p></aside><p>At first, Zoya was overjoyed. The first patient they’d ever sworn an Iron Vow to was standing in front of them, hale and healthy. But the feeling was fleeting: their nanites flagged that something was still wrong. Zoya’s stomach dropped</p><p>They did their best to stay composed, “Ria. How are you feeling? It’s good to see you out and about.”</p><p>Ria smiled, wide, “I feel much better, and I hear it’s thanks to you! They let me do back home yesterday and I can’t believe how good it felt to finally sleep in my own bed again.”</p><p>Zoya ruffled the girl’s hair, “that’s good to hear.”</p><p>They looked around, “say, do you mind finding me later? I’d like to have a look at you myself back at my ship. It has some equipment that Florin’s hospital doesn’t.”</p><p>“Sure, but I feel fine? Are you worried about something?”</p><p>“Not really. I just want to make sure I take a closer look in case there’s anything you need to be mindful about. You can’t just assume you’re fully recovered right street being so sick, right?”</p><p>The girl nodded and shrugged, “I mean yeah, I feel fine, but I guess that makes sense. I’ll come by later, then.” She peeked around the healer, “but I think you have other things to do right now so I’ll run off. Bye!”</p><p>They waved at each other, smiles on their faces.</p><p>As they turned around, they saw Captain Malek there, smiling (ok that’s sus), flanked by Private Ruiz, who was also all smiles (that was more fitting). They extended their hand, “Congratulations, and thank you again, Teacher. You helped change a lot of lives back there. And save a lot of them, too. It was good working with you.”</p><p>Zoya smiled and took their hand. It was rough, warm, bigger than they expected. They had a sense that the Captain was a nicer person than they’d given them credit for.&nbsp;</p><aside class="action"><header>Develop Your Relationship</header><p class="action-item">Completed a quest to their benefit</p><p class="action-item">+ progress on Captain Malek bond track</p></aside><p>“Thank you, Captain. You did great work back there, too. I’m glad we managed to get everything resolved safely.”</p><p>“Lotta changes about to come our way. Will you be staying with us for a while, still?”</p><p>Zoya shrugged, “Probably not for too long, but it will take some time for a courier to notify Caduceus and for my next assignment to arrive, so I’ll at least be here a while longer. I’m sure I’ll find ways to help in the meantime but the worst of it seems to be over.”</p><p>The Private chimed in, “That’s great news, Teacher! We’ll be glad to have you as long as you’re here and I’m sure everyone will be very welcoming after what you did!”</p><aside class="action"><header>Develop Your Relationship</header><p class="action-item">Completed quest to their benefit</p><p class="action-item">+ progress Private Ruiz bond track</p></aside><p>They nodded to Private Ruiz, “Thank you, Private.”</p><p>Xe smirked, “Doran.”</p><p>The Captain immediately smacked the back of xyr head. Not too hard—but enough to get the point across, “You’re still on duty, Private.”</p><p>Xe laughed and apologized, “Sorry, sir. Yes, sir.”</p><p>The Captain shooed xyr off, “Back to the group with you, we’re still have things to do.”</p><p>The Private straightened and saluted, then waved at Zoya before marching off back to the party, which had now relaxed into a small crowd as the other settlement folks gathered around them and made conversation.</p><p>“Make sure to get some rest in the next couple of days, Teacher, you’ve earned it. I’m sure Lux will be able to take care of kir duties for now.”</p><p>“Thank you, Captain.” They smiled gently. “What about you? What will you be doing next?”</p><p>Captain Malek glanced around, then leaned forward and lowered their voice, “frankly, Teacher, I’m going to get absolutely sloshed and try and not think about that whole thing very much in the process.” She chuckled, but there was something more serious beneath it. Maybe they were all a little scarred from the experience, and Captain Malek was still human, after all.&nbsp;</p><p>“Well, if that’s what you want to do, by all means,” they patted the Captain on the arm. “If you need someone to talk to or have anything looked at and you’re not sure about the uh… current facilities, feel free to find me. My ship has a fully stocked medbay that would put some hospitals to shame, and I’ve received psychiatric training, too.”</p><p>The Captain took a good long look at Zoya, then. Eventually, they nodded, “I’ll keep that in mind, Teacher. Take care.”</p><p>Zoya waved them off and watched as the crowds slowly started to disperse.</p><p>“They’re all right, you know,” a faint voice whispered over their shoulder. Zoya could feel the warmth of his soft glow.&nbsp;</p><p>“I know, Kylar. I think I’ll do just that.”</p><p>They turned on their heels, and headed off to a nearby inn the Captain had recommended. They’d probably be willing to put Zoya up for now, especially now.</p><aside class="action"><header>Sojourn</header><dl class="roll miss">
       <dt>Action</dt>
       <dd class="action-die" data-value="1">1</dd>
@@ -693,6 +767,8 @@ article.campaign-entry {
       <dd class="challenge-die" data-value="9">9</dd>
       <dt>Challenge Die 2</dt>
       <dd class="challenge-die" data-value="7">7</dd>
+      <dt>Outcome</dt>
+      <dd class="outcome">Miss</dd>
     </dl><p class="action-item">You have got to be kidding me</p><p class="action-item">So here’s &nbsp;what I’ll do: I’ll take the automatic strong hit from choosing to swear another iron vow to resolve the complication, but instead of doing a second vow, I’m going to merge it with the upcoming one I owe Ria and make it Formidable, and that’ll be the next plot arc.</p><p class="action-item">+3 health from Heal</p><p class="action-item">+3 spirit from Hearten in Sojourn</p><p class="action-item">Pending: swear Formidable vow involving the community</p></aside><p>They got some well-deserved rest that night, but something was bugging them and they couldn’t quite put their finger on it. Oh well. Tomorrow would be a new day.&nbsp;</p>
 
   <hr>
@@ -706,6 +782,6 @@ article.campaign-entry {
 
 		<footer></footer>
 
-		<!-- This page `/campaigns/a-lantern-in-the-void/chapter-04-back-again/` was built on 2024-05-05T04:03:05.455Z -->
+		<!-- This page `/campaigns/a-lantern-in-the-void/chapter-04-back-again/` was built on 2024-05-05T07:13:25.145Z -->
 	</body>
 </html>
