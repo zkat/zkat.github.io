@@ -4,10 +4,11 @@ pagination:
   data: lore_entries
   size: 1
   alias: lore
-permalink: campaigns/{{ lore.campaignName | slugify }}/lore/{{ lore.title | slugify }}/
 eleventyComputed:
   title: "{{ lore.campaignName }}: {{ lore.title }}"
   description: "{{ lore.content | striptags | safe | truncate(100) }}"
+  permalink: campaigns/{{ lore.campaignName | slugify }}/lore/{{ lore.title | slugify }}/
+  previewImage: "{{ lore.image.src }}"
 ---
 
 <article class="campaign-entry">

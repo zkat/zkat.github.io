@@ -4,10 +4,11 @@ pagination:
   data: journal_entries
   size: 1
   alias: journal
-permalink: campaigns/{{ journal.campaignName | slugify }}/{{ journal.title | slugify }}/
 eleventyComputed:
   title: "{{ journal.campaignName }}: {{ journal.title }}"
   description: "{{ journal.content | striptags | safe | truncate(100) }}"
+  permalink: campaigns/{{ journal.campaignName | slugify }}/{{ journal.title | slugify }}/
+  previewImage: "{{ journal.image.src }}"
 ---
 
 <article class="campaign-entry">
