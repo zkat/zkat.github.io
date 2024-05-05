@@ -17,6 +17,7 @@ import {
   IFaction,
   IJournalEntry,
   ILoreEntry,
+  IRoll,
 } from "../_data/campaigns";
 
 const FILE_NAME = "stargazerCampaigns.json";
@@ -166,20 +167,43 @@ function makeActionHeader(document: Document, actionText: string): HTMLElement {
 function makeActionItem(
   document: Document,
   actionText: string
-): HTMLDivElement {
-  const actionItem = document.createElement("div");
-  actionItem.textContent = actionText;
-  if (actionText.match(/Miss/i)) {
-    actionItem.classList.add("roll", "miss");
-  } else if (actionText.match(/Weak Hit/i)) {
-    actionItem.classList.add("roll", "weak-hit");
-  } else if (actionText.match(/Strong Hit/i)) {
-    actionItem.classList.add("roll", "strong-hit");
+): HTMLParagraphElement | HTMLDListElement {
+  const roll = parseRoll(actionText);
+  if (roll) {
+    const actionItem = document.createElement("dl");
+    actionItem.classList.add("roll");
+    const actionScore = roll.action + roll.stat + roll.add;
+    if (actionScore > roll.challenge1 && actionScore > roll.challenge2) {
+      actionItem.classList.add("strong-hit");
+    } else if (actionScore > roll.challenge1 || actionScore > roll.challenge2) {
+      actionItem.classList.add("weak-hit");
+    } else {
+      actionItem.classList.add("miss");
+    }
+    if (roll.challenge1 === roll.challenge2) {
+      actionItem.classList.add("match");
+    }
+    actionItem.innerHTML = `
+      <dt>Action</dt>
+      <dd class="action-die" data-value="${roll.action}">${roll.action}</dd>
+      <dt>Stat</dt>
+      <dd class="stat" data-value="${roll.stat}">${roll.stat}</dd>
+      <dt>Add</dt>
+      <dd class="add" data-value="${roll.add}">${roll.add}</dd>
+      <dt>Total</dt>
+      <dd class="total" data-value="${roll.action + roll.stat + roll.add}">${roll.action + roll.stat + roll.add}</dd>
+      <dt>Challenge Die 1</dt>
+      <dd class="challenge-die" data-value="${roll.challenge1}">${roll.challenge1}</dd>
+      <dt>Challenge Die 2</dt>
+      <dd class="challenge-die" data-value="${roll.challenge2}">${roll.challenge2}</dd>
+    `;
+    return actionItem;
+  } else {
+    const actionItem = document.createElement("p");
+    actionItem.classList.add("action-item");
+    actionItem.textContent = actionText;
+    return actionItem;
   }
-  if (actionText.match(/with a match/i)) {
-    actionItem.classList.add("match");
-  }
-  return actionItem;
 }
 
 function isMove(text: string): string | undefined {
@@ -302,4 +326,19 @@ async function imageToFile(name: string, imgUri: string): Promise<string> {
 
 function slug(text: string): string {
   return slugify(text, { lower: true, strict: true, remove: /[*+~.()'"!:@]/g });
+}
+
+function parseRoll(text: string): IRoll | undefined {
+  const match = text.match(
+    /^\s*(?:miss|weak hit|strong hit).*?: (\d+) \+ (\d+) \+ (\d+) = \d+ vs (\d+) \| (\d+)\s*$/i
+  );
+  if (match) {
+    return {
+      action: parseInt(match[1]),
+      stat: parseInt(match[2]),
+      add: parseInt(match[3]),
+      challenge1: parseInt(match[4]),
+      challenge2: parseInt(match[5]),
+    };
+  }
 }

@@ -197,3 +197,11 @@ export interface IFaction {
   notes: string;
   colour: string;
 }
+
+export interface IRoll {
+  action: number,
+  stat: number,
+  add: number,
+  challenge1: number,
+  challenge2: number,
+}

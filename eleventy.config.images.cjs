@@ -20,7 +20,7 @@ function isFullUrl(url) {
 module.exports = function (eleventyConfig) {
   eleventyConfig.addPlugin(eleventyImage.eleventyImageTransformPlugin, {
     // which file extensions to process
-    extensions: "html",
+    extensions: "html,css",
 
     // Add any other Image utility options here:
 
