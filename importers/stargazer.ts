@@ -173,7 +173,7 @@ function makeActionItem(
     const actionItem = document.createElement("dl");
     actionItem.classList.add("roll");
     let outcome;
-    const actionScore = roll.action + (roll.stat ?? 0) + (roll.add ?? 0);
+    const actionScore = Math.min(10, roll.action + (roll.stat ?? 0) + (roll.add ?? 0));
     if (actionScore > roll.challenge1 && actionScore > roll.challenge2) {
       actionItem.classList.add("strong-hit");
       outcome = "Strong Hit";

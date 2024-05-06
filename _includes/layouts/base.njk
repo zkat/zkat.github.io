@@ -10,7 +10,7 @@
 		<meta property="og:description" content="{{ description or metadata.description }}" />
 		<meta property="og:type" content="website" />
 		<meta property="og:url" content="{{ permalink | absoluteUrl(metadata.url) }}" />
-		{% if previewImage %}
+		{% if previewImage and previewImage != "." %}
 		<meta property="og:image" content="{{ previewImage | image }}" />
 		<meta name="twitter:image:src" content="{{ previewImage | image }}" />
 		<meta name="twitter:card" content="summary_large_image" />
