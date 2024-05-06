@@ -2,6 +2,8 @@
 export interface ICampaign {
   id: string;
   name: string;
+  description?: string;
+  slugline?: string;
   // TODO
   //sharedAssets: ISGAsset[];
   characters: ICharacter[];
@@ -150,6 +152,7 @@ export interface ISGAsset {
 // Journal
 export interface IJournalEntry {
   title: string;
+  slugline?: string;
   content: string;
   pinned?: boolean;
   image?: IImage;
@@ -158,6 +161,7 @@ export interface IJournalEntry {
 // Lore
 export interface ILoreEntry {
   title: string;
+  slugline?: string;
   tags: string[];
   image?: IImage;
   content: string;
@@ -186,6 +190,7 @@ export interface ITruths {
 export interface IFaction {
   id: string;
   name: string;
+  slugline?: string;
   type: string;
   influence: string;
   leadership?: string;

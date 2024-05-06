@@ -7,12 +7,18 @@ pagination:
 eleventyComputed:
   title: "{{ campaign.name }}"
   permalink: campaigns/{{ campaign.name | slugify }}/
-  description: Campaign page for {{ campaign.character.name }}
+  description: "{{ campaign.slugline | safe }}"
 ---
 
 <h1>{{campaign.name}}</h1>
 
 <h3>Protagonist: <strong>{{ campaign.character.name }}</strong></h3>
+
+{% if campaign.description %}
+<article>
+  <p>{{ campaign.description }}</p>
+</article>
+{% endif %}
 
 <table class="about-character">
   <tr>

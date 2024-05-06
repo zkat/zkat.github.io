@@ -51,6 +51,8 @@ if (process.argv.length < 2) {
 async function main(dumpPath: string, filter?: RegExp): Promise<void> {
   const campaigns: ICampaign[] = JSON.parse(await readFile(dumpPath, "utf-8"));
   for (const campaign of campaigns) {
+    campaign.characters = [(campaign as any).character];
+    extractCampaignDescription(campaign);
     const finalJournal: IJournalEntry[] = [];
     const finalLore: ILoreEntry[] = [];
     for (const faction of campaign.factions) {
@@ -83,6 +85,27 @@ async function main(dumpPath: string, filter?: RegExp): Promise<void> {
   await writeFile(destination, JSON.stringify(campaigns));
 }
 
+function extractCampaignDescription(campaign: ICampaign) {
+  const char = campaign.characters[0];
+  if (!char.gear) {
+    return;
+  }
+  let newNotes = "";
+  for (const paragraph of char.gear.split("\n")) {
+    if (paragraph.match(/^\(\(description:/i)) {
+      campaign.description = paragraph
+        .replace(/^\(\(description:\s*([^)]+?)\s*\)\).*/i, "$1")
+        .trim();
+    } else if (paragraph.match(/^\(\(slugline:/i)) {
+      campaign.slugline = paragraph
+        .replace(/^\(\(slugline:\s*([^)]+?)\s*\)\).*/i, "$1")
+        .trim();
+    } else {
+      newNotes += paragraph + "\n";
+    }
+  }
+}
+
 async function cleanupJournalEntry(entry: IJournalEntry): Promise<void> {
   const dom = new JSDOM(entry.content);
   const newDom = new JSDOM(`<!DOCTYPE html><html><body></body></html>`);
@@ -105,11 +128,16 @@ async function cleanupJournalEntry(entry: IJournalEntry): Promise<void> {
       const text = el.textContent
         .replaceAll(/(&nbsp;|\n|\r|<br>|<\/br>)/gm, "")
         .trim();
-      if (text && entry.image && text.startsWith("((")) {
+      if (text && entry.image && text.match(/^\s*\(\(credit:/i)) {
         const attribution = text
           .replace(/^\(\((?:Credit:\s*)?([^)]+?)\s*\)\).*/i, "$1")
           .trim();
         entry.image.attribution = attribution;
+      } else if (text && text.match(/^\s*\(\(slugline:/i)) {
+        const slugline = text
+          .replace(/^\(\((?:slugline:\s*)?([^)]+?)\s*\)\).*/i, "$1")
+          .trim();
+        entry.slugline = slugline;
       } else if (text) {
         if (text.startsWith("———")) {
           const hr = document.createElement("hr");
@@ -173,7 +201,10 @@ function makeActionItem(
     const actionItem = document.createElement("dl");
     actionItem.classList.add("roll");
     let outcome;
-    const actionScore = Math.min(10, roll.action + (roll.stat ?? 0) + (roll.add ?? 0));
+    const actionScore = Math.min(
+      10,
+      roll.action + (roll.stat ?? 0) + (roll.add ?? 0)
+    );
     if (actionScore > roll.challenge1 && actionScore > roll.challenge2) {
       actionItem.classList.add("strong-hit");
       outcome = "Strong Hit";
@@ -197,11 +228,17 @@ function makeActionItem(
         <dt>Add</dt>
         <dd class="add" data-value="${roll.add}">${roll.add}</dd>
         <dt>Total</dt>
-        <dd class="total" data-value="${roll.action + roll.stat + roll.add}">${roll.action + roll.stat + roll.add}</dd>
+        <dd class="total" data-value="${roll.action + roll.stat + roll.add}">${
+        roll.action + roll.stat + roll.add
+      }</dd>
         <dt>Challenge Die 1</dt>
-        <dd class="challenge-die" data-value="${roll.challenge1}">${roll.challenge1}</dd>
+        <dd class="challenge-die" data-value="${roll.challenge1}">${
+        roll.challenge1
+      }</dd>
         <dt>Challenge Die 2</dt>
-        <dd class="challenge-die" data-value="${roll.challenge2}">${roll.challenge2}</dd>
+        <dd class="challenge-die" data-value="${roll.challenge2}">${
+        roll.challenge2
+      }</dd>
         <dt>Outcome</dt>
         <dd class="outcome">${outcome}</dd>
       `;
@@ -220,7 +257,6 @@ function makeActionItem(
     }
     return actionItem;
   } else if (roll) {
-
   } else {
     const actionItem = document.createElement("p");
     actionItem.classList.add("action-item");
@@ -287,6 +323,7 @@ async function loreFromFaction(faction: IFaction): Promise<ILoreEntry> {
   doc.body.appendChild(notes);
   let img: string | undefined;
   let credit: string | undefined;
+  let slugline: string | undefined;
   for (const paragraph of faction.notes
     .split("\n")
     .map((p) => p.trim())
@@ -296,6 +333,10 @@ async function loreFromFaction(faction: IFaction): Promise<ILoreEntry> {
     } else if (paragraph.match(/\(\(credit:/i)) {
       credit = paragraph
         .replace(/^\(\(Credit:\s*([^)]+?)\s*\)\).*/i, "$1")
+        .trim();
+    } else if (paragraph.match(/^\(\(slugline:/i)) {
+      slugline = paragraph
+        .replace(/^\(\(slugline:\s*([^)]+?)\s*\)\).*/i, "$1")
         .trim();
     } else {
       const notesParagraph = doc.createElement("p");
@@ -340,7 +381,9 @@ async function imageToFile(name: string, imgUri: string): Promise<string> {
     await mkdir(dirname(imgPath), { recursive: true });
     const req = await fetch(imgUri);
     if (req.status !== 200) {
-      console.error(`Failed to fetch ${imgUri}. Proceeding and hoping we still have the image cached.`);
+      console.error(
+        `Failed to fetch ${imgUri}. Proceeding and hoping we still have the image cached.`
+      );
       return newUri;
     }
     const fileStream = createWriteStream(imgPath);
@@ -376,6 +419,6 @@ function parseRoll(text: string): IRoll | undefined {
       action: parseInt(progressMatch[1]),
       challenge1: parseInt(progressMatch[2]),
       challenge2: parseInt(progressMatch[3]),
-    }
+    };
   }
 }

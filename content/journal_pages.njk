@@ -6,7 +6,7 @@ pagination:
   alias: journal
 eleventyComputed:
   title: "{{ journal.campaignName }}: {{ journal.title }}"
-  description: "{{ journal.content | striptags | safe | truncate(100) }}"
+  description: "{% if journal.slugline %}{{ journal.slugline | safe }}{% else %}{{ journal.content | striptags | safe | truncate(100) }}{% endif %}"
   permalink: campaigns/{{ journal.campaignName | slugify }}/{{ journal.title | slugify }}/
   previewImage: ".{{ journal.image.src }}"
 ---
