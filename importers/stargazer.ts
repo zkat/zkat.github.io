@@ -339,6 +339,10 @@ async function imageToFile(name: string, imgUri: string): Promise<string> {
     );
     await mkdir(dirname(imgPath), { recursive: true });
     const req = await fetch(imgUri);
+    if (req.status !== 200) {
+      console.error(`Failed to fetch ${imgUri}. Proceeding and hoping we still have the image cached.`);
+      return newUri;
+    }
     const fileStream = createWriteStream(imgPath);
     await finished(
       Readable.fromWeb(req.body as ReadableStream<any>).pipe(fileStream)
