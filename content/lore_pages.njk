@@ -5,7 +5,7 @@ pagination:
   size: 1
   alias: lore
 eleventyComputed:
-  title: "{{ lore.campaignName }}: {{ lore.title }}"
+  title: "{{ lore.campaignName }}, {{ lore.title }}"
   description: "{% if lore.slugline %}{{ lore.slugline | safe }}{% else %}{{ lore.content | striptags | safe | truncate(100) }}{% endif %}"
   permalink: campaigns/{{ lore.campaignName | slugify }}/lore/{{ lore.title | slugify }}/
   previewImage: ".{{ lore.image.src }}"
