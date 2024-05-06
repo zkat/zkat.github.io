@@ -5,11 +5,12 @@ const pluginRss = require("@11ty/eleventy-plugin-rss");
 const pluginSyntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 const pluginBundle = require("@11ty/eleventy-plugin-bundle");
 const pluginNavigation = require("@11ty/eleventy-navigation");
+const pluginTimeToRead = require("eleventy-plugin-time-to-read");
 
 const pluginDrafts = require("./eleventy.config.drafts.cjs");
 const pluginImages = require("./eleventy.config.images.cjs");
 
-module.exports = async function(eleventyConfig) {
+module.exports = async function (eleventyConfig) {
   const { EleventyHtmlBasePlugin } = await import("@11ty/eleventy");
 
   // Copy the contents of the `public` folder to the output folder
@@ -38,6 +39,10 @@ module.exports = async function(eleventyConfig) {
   eleventyConfig.addPlugin(pluginNavigation);
   eleventyConfig.addPlugin(EleventyHtmlBasePlugin);
   eleventyConfig.addPlugin(pluginBundle);
+
+  eleventyConfig.addPlugin(pluginTimeToRead, {
+    style: "short",
+  });
 
   // Filters
   eleventyConfig.addFilter("readableDate", (date, format, zone) => {
@@ -82,7 +87,7 @@ module.exports = async function(eleventyConfig) {
     return Array.from(tagSet);
   });
 
-  eleventyConfig.addFilter("getNextJournalEntry", function(collection) {
+  eleventyConfig.addFilter("getNextJournalEntry", function (collection) {
     const currIndex = collection.findIndex(item =>
       item.inputPath === this.page.inputPath
       && (item.outputPath === this.page.outputPath || item.url === this.page.url)
@@ -94,7 +99,7 @@ module.exports = async function(eleventyConfig) {
     }
   });
 
-  eleventyConfig.addFilter("getPrevJournalEntry", function(collection) {
+  eleventyConfig.addFilter("getPrevJournalEntry", function (collection) {
     const currIndex = collection.findIndex(item =>
       item.inputPath === this.page.inputPath
       && (item.outputPath === this.page.outputPath || item.url === this.page.url)

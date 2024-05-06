@@ -362,6 +362,15 @@ article.entry-card {
   }
 }
 
+aside.reading-time {
+  padding-top: 1em;
+  opacity: 75%;
+  display: inline;
+  &:before {
+    content: " — ";
+  }
+}
+
 article.campaign-entry {
   & .entry-card header {
     padding-bottom: 2em;

@@ -12,11 +12,14 @@ eleventyComputed:
 ---
 
 <article class="campaign-entry">
-  <h5>Part of <a href="/campaigns/{{ journal.campaignName | slugify }}/">{{ journal.campaignName }}</a></h5>
+  <h5>Part of <a href="/campaigns/{{ journal.campaignName | slugify }}/">{{ journal.campaignName }}</a>
+  <aside class="reading-time">{{ journal.content | timeToRead }} read</aside>
+  </h5>
 
   {% set entry = journal %}
   {% set showCredit = true %}
   {% include "entry_card.njk" %}
+
 
   {{ journal.content | safe }}
 
