@@ -1,0 +1,887 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>A Lantern in the Void, Chapter 07: Beyond Beryl</title>
+		<meta name="description" content="Zoya reminisces about a Teacher, before heading to Lyra Station.">
+    <meta property="og:site_name" content="FOSS and Adventures">
+		<meta property="og:title" content="A Lantern in the Void, Chapter 07: Beyond Beryl">
+		<meta property="og:description" content="Zoya reminisces about a Teacher, before heading to Lyra Station.">
+		<meta property="og:type" content="website">
+		<meta property="og:url" content="https://zkat.tech/campaigns/a-lantern-in-the-void/chapter-07-beyond-beryl/">
+		
+		<meta property="og:image" content="/img/H7ugWNq8bl-1400.jpeg">
+		<meta name="twitter:image:src" content="/img/H7ugWNq8bl-1400.jpeg">
+		<meta name="twitter:card" content="summary_large_image">
+		
+
+    <!-- Fuck off. -->
+    <meta name="CCBot" content="nofollow">
+    <meta name="robots" content="noai, noimageai">
+		<link rel="alternate" href="/feed/feed.xml" type="application/atom+xml" title="FOSS and Adventures">
+		<link rel="alternate" href="/feed/feed.json" type="application/json" title="FOSS and Adventures">
+		<link rel="me" href="https://toot.cat/@zkat">
+		<meta name="generator" content="Eleventy v3.0.0">
+		
+		<style>* { box-sizing: border-box; }
+/* Defaults */
+:root {
+  --font-family: -apple-system, system-ui, sans-serif;
+  --font-family-monospace: Consolas, Menlo, Monaco, Andale Mono WT, Andale Mono,
+    Lucida Console, Lucida Sans Typewriter, DejaVu Sans Mono,
+    Bitstream Vera Sans Mono, Liberation Mono, Nimbus Mono L, Courier New,
+    Courier, monospace;
+}
+
+/* Theme colors */
+:root {
+  --color-gray-20: #e0e0e0;
+  --color-gray-50: #c0c0c0;
+  --color-gray-90: #333;
+  --color-gray-30: #dad8d8;
+
+  --background-color: #fff;
+
+  --text-color: var(--color-gray-90);
+  --text-color-link: #082840;
+  --text-color-link-active: #5f2b48;
+  --text-color-link-visited: #17050f;
+
+  --syntax-tab-size: 2;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --text-color: var(--color-gray-30);
+    --text-color-link: #1493fb;
+    --text-color-link-active: #6969f7;
+    --text-color-link-visited: #a6a6f8;
+
+    --background-color: #15202b;
+  }
+}
+
+/* Global stylesheet */
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0 auto;
+  font-family: var(--font-family);
+  color: var(--text-color);
+  background-color: var(--background-color);
+}
+html {
+  overflow-y: scroll;
+}
+body {
+  max-width: 40em;
+}
+
+/* https://www.a11yproject.com/posts/how-to-hide-content/ */
+.visually-hidden {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+p:last-child {
+  margin-bottom: 0;
+}
+p {
+  line-height: 1.5;
+}
+
+li {
+  line-height: 1.5;
+}
+
+a[href] {
+  color: var(--text-color-link);
+}
+a[href]:visited {
+  color: var(--text-color-link-visited);
+}
+a[href]:hover,
+a[href]:active {
+  color: var(--text-color-link-active);
+}
+
+main {
+  padding: 1rem;
+}
+main :first-child {
+  margin-top: 0;
+}
+
+header {
+  border-bottom: 1px dashed var(--color-gray-20);
+}
+header:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.links-nextprev {
+  list-style: none;
+  border-top: 1px dashed var(--color-gray-20);
+  padding: 1em 0;
+}
+
+table {
+  margin: 1em 0;
+}
+table td,
+table th {
+  padding-right: 1em;
+}
+
+pre,
+code {
+  font-family: var(--font-family-monospace);
+}
+pre:not([class*="language-"]) {
+  margin: 0.5em 0;
+  line-height: 1.375; /* 22px /16 */
+  -moz-tab-size: var(--syntax-tab-size);
+  -o-tab-size: var(--syntax-tab-size);
+  tab-size: var(--syntax-tab-size);
+  -webkit-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+  direction: ltr;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+}
+code {
+  word-break: break-all;
+}
+
+/* Header */
+header {
+  display: flex;
+  gap: 1em 0.5em;
+  flex-wrap: wrap;
+  align-items: center;
+  padding: 1em;
+}
+.home-link {
+  font-size: 1em; /* 16px /16 */
+  font-weight: 700;
+  margin-right: 2em;
+}
+.home-link:link:not(:hover) {
+  text-decoration: none;
+}
+
+/* Nav */
+.nav {
+  display: flex;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+.nav-item {
+  display: inline-block;
+  margin-right: 1em;
+}
+.nav-item a[href]:not(:hover) {
+  text-decoration: none;
+}
+.nav a[href][aria-current="page"] {
+  text-decoration: underline;
+}
+
+/* Posts list */
+.postlist {
+  list-style: none;
+  padding: 0;
+  padding-left: 1.5rem;
+}
+.postlist-item {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  counter-increment: start-from -1;
+  margin-bottom: 1em;
+}
+.postlist-item:before {
+  display: inline-block;
+  pointer-events: none;
+  content: "" counter(start-from, decimal-leading-zero) ". ";
+  line-height: 100%;
+  text-align: right;
+  margin-left: -1.5rem;
+}
+.postlist-date,
+.postlist-item:before {
+  font-size: 0.8125em; /* 13px /16 */
+  color: var(--text-color);
+}
+.postlist-date {
+  word-spacing: -0.5px;
+}
+.postlist-link {
+  font-size: 1.1875em; /* 19px /16 */
+  font-weight: 700;
+  flex-basis: calc(100% - 1.5rem);
+  padding-left: 0.25em;
+  padding-right: 0.5em;
+  text-underline-position: from-font;
+  text-underline-offset: 0;
+  text-decoration-thickness: 1px;
+}
+.postlist-item-active .postlist-link {
+  font-weight: bold;
+}
+
+/* Tags */
+.post-tag {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-transform: capitalize;
+  font-style: italic;
+}
+.postlist-item > .post-tag {
+  align-self: center;
+}
+
+/* Tags list */
+.post-metadata {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 0.5em;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.post-metadata time {
+  margin-right: 1em;
+}
+
+/* Direct Links / Markdown Headers */
+.header-anchor {
+  text-decoration: none;
+  font-style: normal;
+  font-size: 1em;
+  margin-left: 0.1em;
+}
+a[href].header-anchor,
+a[href].header-anchor:visited {
+  color: transparent;
+}
+a[href].header-anchor:focus,
+a[href].header-anchor:hover {
+  text-decoration: underline;
+}
+a[href].header-anchor:focus,
+:hover > a[href].header-anchor {
+  color: #aaa;
+}
+
+h2 + .header-anchor {
+  font-size: 1.5em;
+}
+
+/* Campaigns */
+table {
+  width: 100%;
+  border: 1px solid var(--color-gray-50);
+  border-collapse: collapse;
+  & td {
+    border: 1px solid var(--color-gray-50);
+    padding: 0.5em;
+    &:has(+ td) {
+      font-weight: bold;
+    }
+  }
+}
+
+article.entry-card {
+  color: var(--text-color);
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: 12px;
+  object-fit: contain;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  transition: all 300ms;
+  @media (min-width: 320px) {
+    font-size: 1.4em;
+  }
+  @media (min-width: 768px) {
+    font-size: 1em;
+  }
+  @media (min-width: 1024px) {
+    font-size: 0.8em;
+  }
+  & header {
+    cursor: default;
+    border: none;
+    box-sizing: border-box;
+    width: 100%;
+    height: auto;
+    padding: 1.5em;
+    position: absolute;
+    bottom: 0;
+    color: #fff;
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.99));
+    &:after {
+      content: none;
+      display: inline;
+    }
+  }
+  & figure {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    & figcaption {
+      display: none;
+    }
+  }
+  & img {
+    overflow: hidden;
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+  }
+}
+
+.entry-cards {
+  padding: 0;
+  gap: 0.5em;
+  list-style-type: none;
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  @media (min-width: 640px) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  @media (min-width: 1024px) {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  & .entry-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+  }
+  & .entry-card header {
+    cursor: pointer;
+  }
+  & a {
+    text-decoration: none;
+    color: var(--text-color);
+    &:visited {
+      color: var(--text-color);
+    }
+  }
+}
+
+aside.reading-time {
+  padding-top: 1em;
+  opacity: 75%;
+  display: inline;
+  &:before {
+    content: " — ";
+  }
+}
+
+article.campaign-entry {
+  & .entry-card header {
+    padding-bottom: 2em;
+  }
+  & footer {
+    text-align: center;
+  }
+  & p {
+    text-indent: 1em;
+  }
+  & hr {
+    max-width: 100%;
+    margin: 1.5em;
+  }
+  & figcaption {
+    font-size: 0.75em;
+    opacity: 0.75;
+    color: var(--text-color);
+    padding: 1em;
+    &:before {
+      content: "Credit: ";
+    }
+  }
+  & figure {
+    margin: 0;
+  }
+  & aside.action {
+    cursor: default;
+    background-color: var(--color-gray-20);
+    color: var(--color-gray-90);
+    margin: 1em;
+    border: 1px solid var(--color-gray-90);
+    border-radius: 10px;
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+    & header {
+      display: block;
+      font-size: 1.2em;
+      border: none;
+      width: 100%;
+      padding: 1em;
+      text-align: center;
+      font-weight: bolder;
+      &:has(+ div) {
+        border-bottom: 1px dashed var(--color-gray-90);
+      }
+    }
+
+    & p {
+      margin: 1em;
+      font-weight: bold;
+      &:before {
+        content: "➡️";
+        margin-right: 0.5em;
+      }
+    }
+    & dl.roll {
+      margin: 1em;
+      padding-left: 1em;
+      display: flex;
+      flex-wrap: wrap;
+      @media (min-width: 640px) {
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+      }
+      &.progress {
+        @media (min-width: 640px) {
+          grid-template-columns: repeat(8, 1fr);
+        }
+      }
+      & * {
+        filter: invert(1) hue-rotate(180deg);
+      }
+      & dt, & dd {
+        display: inline-block;
+        margin: auto;
+        height: 40px;
+        text-indent: -9999px;
+        background-position: center;
+        background-size: contain;
+        background-repeat: no-repeat;
+        text-align: center;
+      }
+      &:after {
+        font-size: 2em;
+        font-weight: bold;
+        text-align: center;
+        margin-right: auto;
+      }
+      &.strong-hit {
+        &:after {
+          content: "Strong Hit";
+          color: green;
+        }
+        &.match:after {
+          content: "Strong Hit (Match)";
+        }
+        & dd.outcome {
+          background-image: url("/img/Shortcut_Images/Outcomes/outcome-strong-hit.svg");
+        }
+      }
+      &.weak-hit {
+        &:after {
+          content: "Weak Hit";
+          color: goldenrod;
+        }
+        &.match:after {
+          content: "Weak Hit (Match)";
+        }
+        & dd.outcome {
+          background-image: url("/img/Shortcut_Images/Outcomes/outcome-weak-hit.svg");
+        }
+      }
+      &.miss {
+        &:after {
+          content: "Miss";
+          color: red;
+        }
+        &.match:after {
+          content: "Miss (Match)";
+        }
+        & dd.outcome {
+          background-image: url("/img/Shortcut_Images/Outcomes/outcome-miss.svg");
+        }
+      }
+      & dt {
+        margin: auto;
+        width: 30px;
+        flex-basis: 1em;
+        &:has(+ .action-die), &:has(+ .progress-score) {
+          width: 0;
+          height: 0;
+          display: none;
+        }
+        &:has(+ .stat) {
+          background-image: url("/img/Shortcut_Images/Words/plus-t.svg");
+        }
+        &:has(+ .add) {
+          background-image: url("/img/Shortcut_Images/Words/plus-t.svg");
+        }
+        &:has(+ .total) {
+          background-image: url("/img/Shortcut_Images/Words/equals-t.svg");
+          width: 100%;
+          flex-basis: initial;
+          &:before {
+            display: inline;
+            content: "\A";
+          }
+        }
+        &:has(+ .challenge-die) {
+          &:before {
+            display: inline;
+            content: "\A";
+          }
+          flex-basis: initial;
+          background-image: url("/img/Shortcut_Images/Words/vs-t.svg");
+          width: 100%;
+          & ~ dt:has(+ .challenge-die) {
+            &:before {
+              content: none;
+            }
+            background-image: url("/img/Shortcut_Images/Words/and-t.svg");
+            width: 60px;
+          }
+        }
+        &:has(+ .outcome) {
+          background-image: url("/img/Shortcut_Images/Words/equals-t.svg");
+          width: 100%;
+          flex-basis: initial;
+          &:before {
+            display: inline;
+            content: "\A";
+          }
+        }
+      }
+      & dd {
+        width: 60px;
+        &.action-die {
+          grid-column-start: 1;
+          &[data-value="1"] {
+            background-image: url("/img/Shortcut_Images/D6/d6-1-t.svg");
+          }
+          &[data-value="2"] {
+            background-image: url("/img/Shortcut_Images/D6/d6-2-t.svg");
+          }
+          &[data-value="3"] {
+            background-image: url("/img/Shortcut_Images/D6/d6-3-t.svg");
+          }
+          &[data-value="4"] {
+            background-image: url("/img/Shortcut_Images/D6/d6-4-t.svg");
+          }
+          &[data-value="5"] {
+            background-image: url("/img/Shortcut_Images/D6/d6-5-t.svg");
+          }
+          &[data-value="6"] {
+            background-image: url("/img/Shortcut_Images/D6/d6-6-t.svg");
+          }
+        }
+        &.stat {
+          &[data-value="1"] {
+            background-image: url("/img/Shortcut_Images/Stat/stat-1-t.svg");
+          }
+          &[data-value="2"] {
+            background-image: url("/img/Shortcut_Images/Stat/stat-2-t.svg");
+          }
+          &[data-value="3"] {
+            background-image: url("/img/Shortcut_Images/Stat/stat-3-t.svg");
+          }
+          &[data-value="4"] {
+            background-image: url("/img/Shortcut_Images/Stat/stat-4-t.svg");
+          }
+          &[data-value="5"] {
+            background-image: url("/img/Shortcut_Images/Stat/stat-5-t.svg");
+          }
+        }
+        &.add {
+          &[data-value="0"] {
+            background-image: url("/img/Shortcut_Images/Add/add-0-t.svg");
+          }
+          &[data-value="1"] {
+            background-image: url("/img/Shortcut_Images/Add/add-1-t.svg");
+          }
+          &[data-value="2"] {
+            background-image: url("/img/Shortcut_Images/Add/add-2-t.svg");
+          }
+          &[data-value="3"] {
+            background-image: url("/img/Shortcut_Images/Add/add-3-t.svg");
+          }
+          &[data-value="4"] {
+            background-image: url("/img/Shortcut_Images/Add/add-4-t.svg");
+          }
+          &[data-value="5"] {
+            background-image: url("/img/Shortcut_Images/Add/add-5-t.svg");
+          }
+        }
+        &.total {
+          &[data-value="0"] {
+            background-image: url("/img/Shortcut_Images/Total/total-0-t.svg");
+          }
+          &[data-value="1"] {
+            background-image: url("/img/Shortcut_Images/Total/total-1-t.svg");
+          }
+          &[data-value="2"] {
+            background-image: url("/img/Shortcut_Images/Total/total-2-t.svg");
+          }
+          &[data-value="3"] {
+            background-image: url("/img/Shortcut_Images/Total/total-3-t.svg");
+          }
+          &[data-value="4"] {
+            background-image: url("/img/Shortcut_Images/Total/total-4-t.svg");
+          }
+          &[data-value="5"] {
+            background-image: url("/img/Shortcut_Images/Total/total-5-t.svg");
+          }
+          &[data-value="6"] {
+            background-image: url("/img/Shortcut_Images/Total/total-6-t.svg");
+          }
+          &[data-value="7"] {
+            background-image: url("/img/Shortcut_Images/Total/total-7-t.svg");
+          }
+          &[data-value="8"] {
+            background-image: url("/img/Shortcut_Images/Total/total-8-t.svg");
+          }
+          &[data-value="9"] {
+            background-image: url("/img/Shortcut_Images/Total/total-9-t.svg");
+          }
+          &[data-value="10"] {
+            background-image: url("/img/Shortcut_Images/Total/total-10-t.svg");
+          }
+        }
+        &.challenge-die {
+          &[data-value="1"] {
+            background-image: url("/img/Shortcut_Images/D10/d10-1-t.svg");
+          }
+          &[data-value="2"] {
+            background-image: url("/img/Shortcut_Images/D10/d10-2-t.svg");
+          }
+          &[data-value="3"] {
+            background-image: url("/img/Shortcut_Images/D10/d10-3-t.svg");
+          }
+          &[data-value="4"] {
+            background-image: url("/img/Shortcut_Images/D10/d10-4-t.svg");
+          }
+          &[data-value="5"] {
+            background-image: url("/img/Shortcut_Images/D10/d10-5-t.svg");
+          }
+          &[data-value="6"] {
+            background-image: url("/img/Shortcut_Images/D10/d10-6-t.svg");
+          }
+          &[data-value="7"] {
+            background-image: url("/img/Shortcut_Images/D10/d10-7-t.svg");
+          }
+          &[data-value="8"] {
+            background-image: url("/img/Shortcut_Images/D10/d10-8-t.svg");
+          }
+          &[data-value="9"] {
+            background-image: url("/img/Shortcut_Images/D10/d10-9-t.svg");
+          }
+          &[data-value="10"] {
+            background-image: url("/img/Shortcut_Images/D10/d10-10-t.svg");
+          }
+        }
+        &.progress-score {
+          &[data-value="0"] {
+            background-image: url("/img/Shortcut_Images/Progress/progress-0-t.svg");
+          }
+          &[data-value="1"] {
+            background-image: url("/img/Shortcut_Images/Progress/progress-1-t.svg");
+          }
+          &[data-value="2"] {
+            background-image: url("/img/Shortcut_Images/Progress/progress-2-t.svg");
+          }
+          &[data-value="3"] {
+            background-image: url("/img/Shortcut_Images/Progress/progress-3-t.svg");
+          }
+          &[data-value="4"] {
+            background-image: url("/img/Shortcut_Images/Progress/progress-4-t.svg");
+          }
+          &[data-value="5"] {
+            background-image: url("/img/Shortcut_Images/Progress/progress-5-t.svg");
+          }
+          &[data-value="6"] {
+            background-image: url("/img/Shortcut_Images/Progress/progress-6-t.svg");
+          }
+          &[data-value="7"] {
+            background-image: url("/img/Shortcut_Images/Progress/progress-7-t.svg");
+          }
+          &[data-value="8"] {
+            background-image: url("/img/Shortcut_Images/Progress/progress-8-t.svg");
+          }
+          &[data-value="9"] {
+            background-image: url("/img/Shortcut_Images/Progress/progress-9-t.svg");
+          }
+          &[data-value="10"] {
+            background-image: url("/img/Shortcut_Images/Progress/progress-10-t.svg");
+          }
+        }
+      }
+    }
+  }
+}</style>
+	</head>
+	<body>
+    <a id="top"></a>
+		<a href="#skip" class="visually-hidden">Skip to main content</a>
+
+		<header>
+			<a href="/" class="home-link">FOSS and Adventures</a>
+			<nav>
+				<h2 class="visually-hidden">Top level navigation menu</h2>
+				<ul class="nav">
+					<li class="nav-item"><a href="/">Home</a></li>
+					<li class="nav-item"><a href="/blog/">Blog</a></li>
+					<li class="nav-item"><a href="/campaigns/">Campaigns</a></li>
+					<li class="nav-item"><a href="/about/">About Me</a></li>
+				</ul>
+			</nav>
+		</header>
+
+		<main id="skip">
+			
+<article class="campaign-entry">
+  <h5>Part of <a href="/campaigns/a-lantern-in-the-void/">A Lantern in the Void</a>
+  <aside class="reading-time">20 min read</aside>
+  </h5>
+
+  
+  
+  <article class="entry-card">
+  <figure>
+    <picture><source type="image/webp" srcset="/img/H7ugWNq8bl-1400.webp 1400w"><img loading="lazy" decoding="async" alt="" src="/img/H7ugWNq8bl-1400.jpeg" width="1400" height="788"></picture>
+  </figure>
+  <header>
+    Chapter 07: Beyond Beryl
+  </header>
+</article>
+
+  <figcaption><a target="_blank" href="https://www.cgtrader.com/gallery/project/sci-fi-space-station-earth-2-0">https://www.cgtrader.com/gallery/project/sci-fi-space-station-earth-2-0</a></figcaption>
+
+
+
+
+  <aside class="action"><header>Begin a Session</header><p class="action-item">+1 momentum</p></aside><p>Zoya concentrated on the body as it lay on the cold metal table in front of them, lines drawn through various key places. Their eyes and hands glowed dimly, flickering occasionally and Zoya strained to keep it going. Almost there, and…&nbsp;</p><aside class="action"><header>Gather Information</header><dl class="roll weak-hit">
+        <dt>Action</dt>
+        <dd class="action-die" data-value="2">2</dd>
+        <dt>Stat</dt>
+        <dd class="stat" data-value="2">2</dd>
+        <dt>Add</dt>
+        <dd class="add" data-value="0">0</dd>
+        <dt>Total</dt>
+        <dd class="total" data-value="4">4</dd>
+        <dt>Challenge Die 1</dt>
+        <dd class="challenge-die" data-value="5">5</dd>
+        <dt>Challenge Die 2</dt>
+        <dd class="challenge-die" data-value="2">2</dd>
+        <dt>Outcome</dt>
+        <dd class="outcome">Weak Hit</dd>
+      </dl><p class="action-item">+1 momentum</p></aside><p>They let out a gasp of air, the glow disappearing completely.</p><p>“Well?” croaked the old woman next to them.</p><p>Zoya collected themself and turned to the Caduceus trainer. “Heart failure caused by myocardial infarction. One that seemed to take a long time to run its course. I imagine the patient reported atypical symptoms and didn’t think to seek medical attention until the heart failure was in its final stages.”</p><p>The trainer smiled, “Very good. That is indeed something that would have taken them soon enough. But that’s not the cause of death.” She reached over and turned the corpse’s head to the side. Zoya immediately noticed the subtle mark on the skin resembling a faint circular rash and their eyes widened.</p><p>“Volkov’s Sign”, they said, surprised.&nbsp;</p><p>“Correct. This is the immediate cause of death and would have been instantaneous. The heart disease may have taken several more months to take its course.”</p><p>The Teacher turned to Zoya and her tone turned serious, “your assignments will often require that you evaluate cases beyond the obvious. When Caduceus Teachers are requested, situations will often be more unusual than what the local healer can handle.”</p><p>Zoya protested, “but this is beyond rare, will I even have to deal with something like this?” Chao-Wei nanites were strictly and thoroughly banned. Their singular use case was delivery of a subtle electric shock that would instantly shut down the medula oblongata, stopping all involuntary bodily functions. It usually extracted itself after shock delivery and left no forensic signs, except on rare occasions where cheaper delivery nanodrones were used, which would leave the mark the Teacher just showed. Even possessing some of the parts or software used for producing these nanites was a capital offense in many systems.&nbsp;</p><p>The Teacher raised her hand, “in the Terminus systems, perhaps, but you will often be assigned far beyond their bounds. You will be going into potentially dangerous situations, some with political complications.” She straightened the body’s head again, “I also want you to remember that even once you’ve mastered your nanites, there are things they will not aid you with, and you will have to rely on your own observation and experience to diagnose and treat.” She glanced at the corpse, “or forensically analyze.”</p><p>Zoya looked at the corpse again. This had likely been someone very important, if their murderers had been willing to go to such lengths. “Understood, Professor Kobayashi.”</p><p>The Teacher’s expression lightened again with a smile, “Good. That will be all for today.”</p><p>“Thank you, Professor.” Zoya smiled back.</p><p>Professor Kobayashi clapped her hands together, “now, how about we wash up and you join me for some tea?”</p><aside class="action"><header>Make a Connection</header><dl class="roll weak-hit">
+        <dt>Action</dt>
+        <dd class="action-die" data-value="4">4</dd>
+        <dt>Stat</dt>
+        <dd class="stat" data-value="3">3</dd>
+        <dt>Add</dt>
+        <dd class="add" data-value="0">0</dd>
+        <dt>Total</dt>
+        <dd class="total" data-value="7">7</dd>
+        <dt>Challenge Die 1</dt>
+        <dd class="challenge-die" data-value="4">4</dd>
+        <dt>Challenge Die 2</dt>
+        <dd class="challenge-die" data-value="9">9</dd>
+        <dt>Outcome</dt>
+        <dd class="outcome">Weak Hit</dd>
+      </dl><p class="action-item">Connection made with Dex Kobayashi (Troublesome)</p></aside><p>“Of course. I’d love to.”</p><p>They walked together to the washing stations as the assistants stepped in, covered the body, and wheeled it off back the morgue.</p><p>“You’ve made good progress these past few years. Once you’ve grown more used to your nanites, you’ll be ready for final testing, I believe.” The Professor waved her hand under the dispenser then scrubbed her hands thoroughly as she spoke, “But I don’t think you’ll have any problem with that. You speak to them surprisingly well.”</p><p>Zoya was mirroring their mentor, before stopping and raising their eyebrows. “Really?”</p><p>“Of course. It’s only occasionally that we see students here who are able to even diagnose basic ailments purely with the nanites, much less use them for mending, in such a short amount of time.” She toweled her hands off, then tossed the towel over to Zoya, “You’ve worked hard for it and it shows.”</p><p>Zoya caught the towel, which almost hit them right in the face, and chuckled, “Hey!” They dried their hands, “I just… don’t want to feel so helpless again.”</p><p>The Professor reached over and cupped Zoya’s cheek tenderly, “I know, dear. And if you keep going like this, I don’t think you will.”</p><aside class="action"><header>Reach a Milestone</header><p class="action-item">+ progress background vow</p></aside><p>She turned towards the door, “now, about that tea…”</p><aside class="action"><header>Develop Your Relationship</header><p class="action-item">+ progress Dex Kobayashi</p></aside><p>They made more casual conversation as they headed to the Professor’s office, and while a uniformed assistant came in and prepared their tea. The office was absolutely packed with books, a lot of them pretty old-looking. The Teacher watched as Zoya looked around, practically gaping, “What can I say, I’m sentimental about it. I grew up with data tablets but eventually fell in love with the feel and experience of paper. And to think this was the only way for us to write things down for such a long time.” She picked her tea up, “but I think sometimes we need to look behind us to understand what’s ahead. And that’s why I collect these.”</p><p>Zoya leaned forward and picked up their cup, not really sure what to say or what the Professor was getting at.</p><p>And then the Professor took a long sip and her expression turned a bit sad, “I wanted to tell you. I’m going to be retiring once you graduate.”</p><p>Zoya nearly choked on their tea, “What?!”</p><p>Their mentor shook her head, “Oh I was planning on doing it years ago, I’m getting old and tired and I want to spend time with my grandchildren and their children. I shouldn’t be dealing with corpses right up until I become one myself,” she took a long sip, “but a certain student came along and I decided I could wait a little longer. Time flies for me at this point anyway.”</p><p>“I… don’t know what to say. I mean, thank you. I can’t imagine having gotten this far without you.”</p><p>Thinking about it, the Professor really seemed like she’d aged these past few years. She seemed tired. Even past the cheerful way she carried herself.</p><p>“You can thank me by going out there and saving some lives. Everyone deserves to be cared for, regardless of whatever scummy so-called leadership thinks it needs to keep people under its heels. That’s really why we exist, after all, to make sure that’s not a lever they can pull.”</p><p>“Really?”</p><p>Professor Kobayashi shrugged, “mostly. I think some of us have lost our way, but I’m too tired to keep fighting them. They’ll probably assign my seat in the Council with someone more… agreeable once I’m gone.” She put her teacup down and looked straight at Zoya, “but as long as people like you are still around, I think there’s hope. So go out there and be our hope for the future.”</p><p>That was a lot to take in. They spent the next while in silence, in the company of their own thoughts.</p><hr><p>When Zoya woke up, it was still the middle of the night. Sage’s arm was still around them, and she was just straight up snoring.</p><p>The Teacher reached for their amulet and pulled it up, taking a close look at it. Professor Kobayashi had put it around their neck herself, and Zoya hadn’t taken it off once since then. The next day, she announced her retirement and headed back to her home planet. Zoya had received a handful of courier messages during their time in Florin, with gossip and news about various life events her great-grandchildren had just had. Sometimes, Zoya would ask for advice and the response would always be the same, “I don’t know why you want to hear some old woman’s thoughts …” and she would go on to ask questions that immediately brought the answers to Zoya’s mind, without needing to spell out the answers herself.</p><p>Zoya closed their eyes again with a warm smile, and went back to sleep.</p><hr><p>It only took two days for the courier’s message to arrive. The data tablet got dropped off at their desk first thing in the morning with all the details of the aid request, and by the afternoon, Ria had dropped by again with “womanly troubles”, which was the way Lux put it as ke rolled kyr eyes. “She wants to see you in particular and you know what, whatever.”</p><p>In the privacy of the examination room, Ria offhandedly mentioned a dinner gathering she was going to tonight at her auntie’s. Zoya got the hint.</p><p>It was time to move.</p><hr><p>“I’m telling you, this is a terrible idea,” Sage complained as Zoya led the way through various dark alleys.</p><p>“It’ll be fine. Just trust me on this.” They reached for her hand, “and I need you with me for this. It’s gonna be dangerous.”</p><p>“What we’re doing right now is dangerous.”</p><p>Zoya glanced aside and nodded, “yeah.” They stopped at a familiar door. “We’re here.”</p><p>They repeated the new knock pattern Ria passed on and waited what felt like forever before the door peeked open and a face half-covered looked through the gap. Almost immediately, it closed. It took another minute for the door to unlatch, and it suddenly swung wide open, Derya standing tall, brandishing a large machete. Three others stood behind them, armed with knives.</p><p>“You have got to be fucking kidding me. Tell me why I shouldn’t just chop you to pieces right fucking here and now.” Derya seethed.&nbsp;</p><aside class="action"><header>Face Danger</header><p class="action-item">+heart, +2 from Sage bond, +1 from Ria connection, +1 from Derya connection</p><dl class="roll strong-hit">
+        <dt>Action</dt>
+        <dd class="action-die" data-value="3">3</dd>
+        <dt>Stat</dt>
+        <dd class="stat" data-value="3">3</dd>
+        <dt>Add</dt>
+        <dd class="add" data-value="4">4</dd>
+        <dt>Total</dt>
+        <dd class="total" data-value="10">10</dd>
+        <dt>Challenge Die 1</dt>
+        <dd class="challenge-die" data-value="2">2</dd>
+        <dt>Challenge Die 2</dt>
+        <dd class="challenge-die" data-value="7">7</dd>
+        <dt>Outcome</dt>
+        <dd class="outcome">Strong Hit</dd>
+      </dl></aside><p>Sage reached for her holster immediately, but Zoya grabbed their hand before turning back to Derya, raising their other one in surrender, “Please, hear me out. She’s here to help me, and I need her with me if we’re going to make this all work.”</p><p>The rebels looked at each other, mumbling, before Ria chimed in behind them, “I think we should give her a chance. Zoya wouldn’t be doing this if there wasn’t a good reason to trust her.”</p><p>Derya turned to their niece, incredulous, “you know the stakes for this, Ria, we can’t just trust anyone on a gut feeling.”</p><p>“She swore the vow with me after resigning. She’s putting her life on the line because this is her home, too.” Zoya grabbed Sage’s hand then, pulling it away from the holster, “I trust her with my life and I know you might never forgive her for what happened that day, but you’ll be hard pressed to find a better ally than someone who knows the system as well as she does, and who has her experience and training.” She looked straight into Derya’s eyes with serious intensity.</p><p>Derya sized them both up in silence, mulling it over, then turned and muttered something to the others behind them, who finally put their weapons down. “Very well, but you won’t get any help from us if this thing goes pear shaped. We’re not going to stick our necks out for a pig.”</p><p>“Hey!” Zoya protested, but Sage grabbed their arm and shook her head.</p><p>“It’s ok.”</p><p>Sage looked up at the others and bowed her head slightly, “Thank you for giving me a chance. I’ll make sure you won’t regret it.”</p><p>“You better not show your face out here again if we do regret it.” Derya threatened. It was like night and day how this person would go from a cheerful and bubbly self to this incredibly threatening, looming presence. They sneered. “For now, come in, we have much to discuss.”</p><p>For the next hour or so, the group went over the current plan. It was surprisingly thorough: an emergency medical aid call would come in and Zoya would be summoned directly. There were forged permits for everything, and a contact on the station would reveal more of the details and hand over the export permits and medical reports, then coordinate transport of the contraband into Zoya’s ship, Forced Laughter in Trying Times. Once back in Beryl, Zoya would then take a detour to a drop off in the jungle, where the materiel would finally be transported to various hidden armories deep in the jungle. Finally, Zoya would return to Florin itself and hand over the fake medical reports in case there’s any suspicion from the local authorities.</p><p>Florin was a small enough settlement still that they hadn’t set up complex planetary transit control beyond the spaceport at Florin itself, so ships were relatively free to move around the planet. Still, Zoya would need to time their approach such that the planet’s rotation made the delay excusable.</p><p>The plan was tight, but certainly dangerous. Beryl might still not have a lot of defense built out, but its importance had skyrocketed in the past year. The Wrights were certainly more watchful, even if the infrastructure wasn’t there to match their paranoia yet.</p><p>When they were done, Derya looked at the two with some doubt in their eyes. “Are you two sure you can pull this off?”</p><p>Without hesitation, Zoya reached for their pendant, clapping it between they’re hands, “I vow to you now that I will see this mission through, and make sure the cargo makes it to its destination safely.”</p><p>Derya then looked at Sage, who pulled out her knife and spoke her own vow, “I swear I will make sure you have the arms you need to liberate my planet.”</p><aside class="action"><header>Swear an Iron Vow</header><p class="action-item">+1 from connection</p><p class="action-item">Strong Hit: 6 + 3 + 1 = 10&nbsp;vs 7 | 8</p><p class="action-item">oh hell yeah</p><p class="action-item">+2 momentum</p></aside><aside class="action"><header>Develop Your Relationship</header><p class="action-item">Swore a vow to Derya</p><p class="action-item">+progress Derya connection track</p><p class="action-item"></p><p class="action-item">Swore a vow to Ria’s benefit</p><p class="action-item">+progress Ria connection track</p></aside><p><span style="-webkit-text-size-adjust: 100%;">After that, Derya simply saw them out and closed the door behind them without any real pleasantries. They must be betting a lot on this plan if they were willing to let Zoya get their way with this so easily.</span><br></p><p>They headed home, and all that was left was to wait.</p><hr><p>It didn’t take long. Two days later, the medical alert arrived via an express courier. It was specific enough, and sending an express courier showed a willingness to spend bank on this that gave the whole thing an air of legitimacy in the port officials’ eyes.</p><aside class="action"><header>Face Danger</header><p class="action-item">Do they manage to get off planet without much trouble?</p><p class="action-item">+shadow, unfortunately, since we’re now being sneaky</p><p class="action-item">+2 from Sage bond. She still commands a lot of these soldiers’ respect and trust, and is known to be working miscellaneous security jobs now</p><dl class="roll weak-hit">
+        <dt>Action</dt>
+        <dd class="action-die" data-value="1">1</dd>
+        <dt>Stat</dt>
+        <dd class="stat" data-value="1">1</dd>
+        <dt>Add</dt>
+        <dd class="add" data-value="2">2</dd>
+        <dt>Total</dt>
+        <dd class="total" data-value="4">4</dd>
+        <dt>Challenge Die 1</dt>
+        <dd class="challenge-die" data-value="3">3</dd>
+        <dt>Challenge Die 2</dt>
+        <dd class="challenge-die" data-value="8">8</dd>
+        <dt>Outcome</dt>
+        <dd class="outcome">Weak Hit</dd>
+      </dl><p class="action-item">oooof. That was close, although I still have 10 momentum to burn in case of emergency.</p><p class="action-item">-1 momentum, they’ll experience a slight delay.</p></aside><p>Zoya had even decided to wear their Caduceus uniform to make things even more convincing, even though this was rarely required outside of official ceremonies. Sage walked with them, helping carry medical equipment they’d borrowed from Lux—even though Forced Laughter’s medbay was already equipped with just about anything they’d need. Whatever it took to play their parts.</p><p>“Hold.” One of the soldiers stopped them, rifle strapped over their front, “we will need to look at this cargo you’re bringing with you.”</p><p>“Since when do you care what Teachers carry around with them?” Sage interjected, clearly trying to sound intimidating. But she was convincing enough.</p><p>“I’m sorry, Captain. I mean, Ms Malek. We’re just under strict orders now and everything going in or out needs to go through a detailed customs check.” The soldier looked genuinely apologetic. They still all had plenty of respect for Sage. Bringing her along was definitely a good idea.</p><p>The pair ended up having to wait over an hour for customs to finish, but in the end, everything went well: there was nothing suspicious in the equipment they brought, after all. Eventually, security let them through and they were able to board Forced Laughter.</p><p>“Nice to see you again, Teacher. It’s been a while.”, a voice announced as the ramp slowly closed behind them.</p><p>“Nice to see you, Forced Laughter. As you can imagine, I’ve been busy.”</p><p>“At least one of us has. What brings you in today? And who’s your friend?”</p><p>“This is Sage, my…” what would they even call it? Sage’s attention immediately focused on Zoya’s words. “Bodyguard. She’ll be acting as security during our trip.”</p><p>“But I can already provide all the security you might need, Teacher.”</p><p>“I know I know, but it doesn’t hurt to have a little extra reassurance, right? And you won’t be with me after I disembark at the station, and I hear it can be a scary place.”</p><p>The ship sighed melodramatically, “I suppose.” The engines started spinning up with a hum. “So what’s our destination?”</p><p>“I’m passing the coordinates to you now.” Zoya responded as they swiped their fingers over their data tablet.</p><p>Almost immediately, the ship protested, “Zoya, that’s a black market!”</p><p>They tisked and crossed their arms, “and that’s where I got summoned. And at Caduceus, we go where we’re needed. Will there be any further problems with this?”</p><p>A long silence, “…no, Teacher.” Their tone was reticent, before the engines started spinning up. “It’s good to have you back.” The ship said, cheerfully now.</p><p>“It’s good to be back, friend.” Zoya turned to Sage, “Let’s drop these off at the medbay and get out of here.”</p><p>“Sounds like a plan.”</p><p>The medbay wasn’t quite as pristine as Sage expected. Various vials, a microscope, centrifuge, and other such things were strewn over the surfaces. At the end was a washing station with a deep sink.</p><p>Next to this stood a large, floor-to-ceiling cabinet with small drawer packed in tight rows. Sage couldn’t read whatever language the labels were written in but there must have been well over a hundred of those little drawers.</p><p>A segmented hospital bed sat in the middle of the room with a mechanical arm holding a selection of surgical tools still sealed in plastic. Next to it, a vitals monitor with a small screen and related paraphernalia stood next to an IV stand with a fresh saline back already in place.</p><p>Various other &nbsp;medical equipment sat on the floor or leaning against walls, including nondescript metal cases, and a wheeled tray table.</p><p>Sage gaped around, still holding all the equipment. This certainly put Florin’s facilities to shame. And it was probably for the better that most people didn’t know quite how much expensive gear was in here. Eventually, they snapped out of it as the weight started getting uncomfortable, “so uh, where should I put this?”</p><p>“You can put that anywhere, as long as it’s not in the way of the bed, honestly.” Zoya was busying themself with something or other on a panel on the wall near the entrance.</p><p>Afterwards, they made their way to the cockpit. A whole array of blinking panels and monitors with analog knobs surrounded three seats. The array stood freely on various legs rather than being built into the walls, and a set of flight sticks stuck out in front of the first two seats.</p><p>“Strap in. I don’t want to take too long.” Zoya smiled at Sage. They were kind of showing off right now.</p><p>“Forced Laughter, you can go ahead with takeoff procedures.” After strapping in, they reached for some knobs to their left and flicked a switch, then grabbed a microphone with a coiled cable and held it to their mouth. “Florin Tower this is Raven on Forced Laughter in Trying Times on pad 3 requesting clearance for takeoff.”</p><p>A fuzzy radio voice chimed in through the speakers after a moment, “Forced Laughter, you’re clear for takeoff. Have a safe flight, Teacher.”</p><p>“Acknowledged.” Zoya hooked the microphone back on its holder and started flicking at various switches on the cockpit<span style="-webkit-text-size-adjust: 100%;">. The view in front of them suddenly lit up with a wide-angle view of their external surroundings, extending above them all the way beneath their feet and across the side walls.</span></p><p>They glanced to the side, at their “bodyguard” who was definitely not sure about this, not one bit.</p><p>“First time?”</p><p>Sage held on to the armrests uncomfortably, “…yeah.”</p><p>“Don’t worry. They basically fly themself.” Zoya reached forward and pressed a big green button and something made a big clank sound somewhere on the ship, followed by a hiss. “Forced Laughter, take us up, please.”</p><p>“Ack, Zoya,” three ship’s voice chirped, and the engines revved up louder and louder as the ship started vibrating, then shaking.</p><p>Sage dug her fingers into the upholstery of her seat as they lifted up, slowly, before the ship tilted back at a sharp angle and all she could really see was the sky above them, and the rapidly approaching clouds.</p><p>And then… the darkness of the void. Sage felt like she was in free fall and it almost made her stomach come all the way up, before the ship announced “engaging argrav,” and things felt… better.</p><p>Zoya spent some time checking readings and flicking various switches, “Forced Laughter, set a course to Lyra Station in Osolok.”</p><aside class="action"><header>Set a Course</header><dl class="roll miss">
+        <dt>Action</dt>
+        <dd class="action-die" data-value="1">1</dd>
+        <dt>Stat</dt>
+        <dd class="stat" data-value="4">4</dd>
+        <dt>Add</dt>
+        <dd class="add" data-value="0">0</dd>
+        <dt>Total</dt>
+        <dd class="total" data-value="5">5</dd>
+        <dt>Challenge Die 1</dt>
+        <dd class="challenge-die" data-value="10">10</dd>
+        <dt>Challenge Die 2</dt>
+        <dd class="challenge-die" data-value="6">6</dd>
+        <dt>Outcome</dt>
+        <dd class="outcome">Miss</dd>
+      </dl></aside><aside class="action"><header>Pay the Price</header></aside><aside class="action"><header>Withstand Damage</header><p class="action-item">-1 integrity</p></aside><p>“Course set.”</p><p>“Engage the e-drive.”</p><p>A different buzz echoed through the ship, increasing in volume. Sage felt like she might be floating again, but gravity still seemed to be on? The buzz became a crackle as the eidolons charged up and suddenly went silent.</p><p>Zoya quickly went through various monitors and switches, “Forced Laughter, what’s going on?”</p><p>“It appears we are being interdicted, teacher. My eidolon charge has been depleted.”</p><p>“Start charging it right away!”</p><p>“Already working on it, but we have a ship approaching, and it seems the interdiction may have caused some damage to my engines. I’m afraid I won’t be able to move for now.”</p><p>Zoya buried their face in their hands, “Great.”</p><p>“Not to upset you further, but we are being approached by a heavily armed vessel. They’re hailing.”</p><p>Zoya frowned, then looked at Sage, who nodded, “Put them through.”</p><p>A virtual window opened to the side of the large viewport in front of them showing the portrait of a uniformed Wrights commander. “This is Commander Qasira Valk of the Wrights vessel Eclipse. You do not have clearance to depart this planet. Return to port for further instructions.”</p><p>Sage and Zoya looked at each other, confused.</p><p>“Commander, this is Raven of the Caduceus ship Forced Laughter in Trying Times. We were authorized for departure and have all the appropriate paperwork.” they paused, was that enough? “I’m responding to an emergency medically aid request from Lyra station and I’m very pressed for time.”</p><aside class="action"><header>Compel</header><p class="action-item">+shadow (lying)</p><dl class="roll weak-hit">
+        <dt>Action</dt>
+        <dd class="action-die" data-value="1">1</dd>
+        <dt>Stat</dt>
+        <dd class="stat" data-value="1">1</dd>
+        <dt>Add</dt>
+        <dd class="add" data-value="0">0</dd>
+        <dt>Total</dt>
+        <dd class="total" data-value="2">2</dd>
+        <dt>Challenge Die 1</dt>
+        <dd class="challenge-die" data-value="1">1</dd>
+        <dt>Challenge Die 2</dt>
+        <dd class="challenge-die" data-value="6">6</dd>
+        <dt>Outcome</dt>
+        <dd class="outcome">Weak Hit</dd>
+      </dl><p class="action-item">+1 momentum</p></aside><p>“Stand by”. The virtual window blinked out.</p><p>Zoya wasn’t used to this lying business and wondered if they would be able to keep up the charade, especially once they were hauling more sensitive cargo.</p><p>They could feel their hand trembling on the controls when Sage reached over and squeezed it, “Hey, hang in there. You’re doing great.”</p><p>Zoya looked over and felt a small burst of relief, nodding before the virtual window popped up again.</p><p>“Port authority has confirmed clearance. Sorry for the trouble, Teacher,” the commander said, very formally. “I must notify you, however, that access to and from Beryl is being closely monitored right more and you’ll need to submit valid authorization if you plan on returning, before being allowed access. I’m told in your case this will involve validated medical reports and a routine scan of your ship.”</p><p>Zoya tried to keep their face neutral, but this was bad. They’d set up security around the planet sooner and more thoroughly than the rebel plans had assumed. This was going to significantly complicate things.</p><p>“I understand, Commander. Am I free to leave.”</p><p>“Yes, all clear when you’re ready, Teacher.”</p><p>“Thank you, Commander. Raven out.”</p><p>Once the call ended, Zoya looked up at nothing in particular, “Forced Laughter, status?”</p><p>“Eidolon drives are almost charged and engines are nominal. I was able to get necessary repairs done while you did your little performance there.”</p><p>Zoya rolled their eyes.</p><p>“Zoya I can literally feel you rolling your eyes.”</p><p>“Whatever, Forced Laughter.” They smiled after all. “Execute jump to Lyra station.”</p><p>The hum of the e-drive became a roar and then, in the blink of an eye, they found themselves in a completely different place. Where there had once been a deep green jungle planet, there was now a completely white snowball, smooth recently for the occasional mountainous feature. And right in front of them: a massive space station.</p><p>Lyra was a long, thin tower with several large, thin rings extending out from it. Or at least it all seemed thin. In reality, even the smallest of the rings was several stories thick and kilometers in diameter. An old terraforming station, the thin end of the tower was aimed at the planet, and a small thread came out of the tip, extending all the way into it disappeared into the planet’s cloud. The orbital elevator.</p><p>Zoya took the view in, and took a deep breath. Their words were almost a whisper, “We’re here.”</p><aside class="action"><header>Reach a Milestone</header><p class="action-item">Mark Progress: I vow to smuggle the weapons into Beryl for the rebels :2 boxes</p></aside>
+
+  <hr>
+
+  <footer>
+    <a href="#top">Back to top</a>
+  </footer>
+</article>
+
+		</main>
+
+		<footer></footer>
+
+		<!-- This page `/campaigns/a-lantern-in-the-void/chapter-07-beyond-beryl/` was built on 2024-05-10T06:36:08.240Z -->
+	</body>
+</html>
