@@ -256,7 +256,6 @@ function makeActionItem(
       `;
     }
     return actionItem;
-  } else if (roll) {
   } else {
     const actionItem = document.createElement("p");
     actionItem.classList.add("action-item");
