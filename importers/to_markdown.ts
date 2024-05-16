@@ -4,7 +4,6 @@ import { fileURLToPath } from "node:url";
 
 import { JSDOM } from "jsdom";
 import slugify from "slugify";
-import wrapAnsi from "wrap-ansi";
 
 import { ICampaign, IImage, IJournalEntry } from "../_data/campaigns";
 
@@ -73,7 +72,7 @@ function elementToMarkdown(element: Element): string {
   } else if (match("aside.action")) {
     return actionToMarkdown(element);
   } else if (match("p")) {
-    return wrapAnsi(element.textContent.trim(), WRAP_WIDTH);
+    return element.textContent.trim();
   }
   function match(selector: string): boolean {
     return element.matches(selector);
