@@ -5,7 +5,9 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>{{ title or metadata.title }}</title>
 		<meta name="description" content="{{ description or metadata.description }}">
-    <meta property="og:site_name" content="{{ metadata.title }}" />
+		<link rel="pingback" href="https://webmention.io/zkat.tech/xmlrpc">
+        <link rel="webmention" href="https://webmention.io/zkat.tech/webmention">
+        <meta property="og:site_name" content="{{ metadata.title }}" />
 		<meta property="og:title" content="{{ title or metadata.title}}" />
 		<meta property="og:description" content="{{ description or metadata.description }}" />
 		<meta property="og:type" content="website" />
