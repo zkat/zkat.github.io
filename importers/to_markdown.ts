@@ -30,6 +30,18 @@ async function main(): Promise<void> {
       const journalPath = join(journalDir, `${journal.title}.md`);
       await writeFile(journalPath, toMarkdown(journal));
     }
+    const loreDir = join(
+      DIRNAME,
+      "..",
+      "export",
+      slugify(campaign.name),
+      "lore"
+    );
+    await mkdir(loreDir, { recursive: true });
+    for (const lore of campaign.lore) {
+      const lorePath = join(loreDir, `${lore.title}.md`);
+      await writeFile(lorePath, toMarkdown(lore));
+    }
   }
 }
 
@@ -71,7 +83,7 @@ function elementToMarkdown(element: Element): string {
     return "***";
   } else if (match("aside.action")) {
     return actionToMarkdown(element);
-  } else if (match("p")) {
+  } else {
     return element.textContent.trim();
   }
   function match(selector: string): boolean {
